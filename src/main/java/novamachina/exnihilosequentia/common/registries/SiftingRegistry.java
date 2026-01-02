@@ -60,21 +60,34 @@ public class SiftingRegistry {
         new CacheLoader<>() {
           @Override
           public Boolean load(SiftingCacheKey key) {
-            return recipeList.stream()
-                .filter(recipe -> recipe.isWaterlogged() == key.isWaterlogged())
-                .filter(recipe -> IngredientUtils.isIngredientIn(key.input(), recipe.getInput()))
+            log.debug("Loading SiftingCacheKey: {}", key);
+            boolean result = recipeList.stream()
+                .filter(recipe -> {
+                  boolean matchesWaterlogged = recipe.isWaterlogged() == key.isWaterlogged();
+                  log.debug("L1 - Recipe: {}, isWaterlogged: {}, key.isWaterlogged: {}, matchesWaterlogged: {}", recipe, recipe.isWaterlogged(), key.isWaterlogged(), matchesWaterlogged);
+                  return matchesWaterlogged;
+                })
+                .filter(recipe -> {
+                  boolean matchesInput = IngredientUtils.isIngredientIn(key.input(), recipe.getInput());
+                  log.debug("L2 - Recipe: {}, Input: {}, Key Input: {}, matchesInput: {}", recipe, recipe.getInput(), key.input(), matchesInput);
+                  return matchesInput;
+                })
                 .anyMatch(
-                    recipe ->
-                        recipe.getRolls().stream()
-                            .anyMatch(
-                                roll -> {
-                                  int level = roll.getMesh().getLevel();
-                                  if (flattenRecipes) {
-                                    return level <= key.meshType().getLevel();
-                                  } else {
-                                    return level == key.meshType().getLevel();
-                                  }
-                                }));
+                    recipe -> {
+                      boolean matchesRolls = recipe.getRolls().stream()
+                          .anyMatch(
+                              roll -> {
+                                int level = roll.getMesh().getLevel();
+                                boolean matchesMeshLevel = flattenRecipes ? level <= key.meshType().getLevel() : level == key.meshType().getLevel();
+                                log.debug("L4 - Roll: {}, Mesh Level: {}, Key Mesh Level: {}, flattenRecipes: {}, matchesMeshLevel: {}", roll, level, key.meshType().getLevel(), flattenRecipes, matchesMeshLevel);
+                                return matchesMeshLevel;
+                              });
+                      log.debug("L3 - Recipe: {}, matchesRolls: {}", recipe, matchesRolls);
+                      return matchesRolls;
+                    });
+
+            log.debug("SiftingCacheKey: {}, Result: {}", key, result);
+            return result;
           }
         };
     siftableCache = CacheBuilder.newBuilder().maximumSize(100).build(siftableCacheLoader);
