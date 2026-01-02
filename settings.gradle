@@ -11,3 +11,6 @@ plugins {
 }
 
 rootProject.name = "ExNihiloSequentia"
+
+// Uncomment the line under to include local module of NovaCore. (Remember to change the path to the local module)
+// includeBuild("../NovaCore")
