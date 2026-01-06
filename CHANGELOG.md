@@ -18,15 +18,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Basalt crook no longer uses andesite crook durability configuration, for now.
 - Blackstone crook no longer uses andesite crook durability configuration, for now.
 - Displayed default durability value for iron crook is corrected to actual value of 512.
-- Never enabled crimson fungus crook is now enabled in `EXNItems` and uses wood crook durability configuration, for now. 
- And the tier is sugguested to be changed from stone to wood.
 - Never enabled prismarine crook is now enabled in `EXNItems` and uses stone crook durability configuration, for now.
-- Never enabled warped fungus crook is now enabled in `EXNItems` and uses stone crook durability configuration, for now. 
- And the tier is sugguested to be changed from stone to wood.
 - Copper hammer no longer uses iron crook durability configuration, for now. It is using cooper crook value.
-- Never enabled crimson fungus hammer is now enabled in `EXNItems` and uses wood crook durability configuration, for now.
 - Never enabled prismarine hammer is now enabled in `EXNItems` and uses stone crook durability configuration, for now.
-- Never enabled warped fungus hammer is now enabled in `EXNItems` and uses stone crook durability configuration, for now.
 
 ### Suggestion to Devs
 - Consider adding independent configuration for some materials of crooks and hammers. Currently some hammers share the value with the crooks.

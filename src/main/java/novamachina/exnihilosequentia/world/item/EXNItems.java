@@ -877,13 +877,14 @@ public class EXNItems {
       //     CrookItem::new,
       //     ItemDefinition.ItemType.TOOL);
 
+  // texture is missing
   // consider changing the tier from STONE to WOOD
-  public static final ItemDefinition<CrookItem> CROOK_CRIMSON_FUNGUS =
-       ITEMS.item(
-           "Crimson Fungus Crook",
-           "crimson_fungus_crook",
-           () -> new CrookItem(Tiers.STONE, Config.getCrookWoodDurability()),
-           ItemDefinition.ItemType.TOOL);
+  // public static final ItemDefinition<CrookItem> CROOK_CRIMSON_FUNGUS =
+  //      ITEMS.item(
+  //          "Crimson Fungus Crook",
+  //          "crimson_fungus_crook",
+  //          () -> new CrookItem(Tiers.STONE, Config.getCrookWoodDurability()),
+  //          ItemDefinition.ItemType.TOOL);
   // This was never enabled.
   //  public static final ItemDefinition<CrookItem> CROOK_CRIMSON_FUNGUS =
   //      ITEMS.item(
@@ -1128,13 +1129,14 @@ public class EXNItems {
       //     CrookItem::new,
       //     ItemDefinition.ItemType.TOOL);
 
+  // texture is missing
   // consider changing the tier from STONE to WOOD
-  public static final ItemDefinition<CrookItem> CROOK_WARPED_FUNGUS =
-       ITEMS.item(
-           "Warped Fungus Crook",
-           "warped_fungus_crook",
-           () -> new CrookItem(Tiers.STONE, Config.getCrookStoneDurability()),
-           ItemDefinition.ItemType.TOOL);
+  // public static final ItemDefinition<CrookItem> CROOK_WARPED_FUNGUS =
+  //      ITEMS.item(
+  //          "Warped Fungus Crook",
+  //          "warped_fungus_crook",
+  //          () -> new CrookItem(Tiers.STONE, Config.getCrookStoneDurability()),
+  //          ItemDefinition.ItemType.TOOL);
   // This was never enabled.
   //  public static final ItemDefinition<CrookItem> CROOK_WARPED_FUNGUS =
   //      ITEMS.item(
@@ -1297,13 +1299,14 @@ public class EXNItems {
       //     HammerItem::new,
       //     ItemDefinition.ItemType.TOOL);
 
+  // texture is missing
   // consider changing the tier from STONE to WOOD
-  public static final ItemDefinition<HammerItem> HAMMER_CRIMSON_FUNGUS =
-       ITEMS.item(
-           "Crimson Fungus Hammer",
-           "crimson_fungus_hammer",
-           () -> new HammerItem(Tiers.STONE, Config.getCrookWoodDurability()),
-           ItemDefinition.ItemType.TOOL);
+  // public static final ItemDefinition<HammerItem> HAMMER_CRIMSON_FUNGUS =
+  //      ITEMS.item(
+  //          "Crimson Fungus Hammer",
+  //          "crimson_fungus_hammer",
+  //          () -> new HammerItem(Tiers.STONE, Config.getCrookWoodDurability()),
+  //          ItemDefinition.ItemType.TOOL);
   // This was never enabled.
   //  public static final ItemDefinition<HammerItem> HAMMER_CRIMSON_FUNGUS =
   //      ITEMS.item(
@@ -1547,12 +1550,13 @@ public class EXNItems {
       //     HammerItem::new,
       //     ItemDefinition.ItemType.TOOL);
 
-  public static final ItemDefinition<HammerItem> HAMMER_WARPED_FUNGUS =
-       ITEMS.item(
-           "Warped Fungus Hammer",
-           "warped_fungus_hammer",
-           () -> new HammerItem(Tiers.STONE, Config.getCrookStoneDurability()),
-           ItemDefinition.ItemType.TOOL);
+  // texture is missing
+  // public static final ItemDefinition<HammerItem> HAMMER_WARPED_FUNGUS =
+  //      ITEMS.item(
+  //          "Warped Fungus Hammer",
+  //          "warped_fungus_hammer",
+  //          () -> new HammerItem(Tiers.STONE, Config.getCrookStoneDurability()),
+  //          ItemDefinition.ItemType.TOOL);
   // This was never enabled.
   //  public static final ItemDefinition<HammerItem> HAMMER_WARPED_FUNGUS =
   //      ITEMS.item(
