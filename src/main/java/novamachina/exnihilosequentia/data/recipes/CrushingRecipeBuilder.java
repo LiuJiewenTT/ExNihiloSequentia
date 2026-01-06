@@ -37,12 +37,16 @@ public class CrushingRecipeBuilder extends RecipeBuilder<CrushingRecipe> {
   }
 
   @Override
-  protected CrushingRecipe getRecipe(ResourceKey<Recipe<?>> id) {
+  protected CrushingRecipe getRecipe(ResourceLocation id) {
+  // This is for 1.21.3+
+  // protected CrushingRecipe getRecipe(ResourceKey<Recipe<?>> id) {
     return new CrushingRecipe(input, drops);
   }
 
   @Override
-  protected void validate(ResourceKey<Recipe<?>> id) {
+  protected void validate(ResourceLocation id) {
+  // This is for 1.21.3+
+  // protected void validate(ResourceKey<Recipe<?>> id) {
     Preconditions.checkNotNull(input, "Input cannot be null.");
     Preconditions.checkArgument(!drops.isEmpty(), "Recipe needs at least one drop.");
   }

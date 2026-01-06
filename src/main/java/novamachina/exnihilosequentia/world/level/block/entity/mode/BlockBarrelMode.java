@@ -9,6 +9,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -31,7 +32,9 @@ public class BlockBarrelMode extends AbstractBarrelMode {
 
   @Override
   @Nonnull
-  public InteractionResult onBlockActivated(
+  public ItemInteractionResult onBlockActivated(
+  // This is for 1.21.3+
+  // public InteractionResult onBlockActivated(
       @Nonnull final BarrelBlockEntity barrelTile,
       @Nonnull final Player player,
       @Nonnull final InteractionHand handIn,
@@ -49,7 +52,9 @@ public class BlockBarrelMode extends AbstractBarrelMode {
     }
     barrelTile.getInventory().setStackInSlot(0, ItemStack.EMPTY);
     barrelTile.setMode(ExNihiloConstants.BarrelModes.EMPTY);
-    return InteractionResult.SUCCESS;
+    return ItemInteractionResult.SUCCESS;
+    // This is for 1.21.3+
+    // return InteractionResult.SUCCESS;
   }
 
   @Override

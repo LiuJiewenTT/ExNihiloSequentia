@@ -7,6 +7,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
@@ -27,7 +28,9 @@ public class PebbleItem extends SnowballItem {
 
   @Override
   @Nonnull
-  public InteractionResult use(
+  public InteractionResultHolder<ItemStack> use(
+  // This is for 1.21.3+
+  // public InteractionResult use(
       @Nonnull final Level world,
       @Nonnull final Player player,
       @Nonnull final InteractionHand hand) {
@@ -66,8 +69,12 @@ public class PebbleItem extends SnowballItem {
       if (!player.getAbilities().instabuild) {
         itemstack.shrink(1);
       }
-      return InteractionResult.SUCCESS;
+      return InteractionResultHolder.sidedSuccess(itemstack, world.isClientSide());
+      // This is for 1.21.3+
+      // return InteractionResult.SUCCESS;
     }
-    return InteractionResult.PASS;
+    return InteractionResultHolder.pass(itemstack);
+    // This is for 1.21.3+
+    // return InteractionResult.PASS;
   }
 }

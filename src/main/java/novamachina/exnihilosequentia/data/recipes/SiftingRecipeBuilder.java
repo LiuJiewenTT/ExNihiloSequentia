@@ -74,12 +74,16 @@ public class SiftingRecipeBuilder extends RecipeBuilder<SiftingRecipe> {
   }
 
   @Override
-  protected SiftingRecipe getRecipe(ResourceKey<Recipe<?>> id) {
+  protected SiftingRecipe getRecipe(ResourceLocation id) {
+  // This is for 1.21.3+
+  // protected SiftingRecipe getRecipe(ResourceKey<Recipe<?>> id) {
     return new SiftingRecipe(input, drop, isWaterlogged, rolls);
   }
 
   @Override
-  protected void validate(ResourceKey<Recipe<?>> id) {
+  protected void validate(ResourceLocation id) {
+  // This is for 1.21.3+
+  // protected void validate(ResourceKey<Recipe<?>> id) {
     Preconditions.checkNotNull(input, "Input cannot be null.");
     Preconditions.checkNotNull(drop, "Drop cannot be null.");
     Preconditions.checkArgument(!drop.isEmpty(), "Recipe needs at least one drop.");

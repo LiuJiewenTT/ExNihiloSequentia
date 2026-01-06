@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -33,12 +34,18 @@ public class PrecipitateRecipeBuilder extends RecipeBuilder<PrecipitateRecipe> {
   }
 
   public static PrecipitateRecipeBuilder precipitate(
-      FluidStack fluid, TagKey<Item> inputTag, ItemLike output, HolderGetter.Provider provider) {
-    return precipitate(
-        fluid,
-        Ingredient.of(provider.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(inputTag)),
-        output);
+      FluidStack fluid, TagKey<Item> inputTag, ItemLike output) {
+    return precipitate(fluid, Ingredient.of(inputTag), output);
   }
+
+  // This is for 1.21.3+
+  // public static PrecipitateRecipeBuilder precipitate(
+  //     FluidStack fluid, TagKey<Item> inputTag, ItemLike output, HolderGetter.Provider provider) {
+  //   return precipitate(
+  //       fluid,
+  //       Ingredient.of(provider.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(inputTag)),
+  //       output);
+  // }
 
   public static PrecipitateRecipeBuilder precipitate(
       FluidStack fluid, Ingredient input, ItemLike output) {
@@ -46,12 +53,16 @@ public class PrecipitateRecipeBuilder extends RecipeBuilder<PrecipitateRecipe> {
   }
 
   @Override
-  protected PrecipitateRecipe getRecipe(ResourceKey<Recipe<?>> resourceLocation) {
+  protected PrecipitateRecipe getRecipe(ResourceLocation resourceLocation) {
+  // This is for 1.21.3+
+  // protected PrecipitateRecipe getRecipe(ResourceKey<Recipe<?>> resourceLocation) {
     return new PrecipitateRecipe(fluid, input, output);
   }
 
   @Override
-  protected void validate(ResourceKey<Recipe<?>> id) {
+  protected void validate(ResourceLocation id) {
+  // This is for 1.21.3+
+  // protected void validate(ResourceKey<Recipe<?>> id) {
     Preconditions.checkNotNull(input, "Input cannot be null.");
     Preconditions.checkNotNull(fluid, "Fluid cannot be null");
     Preconditions.checkArgument(!fluid.isEmpty(), "Fluid amount cannot be 0");

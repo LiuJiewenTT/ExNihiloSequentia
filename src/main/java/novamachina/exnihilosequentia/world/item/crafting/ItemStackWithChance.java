@@ -96,11 +96,15 @@ public class ItemStackWithChance {
         count = json.getAsJsonObject().get(COUNT_KEY).getAsInt();
       }
       return of(
-          new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemString)).get().value(), count),
+          new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemString)), count),
+          // This is for 1.21.3+
+          // new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemString)).get().value(), count),
           chance);
     } else {
       String itemString = GsonHelper.convertToString(json, BASE_KEY);
-      return of(new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemString)).get().value()), 1.0F);
+      return of(new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemString))), 1.0F);
+      // This is for 1.21.3+
+      // return of(new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemString)).get().value()), 1.0F);
     }
   }
 

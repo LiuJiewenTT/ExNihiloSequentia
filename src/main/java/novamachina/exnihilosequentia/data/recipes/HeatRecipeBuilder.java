@@ -35,12 +35,16 @@ public class HeatRecipeBuilder extends RecipeBuilder<HeatRecipe> {
   }
 
   @Override
-  protected HeatRecipe getRecipe(ResourceKey<Recipe<?>> id) {
+  protected HeatRecipe getRecipe(ResourceLocation id) {
+  // This is for 1.21.3+
+  // protected HeatRecipe getRecipe(ResourceKey<Recipe<?>> id) {
     return new HeatRecipe(inputBlock, amount, properties);
   }
 
   @Override
-  protected void validate(ResourceKey<Recipe<?>> id) {
+  protected void validate(ResourceLocation id) {
+  // This is for 1.21.3+
+  // protected void validate(ResourceKey<Recipe<?>> id) {
     Preconditions.checkArgument(inputBlock != null, "Input cannot be null.");
     Preconditions.checkArgument(amount > 0, "Heat amount must be greater than 0.");
     Preconditions.checkNotNull(properties, "Properties cannot be null.");

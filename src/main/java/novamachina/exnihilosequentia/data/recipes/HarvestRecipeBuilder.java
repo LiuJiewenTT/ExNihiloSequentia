@@ -34,8 +34,12 @@ public class HarvestRecipeBuilder extends RecipeBuilder<HarvestRecipe> {
     return harvest(Ingredient.of(inputItem), drops);
   }
 
-  public static HarvestRecipeBuilder harvest(HolderGetter.Provider provider, TagKey<Item> inputTag, ItemStackWithChance... drops) {
-    return harvest(Ingredient.of(provider.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(inputTag)), drops);
+  public static HarvestRecipeBuilder harvest(TagKey<Item> inputTag, ItemStackWithChance... drops) {
+  // This is for 1.21.3+
+  // public static HarvestRecipeBuilder harvest(HolderGetter.Provider provider, TagKey<Item> inputTag, ItemStackWithChance... drops) {
+    return harvest(Ingredient.of(inputTag), drops);
+    // This is for 1.21.3+
+    // return harvest(Ingredient.of(provider.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(inputTag)), drops);
   }
 
   public static HarvestRecipeBuilder harvest(Ingredient input, ItemStackWithChance... drops) {
@@ -44,12 +48,16 @@ public class HarvestRecipeBuilder extends RecipeBuilder<HarvestRecipe> {
   }
 
   @Override
-  protected HarvestRecipe getRecipe(ResourceKey<Recipe<?>> id) {
+  protected HarvestRecipe getRecipe(ResourceLocation id) {
+  // This is for 1.21.3+
+  // protected HarvestRecipe getRecipe(ResourceKey<Recipe<?>> id) {
     return new HarvestRecipe(input, drops);
   }
 
   @Override
-  protected void validate(ResourceKey<Recipe<?>> id) {
+  protected void validate(ResourceLocation id) {
+  // This is for 1.21.3+
+  // protected void validate(ResourceKey<Recipe<?>> id) {
     Preconditions.checkNotNull(input, "Input cannot be null.");
     Preconditions.checkArgument(!drops.isEmpty(), "Recipe needs at least one drop.");
   }

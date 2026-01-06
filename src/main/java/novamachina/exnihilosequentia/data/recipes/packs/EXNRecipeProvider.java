@@ -21,9 +21,14 @@ import novamachina.novacore.data.recipes.AbstractRecipeProvider;
 import novamachina.novacore.data.recipes.ISubRecipeProvider;
 
 public class EXNRecipeProvider extends AbstractRecipeProvider {
-  public EXNRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
-    super(provider, recipeOutput);
+  public EXNRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+    super(output, lookupProvider);
   }
+
+  // This is for 1.21.3+
+  // public EXNRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
+  //   super(provider, recipeOutput);
+  // }
 
   @Override
   protected List<ISubRecipeProvider> getSubProviders() {
@@ -40,19 +45,20 @@ public class EXNRecipeProvider extends AbstractRecipeProvider {
         new TransitionRecipes());
   }
 
-  public static final class Runner extends RecipeProvider.Runner {
-    public Runner(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-      super(output, lookupProvider);
-    }
-
-    @Override
-    protected RecipeProvider createRecipeProvider(HolderLookup.Provider lookupProvider, RecipeOutput output) {
-      return new EXNRecipeProvider(lookupProvider, output);
-    }
-
-    @Override
-    public String getName() {
-      return "Ex Nihilo: Sequentia recipes";
-    }
-  }
+  // This is for 1.21.3+
+  // public static final class Runner extends RecipeProvider.Runner {
+  //   public Runner(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+  //     super(output, lookupProvider);
+  //   }
+  //
+  //   @Override
+  //   protected RecipeProvider createRecipeProvider(HolderLookup.Provider lookupProvider, RecipeOutput output) {
+  //     return new EXNRecipeProvider(lookupProvider, output);
+  //   }
+  //
+  //   @Override
+  //   public String getName() {
+  //     return "Ex Nihilo: Sequentia recipes";
+  //   }
+  // }
 }

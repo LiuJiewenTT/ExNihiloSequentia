@@ -9,7 +9,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
+// import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
@@ -60,7 +60,10 @@ public class WitchWaterBlock extends LiquidBlock {
     if (entityIn instanceof Creeper creeper && !creeper.isPowered()) {
       Optional<LightningBolt> createLightning =
           Optional.ofNullable(
-              EntityType.LIGHTNING_BOLT.create(worldIn, EntitySpawnReason.SPAWN_ITEM_USE));
+              EntityType.LIGHTNING_BOLT.create(worldIn));
+          // This is for 1.21.3+
+          // Optional.ofNullable(
+          //     EntityType.LIGHTNING_BOLT.create(worldIn, EntitySpawnReason.SPAWN_ITEM_USE));
       createLightning.ifPresent(
           (lightningBolt -> {
             entityIn.thunderHit((ServerLevel) worldIn, lightningBolt);
@@ -103,7 +106,9 @@ public class WitchWaterBlock extends LiquidBlock {
     if (entityIn instanceof Animal) {
       @Nullable
       final LightningBolt lightningBolt =
-          EntityType.LIGHTNING_BOLT.create(worldIn, EntitySpawnReason.SPAWN_ITEM_USE);
+          EntityType.LIGHTNING_BOLT.create(worldIn);
+          // This is for 1.21.3+
+          // EntityType.LIGHTNING_BOLT.create(worldIn, EntitySpawnReason.SPAWN_ITEM_USE);
       if (lightningBolt != null) {
         entityIn.thunderHit((ServerLevel) worldIn, lightningBolt);
       }

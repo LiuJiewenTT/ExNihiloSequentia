@@ -18,7 +18,9 @@ import novamachina.novacore.data.recipes.ISubRecipeProvider;
 
 public class CrushingRecipes implements ISubRecipeProvider {
   @Override
-  public void addRecipes(HolderGetter.Provider holderGetter, RecipeOutput consumer) {
+  public void addRecipes(RecipeOutput consumer) {
+  // This is for 1.21.3+
+  // public void addRecipes(HolderGetter.Provider holderGetter, RecipeOutput consumer) {
     CrushingRecipeBuilder.crushing(Blocks.STONE)
         .addDrop(new ItemStack(Blocks.COBBLESTONE))
         .build(consumer, crushingLoc("cobblestone"));
@@ -96,9 +98,15 @@ public class CrushingRecipes implements ISubRecipeProvider {
         .build(consumer, crushingLoc("horn_coral_fan"));
   }
 
-  private ResourceKey<Recipe<?>> crushingLoc(@Nonnull final String id) {
-    ResourceLocation rl = ResourceLocation.fromNamespaceAndPath(
+  private ResourceLocation crushingLoc(@Nonnull final String id) {
+    return ResourceLocation.fromNamespaceAndPath(
         ExNihiloSequentia.MOD_ID, "crushing/" + RecipeProviderUtilities.prependRecipePrefix(id));
-    return ResourceKey.create(Registries.RECIPE, rl);
   }
+
+  // This is for 1.21.3+
+  // private ResourceKey<Recipe<?>> crushingLoc(@Nonnull final String id) {
+  //   ResourceLocation rl = ResourceLocation.fromNamespaceAndPath(
+  //       ExNihiloSequentia.MOD_ID, "crushing/" + RecipeProviderUtilities.prependRecipePrefix(id));
+  //   return ResourceKey.create(Registries.RECIPE, rl);
+  // }
 }

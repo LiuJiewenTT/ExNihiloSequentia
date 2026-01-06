@@ -63,13 +63,18 @@ public class Config {
   @Nonnull private static final ModConfigSpec.IntValue crookWoodValue;
   @Nonnull private static final ModConfigSpec.IntValue crookStoneValue;
   @Nonnull private static final ModConfigSpec.IntValue crookAndesiteValue;
+  @Nonnull private static final ModConfigSpec.IntValue crookBambooValue;
+  @Nonnull private static final ModConfigSpec.IntValue crookBasaltValue;
+  @Nonnull private static final ModConfigSpec.IntValue crookBlackstoneValue;
   @Nonnull private static final ModConfigSpec.IntValue crookGraniteValue;
   @Nonnull private static final ModConfigSpec.IntValue crookDioriteValue;
   @Nonnull private static final ModConfigSpec.IntValue crookGoldValue;
   @Nonnull private static final ModConfigSpec.IntValue crookIronValue;
+  @Nonnull private static final ModConfigSpec.IntValue crookCopperValue;
   @Nonnull private static final ModConfigSpec.IntValue crookDiamondValue;
   @Nonnull private static final ModConfigSpec.IntValue crookNetheriteValue;
   @Nonnull private static final ModConfigSpec.IntValue crookBoneValue;
+  @Nonnull private static final ModConfigSpec.IntValue crookCalciteValue;
   // Durability Meshes
   @Nonnull private static final ModConfigSpec.BooleanValue enableMeshDurability;
   @Nonnull private static final ModConfigSpec.IntValue meshStackSize;
@@ -355,6 +360,18 @@ public class Config {
         COMMON_BUILDER
             .comment("Durability of Andesite Crook (Default: 256)")
             .defineInRange("crookAndesiteValue", 256, 1, Integer.MAX_VALUE);
+    crookBambooValue =
+        COMMON_BUILDER
+            .comment("Durability of Bamboo Crook (Default: 128)")
+            .defineInRange("crookBambooValue", 128, 1, Integer.MAX_VALUE);
+    crookBasaltValue =
+        COMMON_BUILDER
+            .comment("Durability of Basalt Crook (Default: 256)")
+            .defineInRange("crookBasaltValue", 256, 1, Integer.MAX_VALUE);
+    crookBlackstoneValue =
+        COMMON_BUILDER
+            .comment("Durability of Blackstone Crook (Default: 256)")
+             .defineInRange("crookBlackstoneValue", 256, 1, Integer.MAX_VALUE);
     crookGraniteValue =
         COMMON_BUILDER
             .comment("Durability of Granite Crook (Default: 256)")
@@ -369,8 +386,12 @@ public class Config {
             .defineInRange("crookGoldValue", 64, 1, Integer.MAX_VALUE);
     crookIronValue =
         COMMON_BUILDER
-            .comment("Durability of Iron Crook (Default: 256)")
+            .comment("Durability of Iron Crook (Default: 512)")
             .defineInRange("crookIronValue", 512, 1, Integer.MAX_VALUE);
+    crookCopperValue =
+        COMMON_BUILDER
+            .comment("Durability of Copper Crook (Default: 256)")
+            .defineInRange("crookCopperValue", 256, 1, Integer.MAX_VALUE);
     crookDiamondValue =
         COMMON_BUILDER
             .comment("Durability of Diamond Crook (Default: 2048)")
@@ -383,6 +404,10 @@ public class Config {
         COMMON_BUILDER
             .comment("Durability of Bone Crook (Default: 256)")
             .defineInRange("crookBoneValue", 256, 1, Integer.MAX_VALUE);
+    crookCalciteValue =
+        COMMON_BUILDER
+            .comment("Durability of Calcite Crook (Default: 256)")
+            .defineInRange("crookCalciteValue", 256, 1, Integer.MAX_VALUE);
     COMMON_BUILDER.pop();
 
     COMMON_BUILDER.comment("Durability of Meshes").push(SUBCATEGORY_MESHES);
@@ -437,6 +462,18 @@ public class Config {
     return crookAndesiteValue.get();
   }
 
+  public static int getCrookBambooDurability() {
+    return crookBambooValue.get();
+  }
+
+  public static int getCrookBasaltDurability() {
+    return crookBasaltValue.get();
+  }
+
+  public static int getCrookBlackstoneDurability() {
+    return crookBlackstoneValue.get();
+  }
+
   public static int getCrookGraniteDurability() {
     return crookGraniteValue.get();
   }
@@ -453,12 +490,20 @@ public class Config {
     return crookIronValue.get();
   }
 
+  public static int getCrookCopperDurability() {
+    return crookCopperValue.get();
+  }
+
   public static int getCrookDiamondDurability() {
     return crookDiamondValue.get();
   }
 
   public static int getCrookBoneDurability() {
     return crookBoneValue.get();
+  }
+
+  public static int getCrookCalciteDurability() {
+    return crookCalciteValue.get();
   }
 
   public static int getVanillaSimulateDropCount() {

@@ -20,8 +20,8 @@ import novamachina.novacore.data.recipes.ISubRecipeProvider;
 
 public class HarvestingRecipes implements ISubRecipeProvider {
   @Override
-  public void addRecipes(HolderGetter.Provider holderGetter, RecipeOutput consumer) {
-    HarvestRecipeBuilder.harvest(holderGetter, ItemTags.LEAVES)
+  public void addRecipes(RecipeOutput consumer) {
+    HarvestRecipeBuilder.harvest(ItemTags.LEAVES)
         .addDrop(new ItemStack(EXNItems.SILKWORM.asItem()), 0.1F)
         .build(consumer, harvestLoc("leaves"));
     HarvestRecipeBuilder.harvest(EXNBlocks.INFESTED_LEAVES.block())
@@ -31,10 +31,27 @@ public class HarvestingRecipes implements ISubRecipeProvider {
         .addDrop(new ItemStack(Items.STRING), 0.5F)
         .build(consumer, harvestLoc("string"));
   }
+  // This is for 1.21.3+
+  // public void addRecipes(HolderGetter.Provider holderGetter, RecipeOutput consumer) {
+  //   HarvestRecipeBuilder.harvest(holderGetter, ItemTags.LEAVES)
+  //       .addDrop(new ItemStack(EXNItems.SILKWORM.asItem()), 0.1F)
+  //       .build(consumer, harvestLoc("leaves"));
+  //   HarvestRecipeBuilder.harvest(EXNBlocks.INFESTED_LEAVES.block())
+  //       .addDrop(new ItemStack(EXNItems.SILKWORM.asItem()), 0.2F)
+  //       .build(consumer, harvestLoc("silkworm"));
+  //   HarvestRecipeBuilder.harvest(EXNBlocks.INFESTED_LEAVES.block())
+  //       .addDrop(new ItemStack(Items.STRING), 0.5F)
+  //       .build(consumer, harvestLoc("string"));
+  // }
 
-  private ResourceKey<Recipe<?>> harvestLoc(@Nonnull final String id) {
-    ResourceLocation rl = ResourceLocation.fromNamespaceAndPath(
+  private ResourceLocation harvestLoc(@Nonnull final String id) {
+    return ResourceLocation.fromNamespaceAndPath(
         ExNihiloSequentia.MOD_ID, "harvest/" + RecipeProviderUtilities.prependRecipePrefix(id));
-    return ResourceKey.create(Registries.RECIPE, rl);
   }
+  // This is for 1.21.3+
+  // private ResourceKey<Recipe<?>> harvestLoc(@Nonnull final String id) {
+  //   ResourceLocation rl = ResourceLocation.fromNamespaceAndPath(
+  //       ExNihiloSequentia.MOD_ID, "harvest/" + RecipeProviderUtilities.prependRecipePrefix(id));
+  //   return ResourceKey.create(Registries.RECIPE, rl);
+  // }
 }

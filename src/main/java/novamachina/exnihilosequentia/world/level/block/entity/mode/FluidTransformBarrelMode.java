@@ -13,6 +13,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
@@ -57,13 +58,17 @@ public class FluidTransformBarrelMode extends AbstractBarrelMode {
 
   @Override
   @Nonnull
-  public InteractionResult onBlockActivated(
+  public ItemInteractionResult onBlockActivated(
+  // This is for 1.21.3+
+  // public InteractionResult onBlockActivated(
       @Nonnull final BarrelBlockEntity barrelTile,
       @Nonnull final Player player,
       @Nonnull final InteractionHand handIn,
       @Nonnull final IFluidHandler fluidHandler,
       @Nonnull final IItemHandler itemHandler) {
-    return InteractionResult.PASS;
+    return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    // This is for 1.21.3+
+    // return InteractionResult.PASS;
   }
 
   @Override

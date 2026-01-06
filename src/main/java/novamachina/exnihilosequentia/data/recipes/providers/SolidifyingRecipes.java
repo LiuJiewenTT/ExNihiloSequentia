@@ -21,19 +21,27 @@ public class SolidifyingRecipes implements ISubRecipeProvider {
   private static final FluidStack water = new FluidStack(Fluids.WATER, FluidType.BUCKET_VOLUME);
 
   @Override
-  public void addRecipes(HolderGetter.Provider holderGetter, RecipeOutput consumer) {
+  public void addRecipes(RecipeOutput consumer) {
+  // This is for 1.21.3+
+  // public void addRecipes(HolderGetter.Provider holderGetter, RecipeOutput consumer) {
     SolidifyingRecipeBuilder.solidify(lava, water, Blocks.OBSIDIAN)
         .build(consumer, solidifyLoc("obsidian"));
     SolidifyingRecipeBuilder.solidify(water, lava, Blocks.COBBLESTONE)
         .build(consumer, solidifyLoc("cobblestone"));
   }
 
-  private ResourceKey<Recipe<?>> solidifyLoc(String id) {
-
-    ResourceLocation rl =
-        ResourceLocation.fromNamespaceAndPath(
-            ExNihiloSequentia.MOD_ID,
-            "solidify/" + RecipeProviderUtilities.prependRecipePrefix(id));
-    return ResourceKey.create(Registries.RECIPE, rl);
+  private ResourceLocation solidifyLoc(String id) {
+    return ResourceLocation.fromNamespaceAndPath(
+        ExNihiloSequentia.MOD_ID, "solidify/" + RecipeProviderUtilities.prependRecipePrefix(id));
   }
+
+  // This is for 1.21.3+
+  // private ResourceKey<Recipe<?>> solidifyLoc(String id) {
+  //
+  //   ResourceLocation rl =
+  //       ResourceLocation.fromNamespaceAndPath(
+  //           ExNihiloSequentia.MOD_ID,
+  //           "solidify/" + RecipeProviderUtilities.prependRecipePrefix(id));
+  //   return ResourceKey.create(Registries.RECIPE, rl);
+  // }
 }

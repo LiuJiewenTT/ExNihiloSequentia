@@ -1,14 +1,14 @@
 package novamachina.exnihilosequentia.client.setup;
 
 import javax.annotation.Nonnull;
-import net.minecraft.client.renderer.item.properties.select.SelectItemModelProperties;
+// import net.minecraft.client.renderer.item.properties.select.SelectItemModelProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import novamachina.exnihilosequentia.ExNihiloSequentia;
 import novamachina.exnihilosequentia.client.renderer.BarrelRender;
 import novamachina.exnihilosequentia.client.renderer.CrucibleRender;
 import novamachina.exnihilosequentia.client.renderer.SieveRender;
-import novamachina.exnihilosequentia.client.renderer.item.properties.Holiday;
+// import novamachina.exnihilosequentia.client.renderer.item.properties.Holiday;
 import novamachina.exnihilosequentia.world.level.block.entity.EXNBlockEntityTypes;
 import org.slf4j.Logger;
 

@@ -43,8 +43,11 @@ public class UseHammerModifier extends LootModifier {
   public ObjectArrayList<ItemStack> doApply(
       @Nonnull ObjectArrayList<ItemStack> generatedLoot, @Nonnull final LootContext context) {
     log.debug("Fired Hammer Modifier");
-    @Nullable final ItemStack tool = context.getParameter(LootContextParams.TOOL);
-    @Nullable final BlockState blockState = context.getParameter(LootContextParams.BLOCK_STATE);
+    @Nullable final ItemStack tool = context.getParamOrNull(LootContextParams.TOOL);
+    @Nullable final BlockState blockState = context.getParamOrNull(LootContextParams.BLOCK_STATE);
+    // This is for 1.21.3+
+    // @Nullable final ItemStack tool = context.getParameter(LootContextParams.TOOL);
+    // @Nullable final BlockState blockState = context.getParameter(LootContextParams.BLOCK_STATE);
     @Nonnull final ObjectArrayList<ItemStack> newLoot = new ObjectArrayList<>();
 
     if (tool.getItem().getDefaultInstance().is(ExNihiloTags.HAMMER)

@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -75,9 +76,13 @@ public abstract class CrucibleBlock extends Block implements ITooltipProvider {
   }
 
   @Override
-  protected InteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+  // This is for 1.21.3+
+  protected ItemInteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+  // protected InteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
     if (level.isClientSide()) {
-      return InteractionResult.SUCCESS;
+      return ItemInteractionResult.SUCCESS;
+      // This is for 1.21.3+
+      // return InteractionResult.SUCCESS;
     }
 
     @Nullable final CrucibleBlockEntity tile = (CrucibleBlockEntity) level.getBlockEntity(blockPos);
@@ -88,6 +93,9 @@ public abstract class CrucibleBlock extends Block implements ITooltipProvider {
               Capabilities.FluidHandler.BLOCK, blockPos, blockState, tile, blockHitResult.getDirection());
       return tile.onBlockActivated(player, interactionHand, fluidHandler);
     }
-    return InteractionResult.SUCCESS;
+
+    return ItemInteractionResult.SUCCESS;
+    // This is for 1.21.3+
+    // return InteractionResult.SUCCESS;
   }
 }

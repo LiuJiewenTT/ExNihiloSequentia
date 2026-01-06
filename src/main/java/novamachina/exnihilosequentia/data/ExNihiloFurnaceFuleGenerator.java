@@ -16,7 +16,9 @@ public class ExNihiloFurnaceFuleGenerator extends DataMapProvider {
   }
 
   @Override
-  protected void gather(HolderLookup.Provider provider) {
+  protected void gather() {
+  // This is for 1.21.3+
+  // protected void gather(HolderLookup.Provider provider) {
     builder(NeoForgeDataMaps.FURNACE_FUELS)
         .add(ExNihiloTags.WOOD_BARREL, new FurnaceFuel(400), false)
         .add(ExNihiloTags.WOOD_CRUCIBLE, new FurnaceFuel(400), false)

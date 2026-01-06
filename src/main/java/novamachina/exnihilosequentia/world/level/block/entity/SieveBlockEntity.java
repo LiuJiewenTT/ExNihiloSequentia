@@ -67,16 +67,21 @@ public class SieveBlockEntity extends BlockEntity {
 
     level
         .registryAccess()
-        .get(Registries.ENCHANTMENT)
+        .registry(Registries.ENCHANTMENT)
+        // This is for 1.21.3+
+        // .get(Registries.ENCHANTMENT)
         .ifPresent(
             registry -> {
               registry
-                  .value()
-                  .get(Enchantments.FORTUNE)
+                  .getHolder(Enchantments.FORTUNE)
+                  // This is for 1.21.3+
+                  // .value()
+                  // .get(Enchantments.FORTUNE)
                   .ifPresent(holder -> fortune.set((float) meshStack.getEnchantmentLevel(holder)));
               registry
-                  .value()
-                  .get(Enchantments.EFFICIENCY)
+                  .getHolder(Enchantments.EFFICIENCY)
+                  // .value()
+                  // .get(Enchantments.EFFICIENCY)
                   .ifPresent(
                       holder -> efficiency.set((float) meshStack.getEnchantmentLevel(holder)));
             });

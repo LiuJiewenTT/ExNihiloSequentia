@@ -36,9 +36,15 @@ public class TransitionRecipeBuilder extends RecipeBuilder<TransitionRecipe> {
   }
 
   public static TransitionRecipeBuilder transition(
-      FluidStack fluidInTank, TagKey<Item> catalyst, FluidStack result, HolderGetter.Provider provider) {
-    return transition(fluidInTank, Ingredient.of(provider.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(catalyst)), result);
+      FluidStack fluidInTank, TagKey<Item> catalyst, FluidStack result) {
+    return transition(fluidInTank, Ingredient.of(catalyst), result);
   }
+
+  // This is for 1.21.3+
+  // public static TransitionRecipeBuilder transition(
+  //     FluidStack fluidInTank, TagKey<Item> catalyst, FluidStack result, HolderGetter.Provider provider) {
+  //   return transition(fluidInTank, Ingredient.of(provider.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(catalyst)), result);
+  // }
 
   public static TransitionRecipeBuilder transition(
       FluidStack fluidInTank, Ingredient catalyst, FluidStack result) {
@@ -46,12 +52,16 @@ public class TransitionRecipeBuilder extends RecipeBuilder<TransitionRecipe> {
   }
 
   @Override
-  protected TransitionRecipe getRecipe(ResourceKey<Recipe<?>> id) {
+  protected TransitionRecipe getRecipe(ResourceLocation id) {
+  // This is for 1.21.3+
+  // protected TransitionRecipe getRecipe(ResourceKey<Recipe<?>> id) {
     return new TransitionRecipe(catalyst, fluidInTank, result);
   }
 
   @Override
-  protected void validate(ResourceKey<Recipe<?>> id) {
+  protected void validate(ResourceLocation id) {
+  // This is for 1.21.3+
+  // protected void validate(ResourceKey<Recipe<?>> id) {
     Preconditions.checkNotNull(fluidInTank, "Fluid in tank cannot be null");
     Preconditions.checkArgument(!fluidInTank.isEmpty(), "Fluid in tank amount amount cannot be 0");
     Preconditions.checkNotNull(fluidInTank, "Catalyst cannot be null.");

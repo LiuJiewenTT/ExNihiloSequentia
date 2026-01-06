@@ -30,24 +30,34 @@ public class PrecipitateRecipes implements ISubRecipeProvider {
       new FluidStack(EXNFluids.WITCH_WATER.getStillFluid(), FluidType.BUCKET_VOLUME);
 
   @Override
-  public void addRecipes(HolderGetter.Provider holderGetter, RecipeOutput consumer) {
+  public void addRecipes(RecipeOutput consumer) {
+  // This is for 1.21.3+
+  // public void addRecipes(HolderGetter.Provider holderGetter, RecipeOutput consumer) {
     PrecipitateRecipeBuilder.precipitate(water, EXNBlocks.DUST, Blocks.CLAY)
         .build(consumer, precipitateLoc("clay"));
     PrecipitateRecipeBuilder.precipitate(water, Blocks.DIRT, Blocks.MUD)
         .build(consumer, precipitateLoc("mud"));
     PrecipitateRecipeBuilder.precipitate(
-            lava, Tags.Items.DUSTS_REDSTONE, Blocks.NETHERRACK, holderGetter)
+            lava, Tags.Items.DUSTS_REDSTONE, Blocks.NETHERRACK)
+            // This is for 1.21.3+
+            // lava, Tags.Items.DUSTS_REDSTONE, Blocks.NETHERRACK, holderGetter)
         .build(consumer, precipitateLoc("netherrack"));
     PrecipitateRecipeBuilder.precipitate(
-            lava, Tags.Items.DUSTS_GLOWSTONE, Blocks.END_STONE, holderGetter)
+            lava, Tags.Items.DUSTS_GLOWSTONE, Blocks.END_STONE)
+            // This is for 1.21.3+
+            // lava, Tags.Items.DUSTS_GLOWSTONE, Blocks.END_STONE, holderGetter)
         .build(consumer, precipitateLoc("end_stone"));
     PrecipitateRecipeBuilder.precipitate(
-            witchwater, Tags.Items.SANDS, Blocks.SOUL_SAND, holderGetter)
+            witchwater, Tags.Items.SANDS, Blocks.SOUL_SAND)
+            // This is for 1.21.3+
+            // witchwater, Tags.Items.SANDS, Blocks.SOUL_SAND, holderGetter)
         .build(consumer, precipitateLoc("soul_sand"));
     PrecipitateRecipeBuilder.precipitate(witchwater, Items.COARSE_DIRT, Blocks.SOUL_SOIL)
         .build(consumer, precipitateLoc("soul_soil"));
     PrecipitateRecipeBuilder.precipitate(
-            witchwater, Tags.Items.MUSHROOMS, Blocks.SLIME_BLOCK, holderGetter)
+            witchwater, Tags.Items.MUSHROOMS, Blocks.SLIME_BLOCK)
+            // This is for 1.21.3+
+            // witchwater, Tags.Items.MUSHROOMS, Blocks.SLIME_BLOCK, holderGetter)
         .build(consumer, precipitateLoc("slime"));
     PrecipitateRecipeBuilder.precipitate(
             seawater, EXNItems.TUBE_CORAL_LARVA, Blocks.TUBE_CORAL_BLOCK)
@@ -75,11 +85,17 @@ public class PrecipitateRecipes implements ISubRecipeProvider {
         .build(consumer, precipitateLoc("pointed_dripstone"));
   }
 
-  private ResourceKey<Recipe<?>> precipitateLoc(String id) {
-    ResourceLocation rl =
-        ResourceLocation.fromNamespaceAndPath(
-            ExNihiloSequentia.MOD_ID,
-            "precipitate/" + RecipeProviderUtilities.prependRecipePrefix(id));
-    return ResourceKey.create(Registries.RECIPE, rl);
+  private ResourceLocation precipitateLoc(String id) {
+    return ResourceLocation.fromNamespaceAndPath(
+        ExNihiloSequentia.MOD_ID, "precipitate/" + RecipeProviderUtilities.prependRecipePrefix(id));
   }
+
+  // This is for 1.21.3+
+  // private ResourceKey<Recipe<?>> precipitateLoc(String id) {
+  //   ResourceLocation rl =
+  //       ResourceLocation.fromNamespaceAndPath(
+  //           ExNihiloSequentia.MOD_ID,
+  //           "precipitate/" + RecipeProviderUtilities.prependRecipePrefix(id));
+  //   return ResourceKey.create(Registries.RECIPE, rl);
+  // }
 }

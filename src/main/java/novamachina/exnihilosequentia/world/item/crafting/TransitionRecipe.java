@@ -6,7 +6,7 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.PlacementInfo;
+// import net.minecraft.world.item.crafting.PlacementInfo;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.neoforge.fluids.FluidStack;
@@ -96,8 +96,9 @@ public class TransitionRecipe extends AbstractRecipe {
     }
   }
 
-  @Override
-  public PlacementInfo placementInfo() {
-    return PlacementInfo.createFromOptionals(List.of(Optional.of(catalyst)));
-  }
+  // This is added when upgrading to 1.21.3+
+  // @Override
+  // public PlacementInfo placementInfo() {
+  //   return PlacementInfo.createFromOptionals(List.of(Optional.of(catalyst)));
+  // }
 }

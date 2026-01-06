@@ -51,9 +51,13 @@ public class UseCrookModifier extends LootModifier {
   public ObjectArrayList<ItemStack> doApply(
       @Nonnull ObjectArrayList<ItemStack> generatedLoot, @Nonnull final LootContext context) {
     log.debug("Fired Crook Modifier");
-    @Nullable final ItemStack tool = context.getParameter(LootContextParams.TOOL);
-    @Nullable final BlockState blockState = context.getParameter(LootContextParams.BLOCK_STATE);
-    @Nullable final Vec3 origin = context.getParameter(LootContextParams.ORIGIN);
+    @Nullable final ItemStack tool = context.getParamOrNull(LootContextParams.TOOL);
+    @Nullable final BlockState blockState = context.getParamOrNull(LootContextParams.BLOCK_STATE);
+    @Nullable final Vec3 origin = context.getParamOrNull(LootContextParams.ORIGIN);
+    // This is for 1.21.3+
+    // @Nullable final ItemStack tool = context.getParameter(LootContextParams.TOOL);
+    // @Nullable final BlockState blockState = context.getParameter(LootContextParams.BLOCK_STATE);
+    // @Nullable final Vec3 origin = context.getParameter(LootContextParams.ORIGIN);
     @Nonnull final ObjectArrayList<ItemStack> newLoot = new ObjectArrayList<>();
 
     if (tool.getItem().getDefaultInstance().is(ExNihiloTags.CROOK)

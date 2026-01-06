@@ -10,6 +10,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
@@ -31,7 +32,9 @@ public class EmptyBarrelMode extends AbstractBarrelMode {
 
   @Override
   @Nonnull
-  public InteractionResult onBlockActivated(
+  public ItemInteractionResult onBlockActivated(
+  // This is for 1.21.3+
+  // public InteractionResult onBlockActivated(
       @Nonnull final BarrelBlockEntity barrelTile,
       @Nonnull final Player player,
       @Nonnull final InteractionHand handIn,
@@ -49,11 +52,14 @@ public class EmptyBarrelMode extends AbstractBarrelMode {
           barrelTile
               .getMode()
               .onBlockActivated(barrelTile, player, handIn, fluidHandler, itemHandler);
-          return InteractionResult.SUCCESS;
+          return ItemInteractionResult.SUCCESS;
+          // This is for 1.21.3+
+          // return InteractionResult.SUCCESS;
         }
       }
     }
-    return InteractionResult.SUCCESS;
+    return ItemInteractionResult.SUCCESS;
+    // return InteractionResult.SUCCESS;
   }
 
   @Override

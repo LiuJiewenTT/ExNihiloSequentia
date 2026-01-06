@@ -13,6 +13,7 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -129,7 +130,9 @@ public abstract class CrucibleBlockEntity extends BlockEntity {
     return ClientboundBlockEntityDataPacket.create(this);
   }
 
-  public InteractionResult onBlockActivated(
+  public ItemInteractionResult onBlockActivated(
+  // This is for 1.21.3+
+  // public InteractionResult onBlockActivated(
       @Nonnull final Player player,
       @Nonnull final InteractionHand handIn,
       @Nonnull final IFluidHandler handler) {
@@ -137,15 +140,21 @@ public abstract class CrucibleBlockEntity extends BlockEntity {
 
     @Nonnull final ItemStack stack = player.getItemInHand(handIn);
     if (stack.isEmpty()) {
-      return InteractionResult.SUCCESS;
+      return ItemInteractionResult.SUCCESS;
+      // This is for 1.21.3+
+      // return InteractionResult.SUCCESS;
     }
 
     if (TankUtil.drainWaterIntoBottle(this, player, handler)) {
-      return InteractionResult.SUCCESS;
+      return ItemInteractionResult.SUCCESS;
+      // This is for 1.21.3+
+      // return InteractionResult.SUCCESS;
     }
 
     if (TankUtil.drainWaterFromBottle(this, player, handler)) {
-      return InteractionResult.SUCCESS;
+      return ItemInteractionResult.SUCCESS;
+      // This is for 1.21.3+
+      // return InteractionResult.SUCCESS;
     }
 
     boolean result = FluidUtil.interactWithFluidHandler(player, handIn, handler);
@@ -159,7 +168,10 @@ public abstract class CrucibleBlockEntity extends BlockEntity {
         level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 2);
       }
       setChanged();
-      return InteractionResult.SUCCESS;
+
+      return ItemInteractionResult.SUCCESS;
+      // This is for 1.21.3+
+      // return InteractionResult.SUCCESS;
     }
 
     Optional<MeltingRecipe> recipe = getMeltable();
@@ -169,7 +181,9 @@ public abstract class CrucibleBlockEntity extends BlockEntity {
             .getFluid()
             .getFluid()
             .isSame(recipe.get().getResultFluid().getFluid())) {
-      return InteractionResult.SUCCESS;
+      return ItemInteractionResult.SUCCESS;
+      // This is for 1.21.3+
+      // return InteractionResult.SUCCESS;
     }
 
     log.debug("Inserting item");
@@ -186,9 +200,13 @@ public abstract class CrucibleBlockEntity extends BlockEntity {
       }
       setChanged();
       tickCrucible();
-      return InteractionResult.SUCCESS;
+      return ItemInteractionResult.SUCCESS;
+      // This is for 1.21.3+
+      // return InteractionResult.SUCCESS;
     }
-    return InteractionResult.SUCCESS;
+    return ItemInteractionResult.SUCCESS;
+    // This is for 1.21.3+
+    // return InteractionResult.SUCCESS;
   }
 
   @Override

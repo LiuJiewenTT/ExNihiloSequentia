@@ -1,6 +1,7 @@
 package novamachina.exnihilosequentia.data.recipes;
 
 import com.google.common.base.Preconditions;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
@@ -27,22 +28,31 @@ public class CompostRecipeBuilder extends RecipeBuilder<CompostRecipe> {
     return composting(Ingredient.of(inputItem), amount);
   }
 
-  public static CompostRecipeBuilder composting(TagKey<Item> inputTag, int amount, HolderGetter.Provider provider) {
-    return composting(Ingredient.of(provider.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(inputTag)), amount);
+  public static CompostRecipeBuilder composting(TagKey<Item> inputTag, int amount) {
+    return composting(Ingredient.of(inputTag), amount);
   }
+
+  // This is for 1.21.3+
+  // public static CompostRecipeBuilder composting(TagKey<Item> inputTag, int amount, HolderGetter.Provider provider) {
+  //   return composting(Ingredient.of(provider.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(inputTag)), amount);
+  // }
 
   public static CompostRecipeBuilder composting(Ingredient input, int amount) {
     return new CompostRecipeBuilder(input, amount);
   }
 
   @Override
-  protected void validate(ResourceKey<Recipe<?>> id) {
+  protected void validate(ResourceLocation id) {
+  // This is for 1.21.3+
+  // protected void validate(ResourceKey<Recipe<?>> id) {
     Preconditions.checkNotNull(input, "Input cannot be null.");
     Preconditions.checkArgument(amount > 0, "Amount must be greater than 0.");
   }
 
   @Override
-  protected CompostRecipe getRecipe(ResourceKey<Recipe<?>> id) {
+  protected CompostRecipe getRecipe(ResourceLocation id) {
+  // This is for 1.21.3+
+  // protected CompostRecipe getRecipe(ResourceKey<Recipe<?>> id) {
     return new CompostRecipe(input, amount);
   }
 }

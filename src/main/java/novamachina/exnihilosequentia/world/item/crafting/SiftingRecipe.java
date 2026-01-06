@@ -10,7 +10,7 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.PlacementInfo;
+// import net.minecraft.world.item.crafting.PlacementInfo;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import novamachina.exnihilosequentia.world.item.MeshType;
@@ -128,8 +128,9 @@ public class SiftingRecipe extends AbstractRecipe {
     }
   }
 
-  @Override
-  public PlacementInfo placementInfo() {
-    return PlacementInfo.create(input);
-  }
+  // This is added when upgrading to 1.21.3+
+  // @Override
+  // public PlacementInfo placementInfo() {
+  //   return PlacementInfo.create(input);
+  // }
 }

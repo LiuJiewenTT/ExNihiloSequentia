@@ -13,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.PlacementInfo;
+// import net.minecraft.world.item.crafting.PlacementInfo;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
@@ -95,8 +95,10 @@ public class HeatRecipe extends AbstractRecipe {
     }
 
     public static HeatRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
-      Block inputBlock =
-          BuiltInRegistries.BLOCK.get(ResourceLocation.STREAM_CODEC.decode(buffer)).get().value();
+      Block inputBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.STREAM_CODEC.decode(buffer));
+      // This is for 1.21.3+
+      // Block inputBlock =
+      //     BuiltInRegistries.BLOCK.get(ResourceLocation.STREAM_CODEC.decode(buffer)).get().value();
       int amount = buffer.readInt();
       boolean hasProperties =
           buffer.readBoolean(); // flag showing whether recipe depends on block state
@@ -119,11 +121,12 @@ public class HeatRecipe extends AbstractRecipe {
     }
   }
 
-  @Override
-  public PlacementInfo placementInfo() {
-    Item stateItem = this.inputBlock.asItem();
-    return PlacementInfo.createFromOptionals(
-        List.of(
-            stateItem != Items.AIR ? Optional.of(Ingredient.of(inputBlock)) : Optional.empty()));
-  }
+  // This is added when upgrading to 1.21.3+
+  // @Override
+  // public PlacementInfo placementInfo() {
+  //   Item stateItem = this.inputBlock.asItem();
+  //   return PlacementInfo.createFromOptionals(
+  //       List.of(
+  //           stateItem != Items.AIR ? Optional.of(Ingredient.of(inputBlock)) : Optional.empty()));
+  // }
 }

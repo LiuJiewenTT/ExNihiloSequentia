@@ -17,7 +17,9 @@ import novamachina.novacore.data.recipes.ISubRecipeProvider;
 
 public class HeatRecipes implements ISubRecipeProvider {
   @Override
-  public void addRecipes(HolderGetter.Provider holderGetter, RecipeOutput consumer) {
+  public void addRecipes(RecipeOutput consumer) {
+  // This is for 1.21.3+
+  // public void addRecipes(HolderGetter.Provider holderGetter, RecipeOutput consumer) {
     HeatRecipeBuilder.heat(Blocks.LAVA, 3).build(consumer, heatLoc("lava"));
     HeatRecipeBuilder.heat(Blocks.FIRE, 4).build(consumer, heatLoc("fire"));
     HeatRecipeBuilder.heat(Blocks.TORCH, 1).build(consumer, heatLoc("torch"));
@@ -41,9 +43,14 @@ public class HeatRecipes implements ISubRecipeProvider {
         .build(consumer, heatLoc("redstone_wall_torch"));
   }
 
-  private ResourceKey<Recipe<?>> heatLoc(String id) {
-    ResourceLocation rl = ResourceLocation.fromNamespaceAndPath(
+  private ResourceLocation heatLoc(String id) {
+    return ResourceLocation.fromNamespaceAndPath(
         ExNihiloSequentia.MOD_ID, "heat/" + RecipeProviderUtilities.prependRecipePrefix(id));
-    return ResourceKey.create(Registries.RECIPE, rl);
   }
+  // This is for 1.21.3+
+  // private ResourceKey<Recipe<?>> heatLoc(String id) {
+  //   ResourceLocation rl = ResourceLocation.fromNamespaceAndPath(
+  //       ExNihiloSequentia.MOD_ID, "heat/" + RecipeProviderUtilities.prependRecipePrefix(id));
+  //   return ResourceKey.create(Registries.RECIPE, rl);
+  // }
 }

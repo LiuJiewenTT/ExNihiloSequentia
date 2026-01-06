@@ -34,8 +34,12 @@ public class MeltingRecipeBuilder extends RecipeBuilder<MeltingRecipe> {
   }
 
   public static MeltingRecipeBuilder melting(
-      TagKey<Item> input, FluidStack result, CrucibleType type, HolderGetter.Provider provider) {
-    return melting(Ingredient.of(provider.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(input)), result, type);
+      TagKey<Item> input, FluidStack result, CrucibleType type) {
+      // This is for 1.21.3+
+      // TagKey<Item> input, FluidStack result, CrucibleType type, HolderGetter.Provider provider) {
+    return melting(Ingredient.of(input), result, type);
+    // This is for 1.21.3+
+    // return melting(Ingredient.of(provider.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(input)), result, type);
   }
 
   public static MeltingRecipeBuilder melting(
@@ -44,12 +48,16 @@ public class MeltingRecipeBuilder extends RecipeBuilder<MeltingRecipe> {
   }
 
   @Override
-  protected MeltingRecipe getRecipe(ResourceKey<Recipe<?>> id) {
+  protected MeltingRecipe getRecipe(ResourceLocation resourceLocation) {
+  // This is for 1.21.3+
+  // protected MeltingRecipe getRecipe(ResourceKey<Recipe<?>> id) {
     return new MeltingRecipe(input, result, type);
   }
 
   @Override
-  protected void validate(ResourceKey<Recipe<?>> id) {
+  protected void validate(ResourceLocation id) {
+  // This is for 1.21.3+
+  // protected void validate(ResourceKey<Recipe<?>> id) {
     Preconditions.checkNotNull(input, "Input cannot be null.");
     Preconditions.checkNotNull(result, "Fluid cannot be null");
     Preconditions.checkArgument(!result.isEmpty(), "Fluid amount cannot be 0");

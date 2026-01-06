@@ -18,10 +18,10 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.client.event.RegisterSelectItemModelPropertyEvent;
+// import net.neoforged.neoforge.client.event.RegisterSelectItemModelPropertyEvent;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import novamachina.exnihilosequentia.ExNihiloSequentia;
-import novamachina.exnihilosequentia.client.renderer.item.properties.Holiday;
+// import novamachina.exnihilosequentia.client.renderer.item.properties.Holiday;
 import novamachina.exnihilosequentia.common.utility.ExNihiloConstants;
 import novamachina.exnihilosequentia.world.item.EXNItems;
 import novamachina.exnihilosequentia.world.item.capability.BarrelInventoryHandler;
@@ -131,8 +131,9 @@ public class ModEventListeners {
     ComposterBlock.COMPOSTABLES.put(item, (float) 0.3);
   }
 
-  @SubscribeEvent
-  public static void registerSelectProperties(RegisterSelectItemModelPropertyEvent event) {
-    event.register(ResourceLocation.fromNamespaceAndPath(ExNihiloSequentia.MOD_ID, "holiday"), Holiday.TYPE);
-  }
+  // This is added when upgrading to 1.21.3+
+  // @SubscribeEvent
+  // public static void registerSelectProperties(RegisterSelectItemModelPropertyEvent event) {
+  //   event.register(ResourceLocation.fromNamespaceAndPath(ExNihiloSequentia.MOD_ID, "holiday"), Holiday.TYPE);
+  // }
 }

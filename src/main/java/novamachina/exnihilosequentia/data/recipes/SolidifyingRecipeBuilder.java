@@ -31,12 +31,16 @@ public class SolidifyingRecipeBuilder extends RecipeBuilder<SolidifyingRecipe> {
   }
 
   @Override
-  protected SolidifyingRecipe getRecipe(ResourceKey<Recipe<?>> id) {
+  protected SolidifyingRecipe getRecipe(ResourceLocation id) {
+  // This is for 1.21.3+
+  // protected SolidifyingRecipe getRecipe(ResourceKey<Recipe<?>> id) {
     return new SolidifyingRecipe(fluidInTank, fluidOnTop, result);
   }
 
   @Override
-  protected void validate(ResourceKey<Recipe<?>> id) {
+  protected void validate(ResourceLocation id) {
+  // This is for 1.21.3+
+  // protected void validate(ResourceKey<Recipe<?>> id) {
     Preconditions.checkNotNull(fluidInTank, "Fluid in barrel cannot be null");
     Preconditions.checkArgument(!fluidInTank.isEmpty(), "Fluid in barrel amount cannot be 0");
     Preconditions.checkNotNull(fluidOnTop, "Fluid on top cannot be null");

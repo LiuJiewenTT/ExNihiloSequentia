@@ -23,18 +23,23 @@ public class EXNLootModifierProvider extends GlobalLootModifierProvider {
 
   @Override
   protected void start() {
-    HolderGetter<Item> holderGetter = registries.lookupOrThrow(Registries.ITEM);
+    // This is for 1.21.3+
+    // HolderGetter<Item> holderGetter = registries.lookupOrThrow(Registries.ITEM);
     add(
         "use_hammer",
         new UseHammerModifier(
             new LootItemCondition[] {
-              MatchTool.toolMatches(ItemPredicate.Builder.item().of(holderGetter, ExNihiloTags.HAMMER)).build()
+                MatchTool.toolMatches(ItemPredicate.Builder.item().of(ExNihiloTags.HAMMER)).build()
+              // This is for 1.21.3+
+              // MatchTool.toolMatches(ItemPredicate.Builder.item().of(holderGetter, ExNihiloTags.HAMMER)).build()
             }));
     add(
         "use_crook",
         new UseCrookModifier(
             new LootItemCondition[] {
-              MatchTool.toolMatches(ItemPredicate.Builder.item().of(holderGetter, ExNihiloTags.CROOK)).build()
+                MatchTool.toolMatches(ItemPredicate.Builder.item().of(ExNihiloTags.CROOK)).build()
+              // This is for 1.21.3+
+              // MatchTool.toolMatches(ItemPredicate.Builder.item().of(holderGetter, ExNihiloTags.CROOK)).build()
             }));
   }
 

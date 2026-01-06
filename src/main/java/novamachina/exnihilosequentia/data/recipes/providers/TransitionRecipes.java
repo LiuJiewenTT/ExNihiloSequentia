@@ -25,16 +25,29 @@ public class TransitionRecipes implements ISubRecipeProvider {
       new FluidStack(EXNFluids.WITCH_WATER.getStillFluid(), FluidType.BUCKET_VOLUME);
 
   @Override
-  public void addRecipes(HolderGetter.Provider holderGetter, RecipeOutput consumer) {
+  public void addRecipes(RecipeOutput consumer) {
     TransitionRecipeBuilder.transition(water, Blocks.MYCELIUM, witchwater)
         .build(consumer, transitionLoc("witch_water"));
-    TransitionRecipeBuilder.transition(water, Tags.Items.SANDS, seawater, holderGetter)
+    TransitionRecipeBuilder.transition(water, Tags.Items.SANDS, seawater)
         .build(consumer, transitionLoc("sea_water"));
   }
+  // This is for 1.21.3+
+  // public void addRecipes(HolderGetter.Provider holderGetter, RecipeOutput consumer) {
+  //   TransitionRecipeBuilder.transition(water, Blocks.MYCELIUM, witchwater)
+  //       .build(consumer, transitionLoc("witch_water"));
+  //   TransitionRecipeBuilder.transition(water, Tags.Items.SANDS, seawater, holderGetter)
+  //       .build(consumer, transitionLoc("sea_water"));
+  // }
 
-  private ResourceKey<Recipe<?>> transitionLoc(String id) {
-    ResourceLocation rl = ResourceLocation.fromNamespaceAndPath(
+  private ResourceLocation transitionLoc(String id) {
+    return ResourceLocation.fromNamespaceAndPath(
         ExNihiloSequentia.MOD_ID, "transition/" + RecipeProviderUtilities.prependRecipePrefix(id));
-    return ResourceKey.create(Registries.RECIPE, rl);
   }
+
+  // This is for 1.21.3+
+  // private ResourceKey<Recipe<?>> transitionLoc(String id) {
+  //   ResourceLocation rl = ResourceLocation.fromNamespaceAndPath(
+  //       ExNihiloSequentia.MOD_ID, "transition/" + RecipeProviderUtilities.prependRecipePrefix(id));
+  //   return ResourceKey.create(Registries.RECIPE, rl);
+  // }
 }
