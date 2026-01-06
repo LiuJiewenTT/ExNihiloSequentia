@@ -4,7 +4,9 @@
     "amount": 1000,
     "id": "exnihilosequentia:witch_water"
   },
-  "input": "#c:sands",
+  "input": {
+    "tag": "c:sands"
+  },
   "result": {
     "count": 1,
     "id": "minecraft:soul_sand"

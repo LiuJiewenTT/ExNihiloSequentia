@@ -2,9 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "c": "minecraft:end_crystal",
-    "e": "minecraft:ender_eye",
-    "k": "minecraft:cake"
+    "c": {
+      "item": "minecraft:end_crystal"
+    },
+    "e": {
+      "item": "minecraft:ender_eye"
+    },
+    "k": {
+      "item": "minecraft:cake"
+    }
   },
   "pattern": [
     "ece",

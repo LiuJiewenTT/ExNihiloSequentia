@@ -5,5 +5,7 @@
     "amount": 50,
     "id": "minecraft:lava"
   },
-  "input": "exnihilosequentia:dust"
+  "input": {
+    "item": "exnihilosequentia:dust"
+  }
 }

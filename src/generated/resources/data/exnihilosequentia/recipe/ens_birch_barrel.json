@@ -3,8 +3,12 @@
   "category": "misc",
   "group": "exnihilosequentia",
   "key": {
-    "-": "minecraft:birch_slab",
-    "x": "minecraft:birch_planks"
+    "-": {
+      "item": "minecraft:birch_slab"
+    },
+    "x": {
+      "item": "minecraft:birch_planks"
+    }
   },
   "pattern": [
     "x x",

@@ -3,7 +3,9 @@
   "category": "misc",
   "group": "exnihilosequentia",
   "key": {
-    "x": "exnihilosequentia:lead_pieces"
+    "x": {
+      "item": "exnihilosequentia:lead_pieces"
+    }
   },
   "pattern": [
     "xx",

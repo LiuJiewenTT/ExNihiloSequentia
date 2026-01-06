@@ -1,6 +1,8 @@
 {
   "type": "exnihilosequentia:crushing",
-  "input": "minecraft:cobblestone",
+  "input": {
+    "item": "minecraft:cobblestone"
+  },
   "results": [
     {
       "chance": 1.0,

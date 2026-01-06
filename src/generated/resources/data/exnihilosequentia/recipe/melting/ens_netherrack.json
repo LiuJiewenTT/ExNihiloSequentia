@@ -5,5 +5,7 @@
     "amount": 1000,
     "id": "minecraft:lava"
   },
-  "input": "minecraft:netherrack"
+  "input": {
+    "item": "minecraft:netherrack"
+  }
 }

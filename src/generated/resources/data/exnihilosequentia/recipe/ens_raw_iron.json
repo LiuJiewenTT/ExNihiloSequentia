@@ -3,7 +3,9 @@
   "category": "misc",
   "group": "exnihilosequentia",
   "key": {
-    "x": "exnihilosequentia:iron_pieces"
+    "x": {
+      "item": "exnihilosequentia:iron_pieces"
+    }
   },
   "pattern": [
     "xx",

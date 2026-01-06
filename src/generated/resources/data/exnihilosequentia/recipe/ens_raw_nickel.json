@@ -3,7 +3,9 @@
   "category": "misc",
   "group": "exnihilosequentia",
   "key": {
-    "x": "exnihilosequentia:nickel_pieces"
+    "x": {
+      "item": "exnihilosequentia:nickel_pieces"
+    }
   },
   "pattern": [
     "xx",

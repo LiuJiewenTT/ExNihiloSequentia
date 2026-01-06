@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 80,
-  "input": "minecraft:spider_eye"
+  "input": {
+    "item": "minecraft:spider_eye"
+  }
 }

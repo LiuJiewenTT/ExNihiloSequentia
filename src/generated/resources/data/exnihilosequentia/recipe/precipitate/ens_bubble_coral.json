@@ -4,7 +4,9 @@
     "amount": 1000,
     "id": "exnihilosequentia:sea_water"
   },
-  "input": "exnihilosequentia:bubble_coral_larva",
+  "input": {
+    "item": "exnihilosequentia:bubble_coral_larva"
+  },
   "result": {
     "count": 1,
     "id": "minecraft:bubble_coral_block"

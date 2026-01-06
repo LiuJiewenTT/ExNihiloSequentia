@@ -1,6 +1,8 @@
 {
   "type": "exnihilosequentia:crushing",
-  "input": "minecraft:deepslate",
+  "input": {
+    "item": "minecraft:deepslate"
+  },
   "results": [
     {
       "chance": 1.0,

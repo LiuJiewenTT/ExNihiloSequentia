@@ -2,11 +2,21 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "b": "exnihilosequentia:beehive_frame",
-    "c": "#c:dyes/yellow",
-    "m": "exnihilosequentia:porcelain_doll",
-    "s": "#c:dusts/glowstone",
-    "t": "#minecraft:small_flowers"
+    "b": {
+      "item": "exnihilosequentia:beehive_frame"
+    },
+    "c": {
+      "tag": "c:dyes/yellow"
+    },
+    "m": {
+      "item": "exnihilosequentia:porcelain_doll"
+    },
+    "s": {
+      "tag": "c:dusts/glowstone"
+    },
+    "t": {
+      "tag": "minecraft:small_flowers"
+    }
   },
   "pattern": [
     "ctc",

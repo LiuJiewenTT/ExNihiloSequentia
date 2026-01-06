@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "i": "#c:strings"
+    "i": {
+      "tag": "c:strings"
+    }
   },
   "pattern": [
     "iii",

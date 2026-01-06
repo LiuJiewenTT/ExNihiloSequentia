@@ -2,9 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "l": "minecraft:cherry_slab",
-    "p": "minecraft:cherry_planks",
-    "s": "#c:rods/wooden"
+    "l": {
+      "item": "minecraft:cherry_slab"
+    },
+    "p": {
+      "item": "minecraft:cherry_planks"
+    },
+    "s": {
+      "tag": "c:rods/wooden"
+    }
   },
   "pattern": [
     "p p",

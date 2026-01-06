@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "exnihilosequentia:lead_ingot"
+    {
+      "item": "exnihilosequentia:lead_ingot"
+    }
   ],
   "result": {
     "count": 9,

@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 100,
-  "input": "minecraft:large_fern"
+  "input": {
+    "item": "minecraft:large_fern"
+  }
 }

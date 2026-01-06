@@ -3,7 +3,9 @@
   "category": "equipment",
   "group": "exnihilosequentia",
   "key": {
-    "x": "#c:nuggets/gold"
+    "x": {
+      "tag": "c:nuggets/gold"
+    }
   },
   "pattern": [
     "xx",

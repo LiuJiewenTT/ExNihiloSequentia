@@ -3,7 +3,9 @@
   "category": "food",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": "exnihilosequentia:silkworm",
+  "ingredient": {
+    "item": "exnihilosequentia:silkworm"
+  },
   "result": {
     "count": 1,
     "id": "exnihilosequentia:cooked_silkworm"

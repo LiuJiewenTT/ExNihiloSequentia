@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 100,
-  "input": "minecraft:big_dripleaf"
+  "input": {
+    "item": "minecraft:big_dripleaf"
+  }
 }

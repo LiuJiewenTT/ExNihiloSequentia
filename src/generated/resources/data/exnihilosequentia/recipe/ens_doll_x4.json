@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "e": "#c:gems/diamond",
-    "x": "exnihilosequentia:porcelain_clay"
+    "e": {
+      "tag": "c:gems/diamond"
+    },
+    "x": {
+      "item": "exnihilosequentia:porcelain_clay"
+    }
   },
   "pattern": [
     "xex",

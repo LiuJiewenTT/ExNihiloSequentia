@@ -3,7 +3,9 @@
   "category": "equipment",
   "group": "exnihilosequentia",
   "key": {
-    "x": "#c:bones"
+    "x": {
+      "tag": "c:bones"
+    }
   },
   "pattern": [
     "xx",

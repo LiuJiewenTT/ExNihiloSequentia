@@ -3,7 +3,9 @@
   "category": "building",
   "group": "exnihilosequentia",
   "key": {
-    "x": "exnihilosequentia:dripstone_pebble"
+    "x": {
+      "item": "exnihilosequentia:dripstone_pebble"
+    }
   },
   "pattern": [
     "xx",

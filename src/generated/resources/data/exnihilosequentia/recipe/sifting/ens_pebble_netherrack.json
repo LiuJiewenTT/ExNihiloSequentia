@@ -1,6 +1,8 @@
 {
   "type": "exnihilosequentia:sifting",
-  "input": "exnihilosequentia:crushed_netherrack",
+  "input": {
+    "item": "exnihilosequentia:crushed_netherrack"
+  },
   "result": {
     "count": 1,
     "id": "exnihilosequentia:netherrack_pebble"

@@ -3,7 +3,9 @@
   "category": "misc",
   "group": "exnihilosequentia",
   "key": {
-    "x": "exnihilosequentia:uranium_pieces"
+    "x": {
+      "item": "exnihilosequentia:uranium_pieces"
+    }
   },
   "pattern": [
     "xx",

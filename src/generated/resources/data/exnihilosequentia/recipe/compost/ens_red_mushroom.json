@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 100,
-  "input": "minecraft:red_mushroom"
+  "input": {
+    "item": "minecraft:red_mushroom"
+  }
 }

@@ -1,6 +1,8 @@
 {
   "type": "exnihilosequentia:crushing",
-  "input": "minecraft:gravel",
+  "input": {
+    "item": "minecraft:gravel"
+  },
   "results": [
     {
       "chance": 1.0,

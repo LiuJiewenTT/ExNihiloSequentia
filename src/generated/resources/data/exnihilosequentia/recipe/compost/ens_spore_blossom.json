@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 100,
-  "input": "minecraft:spore_blossom"
+  "input": {
+    "item": "minecraft:spore_blossom"
+  }
 }

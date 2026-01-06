@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 100,
-  "input": "exnihilosequentia:warped_nylium_spores"
+  "input": {
+    "item": "exnihilosequentia:warped_nylium_spores"
+  }
 }

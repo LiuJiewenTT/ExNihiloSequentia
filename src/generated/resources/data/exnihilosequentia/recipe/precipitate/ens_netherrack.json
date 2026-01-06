@@ -4,7 +4,9 @@
     "amount": 1000,
     "id": "minecraft:lava"
   },
-  "input": "#c:dusts/redstone",
+  "input": {
+    "tag": "c:dusts/redstone"
+  },
   "result": {
     "count": 1,
     "id": "minecraft:netherrack"

@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 100,
-  "input": "#c:crops/potato"
+  "input": {
+    "tag": "c:crops/potato"
+  }
 }

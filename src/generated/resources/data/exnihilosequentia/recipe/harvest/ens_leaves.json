@@ -1,6 +1,8 @@
 {
   "type": "exnihilosequentia:harvest",
-  "input": "#minecraft:leaves",
+  "input": {
+    "tag": "minecraft:leaves"
+  },
   "results": [
     {
       "chance": 0.1,

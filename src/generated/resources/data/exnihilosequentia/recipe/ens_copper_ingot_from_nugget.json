@@ -3,7 +3,9 @@
   "category": "misc",
   "group": "exnihilosequentia",
   "key": {
-    "x": "exnihilosequentia:copper_nugget"
+    "x": {
+      "item": "exnihilosequentia:copper_nugget"
+    }
   },
   "pattern": [
     "xxx",

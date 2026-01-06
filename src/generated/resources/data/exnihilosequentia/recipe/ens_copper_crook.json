@@ -3,7 +3,9 @@
   "category": "equipment",
   "group": "exnihilosequentia",
   "key": {
-    "x": "#c:nuggets/copper"
+    "x": {
+      "tag": "c:nuggets/copper"
+    }
   },
   "pattern": [
     "xx",

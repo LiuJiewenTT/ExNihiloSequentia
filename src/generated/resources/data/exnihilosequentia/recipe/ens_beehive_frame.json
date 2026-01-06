@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "f": "#c:strings",
-    "x": "#c:rods/wooden"
+    "f": {
+      "tag": "c:strings"
+    },
+    "x": {
+      "tag": "c:rods/wooden"
+    }
   },
   "pattern": [
     "xxx",

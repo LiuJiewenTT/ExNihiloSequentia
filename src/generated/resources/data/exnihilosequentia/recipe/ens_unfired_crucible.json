@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "c": "exnihilosequentia:porcelain_clay"
+    "c": {
+      "item": "exnihilosequentia:porcelain_clay"
+    }
   },
   "pattern": [
     "c c",

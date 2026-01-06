@@ -5,5 +5,7 @@
     "amount": 200,
     "id": "minecraft:lava"
   },
-  "input": "minecraft:gravel"
+  "input": {
+    "item": "minecraft:gravel"
+  }
 }

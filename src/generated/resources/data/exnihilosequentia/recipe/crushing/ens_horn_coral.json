@@ -1,6 +1,8 @@
 {
   "type": "exnihilosequentia:crushing",
-  "input": "minecraft:horn_coral_block",
+  "input": {
+    "item": "minecraft:horn_coral_block"
+  },
   "results": [
     {
       "chance": 1.0,

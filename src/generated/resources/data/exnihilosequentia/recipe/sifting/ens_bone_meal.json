@@ -1,6 +1,8 @@
 {
   "type": "exnihilosequentia:sifting",
-  "input": "exnihilosequentia:dust",
+  "input": {
+    "item": "exnihilosequentia:dust"
+  },
   "result": {
     "count": 1,
     "id": "minecraft:bone_meal"

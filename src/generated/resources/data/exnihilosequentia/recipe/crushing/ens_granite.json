@@ -1,6 +1,8 @@
 {
   "type": "exnihilosequentia:crushing",
-  "input": "minecraft:granite",
+  "input": {
+    "item": "minecraft:granite"
+  },
   "results": [
     {
       "chance": 1.0,

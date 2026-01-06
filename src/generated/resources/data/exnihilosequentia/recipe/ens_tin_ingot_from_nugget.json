@@ -3,7 +3,9 @@
   "category": "misc",
   "group": "exnihilosequentia",
   "key": {
-    "x": "exnihilosequentia:tin_nugget"
+    "x": {
+      "item": "exnihilosequentia:tin_nugget"
+    }
   },
   "pattern": [
     "xxx",

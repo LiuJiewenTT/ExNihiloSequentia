@@ -4,7 +4,9 @@
     "amount": 1000,
     "id": "minecraft:water"
   },
-  "input": "minecraft:dirt",
+  "input": {
+    "item": "minecraft:dirt"
+  },
   "result": {
     "count": 1,
     "id": "minecraft:mud"

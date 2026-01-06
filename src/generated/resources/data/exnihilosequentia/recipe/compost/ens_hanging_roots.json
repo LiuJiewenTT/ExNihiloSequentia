@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 100,
-  "input": "minecraft:hanging_roots"
+  "input": {
+    "item": "minecraft:hanging_roots"
+  }
 }

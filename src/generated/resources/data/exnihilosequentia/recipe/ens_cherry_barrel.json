@@ -3,8 +3,12 @@
   "category": "misc",
   "group": "exnihilosequentia",
   "key": {
-    "-": "minecraft:cherry_slab",
-    "x": "minecraft:cherry_planks"
+    "-": {
+      "item": "minecraft:cherry_slab"
+    },
+    "x": {
+      "item": "minecraft:cherry_planks"
+    }
   },
   "pattern": [
     "x x",

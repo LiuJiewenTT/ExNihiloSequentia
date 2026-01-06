@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "exnihilosequentia:zinc_ingot"
+    {
+      "item": "exnihilosequentia:zinc_ingot"
+    }
   ],
   "result": {
     "count": 9,

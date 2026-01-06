@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 100,
-  "input": "exnihilosequentia:grass_seeds"
+  "input": {
+    "item": "exnihilosequentia:grass_seeds"
+  }
 }

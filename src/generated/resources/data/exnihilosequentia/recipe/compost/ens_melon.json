@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 166,
-  "input": "minecraft:melon"
+  "input": {
+    "item": "minecraft:melon"
+  }
 }

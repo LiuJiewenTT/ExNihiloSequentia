@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "-": "#c:rods",
-    "x": "minecraft:granite"
+    "-": {
+      "tag": "c:rods"
+    },
+    "x": {
+      "item": "minecraft:granite"
+    }
   },
   "pattern": [
     " x ",

@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "-": "#c:rods",
-    "x": "minecraft:deepslate"
+    "-": {
+      "tag": "c:rods"
+    },
+    "x": {
+      "item": "minecraft:deepslate"
+    }
   },
   "pattern": [
     " x ",

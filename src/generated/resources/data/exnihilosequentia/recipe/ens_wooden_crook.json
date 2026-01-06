@@ -3,7 +3,9 @@
   "category": "equipment",
   "group": "exnihilosequentia",
   "key": {
-    "x": "#c:rods/wooden"
+    "x": {
+      "tag": "c:rods/wooden"
+    }
   },
   "pattern": [
     "xx",

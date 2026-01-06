@@ -3,7 +3,9 @@
   "category": "building",
   "group": "exnihilosequentia",
   "key": {
-    "x": "exnihilosequentia:netherrack_pebble"
+    "x": {
+      "item": "exnihilosequentia:netherrack_pebble"
+    }
   },
   "pattern": [
     "xx",

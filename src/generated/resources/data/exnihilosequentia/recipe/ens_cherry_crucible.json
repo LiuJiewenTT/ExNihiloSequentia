@@ -3,9 +3,15 @@
   "category": "misc",
   "group": "exnihilosequentia",
   "key": {
-    "c": "minecraft:cherry_log",
-    "l": "minecraft:cherry_slab",
-    "s": "#c:rods/wooden"
+    "c": {
+      "item": "minecraft:cherry_log"
+    },
+    "l": {
+      "item": "minecraft:cherry_slab"
+    },
+    "s": {
+      "tag": "c:rods/wooden"
+    }
   },
   "pattern": [
     "c c",

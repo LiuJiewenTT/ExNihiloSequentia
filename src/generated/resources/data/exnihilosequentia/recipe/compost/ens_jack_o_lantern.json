@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 166,
-  "input": "minecraft:jack_o_lantern"
+  "input": {
+    "item": "minecraft:jack_o_lantern"
+  }
 }

@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "-": "#c:rods",
-    "x": "minecraft:blackstone"
+    "-": {
+      "tag": "c:rods"
+    },
+    "x": {
+      "item": "minecraft:blackstone"
+    }
   },
   "pattern": [
     " x ",

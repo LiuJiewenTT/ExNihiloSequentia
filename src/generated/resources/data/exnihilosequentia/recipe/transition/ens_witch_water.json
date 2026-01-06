@@ -1,6 +1,8 @@
 {
   "type": "exnihilosequentia:transition",
-  "catalyst": "minecraft:mycelium",
+  "catalyst": {
+    "item": "minecraft:mycelium"
+  },
   "fluidInTank": {
     "amount": 1000,
     "id": "minecraft:water"

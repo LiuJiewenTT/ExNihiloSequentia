@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 125,
-  "input": "#minecraft:leaves"
+  "input": {
+    "tag": "minecraft:leaves"
+  }
 }

@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "i": "#c:gems/emerald",
-    "m": "exnihilosequentia:diamond_mesh"
+    "i": {
+      "tag": "c:gems/emerald"
+    },
+    "m": {
+      "item": "exnihilosequentia:diamond_mesh"
+    }
   },
   "pattern": [
     "i i",

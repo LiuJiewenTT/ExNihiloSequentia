@@ -3,8 +3,12 @@
   "category": "misc",
   "group": "exnihilosequentia",
   "key": {
-    "-": "minecraft:stone_slab",
-    "x": "#c:stones"
+    "-": {
+      "item": "minecraft:stone_slab"
+    },
+    "x": {
+      "tag": "c:stones"
+    }
   },
   "pattern": [
     "x x",

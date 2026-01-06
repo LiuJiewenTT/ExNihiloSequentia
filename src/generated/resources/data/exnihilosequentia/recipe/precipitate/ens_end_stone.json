@@ -4,7 +4,9 @@
     "amount": 1000,
     "id": "minecraft:lava"
   },
-  "input": "#c:dusts/glowstone",
+  "input": {
+    "tag": "c:dusts/glowstone"
+  },
   "result": {
     "count": 1,
     "id": "minecraft:end_stone"

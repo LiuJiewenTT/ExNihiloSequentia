@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 40,
-  "input": "#c:strings"
+  "input": {
+    "tag": "c:strings"
+  }
 }

@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "#c:clay",
-    "minecraft:bone_meal"
+    {
+      "tag": "c:clay"
+    },
+    {
+      "item": "minecraft:bone_meal"
+    }
   ],
   "result": {
     "count": 1,

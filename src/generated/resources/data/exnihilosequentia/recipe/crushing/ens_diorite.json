@@ -1,6 +1,8 @@
 {
   "type": "exnihilosequentia:crushing",
-  "input": "minecraft:diorite",
+  "input": {
+    "item": "minecraft:diorite"
+  },
   "results": [
     {
       "chance": 1.0,

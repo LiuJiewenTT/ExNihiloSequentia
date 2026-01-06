@@ -3,7 +3,9 @@
   "category": "equipment",
   "group": "exnihilosequentia",
   "key": {
-    "x": "minecraft:bamboo"
+    "x": {
+      "item": "minecraft:bamboo"
+    }
   },
   "pattern": [
     "xx",

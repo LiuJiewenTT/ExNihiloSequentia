@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "minecraft:netherite_scrap",
-    "minecraft:obsidian"
+    {
+      "item": "minecraft:netherite_scrap"
+    },
+    {
+      "item": "minecraft:obsidian"
+    }
   ],
   "result": {
     "count": 1,

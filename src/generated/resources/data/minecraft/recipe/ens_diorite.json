@@ -3,7 +3,9 @@
   "category": "building",
   "group": "exnihilosequentia",
   "key": {
-    "x": "exnihilosequentia:diorite_pebble"
+    "x": {
+      "item": "exnihilosequentia:diorite_pebble"
+    }
   },
   "pattern": [
     "xx",

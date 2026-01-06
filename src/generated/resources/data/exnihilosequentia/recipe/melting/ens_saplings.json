@@ -5,5 +5,7 @@
     "amount": 250,
     "id": "minecraft:water"
   },
-  "input": "#minecraft:saplings"
+  "input": {
+    "tag": "minecraft:saplings"
+  }
 }

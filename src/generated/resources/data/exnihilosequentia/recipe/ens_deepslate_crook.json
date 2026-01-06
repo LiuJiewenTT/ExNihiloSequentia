@@ -3,7 +3,9 @@
   "category": "equipment",
   "group": "exnihilosequentia",
   "key": {
-    "x": "exnihilosequentia:deepslate_pebble"
+    "x": {
+      "item": "exnihilosequentia:deepslate_pebble"
+    }
   },
   "pattern": [
     "xx",

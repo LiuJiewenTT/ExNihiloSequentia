@@ -3,7 +3,9 @@
   "category": "building",
   "group": "exnihilosequentia",
   "key": {
-    "x": "exnihilosequentia:end_stone_pebble"
+    "x": {
+      "item": "exnihilosequentia:end_stone_pebble"
+    }
   },
   "pattern": [
     "xx",

@@ -1,10 +1,16 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": "#c:ingots/netherite",
-  "base": "exnihilosequentia:emerald_mesh",
+  "addition": {
+    "tag": "c:ingots/netherite"
+  },
+  "base": {
+    "item": "exnihilosequentia:emerald_mesh"
+  },
   "result": {
     "count": 1,
     "id": "exnihilosequentia:netherite_mesh"
   },
-  "template": "minecraft:netherite_upgrade_smithing_template"
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
+  }
 }

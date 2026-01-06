@@ -3,7 +3,9 @@
   "category": "equipment",
   "group": "exnihilosequentia",
   "key": {
-    "x": "exnihilosequentia:andesite_pebble"
+    "x": {
+      "item": "exnihilosequentia:andesite_pebble"
+    }
   },
   "pattern": [
     "xx",

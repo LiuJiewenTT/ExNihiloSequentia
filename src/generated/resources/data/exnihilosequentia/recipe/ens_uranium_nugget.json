@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "exnihilosequentia:uranium_ingot"
+    {
+      "item": "exnihilosequentia:uranium_ingot"
+    }
   ],
   "result": {
     "count": 9,

@@ -3,7 +3,9 @@
   "category": "building",
   "group": "exnihilosequentia",
   "key": {
-    "x": "exnihilosequentia:granite_pebble"
+    "x": {
+      "item": "exnihilosequentia:granite_pebble"
+    }
   },
   "pattern": [
     "xx",

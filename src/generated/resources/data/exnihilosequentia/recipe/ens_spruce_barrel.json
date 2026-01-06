@@ -3,8 +3,12 @@
   "category": "misc",
   "group": "exnihilosequentia",
   "key": {
-    "-": "minecraft:spruce_slab",
-    "x": "minecraft:spruce_planks"
+    "-": {
+      "item": "minecraft:spruce_slab"
+    },
+    "x": {
+      "item": "minecraft:spruce_planks"
+    }
   },
   "pattern": [
     "x x",

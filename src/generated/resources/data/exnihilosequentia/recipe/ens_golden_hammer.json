@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "-": "#c:rods",
-    "x": "#c:ingots/gold"
+    "-": {
+      "tag": "c:rods"
+    },
+    "x": {
+      "tag": "c:ingots/gold"
+    }
   },
   "pattern": [
     " x ",

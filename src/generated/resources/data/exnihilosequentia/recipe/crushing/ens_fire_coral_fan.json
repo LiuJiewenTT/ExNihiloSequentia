@@ -1,6 +1,8 @@
 {
   "type": "exnihilosequentia:crushing",
-  "input": "minecraft:fire_coral",
+  "input": {
+    "item": "minecraft:fire_coral"
+  },
   "results": [
     {
       "chance": 1.0,

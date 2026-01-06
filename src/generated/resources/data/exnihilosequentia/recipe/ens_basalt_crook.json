@@ -3,7 +3,9 @@
   "category": "equipment",
   "group": "exnihilosequentia",
   "key": {
-    "x": "exnihilosequentia:basalt_pebble"
+    "x": {
+      "item": "exnihilosequentia:basalt_pebble"
+    }
   },
   "pattern": [
     "xx",

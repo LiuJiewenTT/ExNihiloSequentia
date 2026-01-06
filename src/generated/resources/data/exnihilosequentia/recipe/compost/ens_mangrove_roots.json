@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 100,
-  "input": "minecraft:mangrove_roots"
+  "input": {
+    "item": "minecraft:mangrove_roots"
+  }
 }

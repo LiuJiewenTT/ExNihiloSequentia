@@ -3,7 +3,9 @@
   "category": "misc",
   "group": "exnihilosequentia",
   "key": {
-    "x": "exnihilosequentia:aluminum_nugget"
+    "x": {
+      "item": "exnihilosequentia:aluminum_nugget"
+    }
   },
   "pattern": [
     "xxx",

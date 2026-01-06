@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "-": "#c:rods",
-    "x": "minecraft:bamboo"
+    "-": {
+      "tag": "c:rods"
+    },
+    "x": {
+      "item": "minecraft:bamboo"
+    }
   },
   "pattern": [
     " x ",

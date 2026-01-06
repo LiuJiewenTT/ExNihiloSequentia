@@ -3,8 +3,12 @@
   "category": "misc",
   "group": "exnihilosequentia",
   "key": {
-    "-": "minecraft:crimson_slab",
-    "x": "minecraft:crimson_planks"
+    "-": {
+      "item": "minecraft:crimson_slab"
+    },
+    "x": {
+      "item": "minecraft:crimson_planks"
+    }
   },
   "pattern": [
     "x x",

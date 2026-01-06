@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "i": "minecraft:flint",
-    "m": "exnihilosequentia:string_mesh"
+    "i": {
+      "item": "minecraft:flint"
+    },
+    "m": {
+      "item": "exnihilosequentia:string_mesh"
+    }
   },
   "pattern": [
     "i i",

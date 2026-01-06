@@ -3,8 +3,12 @@
   "category": "misc",
   "group": "exnihilosequentia",
   "key": {
-    "-": "minecraft:warped_slab",
-    "x": "minecraft:warped_planks"
+    "-": {
+      "item": "minecraft:warped_slab"
+    },
+    "x": {
+      "item": "minecraft:warped_planks"
+    }
   },
   "pattern": [
     "x x",

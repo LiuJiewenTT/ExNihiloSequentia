@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 100,
-  "input": "minecraft:rotten_flesh"
+  "input": {
+    "item": "minecraft:rotten_flesh"
+  }
 }

@@ -1,6 +1,8 @@
 {
   "type": "exnihilosequentia:sifting",
-  "input": "minecraft:mangrove_leaves",
+  "input": {
+    "item": "minecraft:mangrove_leaves"
+  },
   "result": {
     "count": 1,
     "id": "minecraft:mangrove_propagule"

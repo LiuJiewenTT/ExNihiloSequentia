@@ -1,6 +1,8 @@
 {
   "type": "exnihilosequentia:harvest",
-  "input": "exnihilosequentia:infested_leaves",
+  "input": {
+    "item": "exnihilosequentia:infested_leaves"
+  },
   "results": [
     {
       "chance": 0.2,

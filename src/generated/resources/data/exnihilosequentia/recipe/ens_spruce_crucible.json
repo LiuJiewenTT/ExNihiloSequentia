@@ -3,9 +3,15 @@
   "category": "misc",
   "group": "exnihilosequentia",
   "key": {
-    "c": "minecraft:spruce_log",
-    "l": "minecraft:spruce_slab",
-    "s": "#c:rods/wooden"
+    "c": {
+      "item": "minecraft:spruce_log"
+    },
+    "l": {
+      "item": "minecraft:spruce_slab"
+    },
+    "s": {
+      "tag": "c:rods/wooden"
+    }
   },
   "pattern": [
     "c c",

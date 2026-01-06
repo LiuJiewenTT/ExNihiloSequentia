@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 80,
-  "input": "#c:crops/wheat"
+  "input": {
+    "tag": "c:crops/wheat"
+  }
 }

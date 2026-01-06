@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "-": "#c:rods",
-    "x": "minecraft:dripstone_block"
+    "-": {
+      "tag": "c:rods"
+    },
+    "x": {
+      "item": "minecraft:dripstone_block"
+    }
   },
   "pattern": [
     " x ",

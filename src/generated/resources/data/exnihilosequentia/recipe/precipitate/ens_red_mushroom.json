@@ -4,7 +4,9 @@
     "amount": 1000,
     "id": "exnihilosequentia:witch_water"
   },
-  "input": "minecraft:brown_mushroom_block",
+  "input": {
+    "item": "minecraft:brown_mushroom_block"
+  },
   "result": {
     "count": 1,
     "id": "minecraft:red_mushroom_block"

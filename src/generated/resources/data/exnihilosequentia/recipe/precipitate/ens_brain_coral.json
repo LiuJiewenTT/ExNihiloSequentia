@@ -4,7 +4,9 @@
     "amount": 1000,
     "id": "exnihilosequentia:sea_water"
   },
-  "input": "exnihilosequentia:brain_coral_larva",
+  "input": {
+    "item": "exnihilosequentia:brain_coral_larva"
+  },
   "result": {
     "count": 1,
     "id": "minecraft:brain_coral_block"

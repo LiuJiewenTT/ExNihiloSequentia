@@ -2,11 +2,21 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "b": "#c:ender_pearls",
-    "c": "#c:dyes/purple",
-    "m": "exnihilosequentia:porcelain_doll",
-    "s": "#c:dusts/glowstone",
-    "t": "#c:end_stones"
+    "b": {
+      "tag": "c:ender_pearls"
+    },
+    "c": {
+      "tag": "c:dyes/purple"
+    },
+    "m": {
+      "item": "exnihilosequentia:porcelain_doll"
+    },
+    "s": {
+      "tag": "c:dusts/glowstone"
+    },
+    "t": {
+      "tag": "c:end_stones"
+    }
   },
   "pattern": [
     "ctc",

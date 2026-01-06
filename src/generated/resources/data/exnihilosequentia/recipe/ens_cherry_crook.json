@@ -3,7 +3,9 @@
   "category": "equipment",
   "group": "exnihilosequentia",
   "key": {
-    "x": "minecraft:cherry_planks"
+    "x": {
+      "item": "minecraft:cherry_planks"
+    }
   },
   "pattern": [
     "xx",

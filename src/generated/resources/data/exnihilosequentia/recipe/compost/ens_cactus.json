@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 100,
-  "input": "minecraft:cactus"
+  "input": {
+    "item": "minecraft:cactus"
+  }
 }

@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 100,
-  "input": "exnihilosequentia:mycelium_spores"
+  "input": {
+    "item": "exnihilosequentia:mycelium_spores"
+  }
 }

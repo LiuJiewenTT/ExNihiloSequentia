@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 100,
-  "input": "minecraft:warped_fungus"
+  "input": {
+    "item": "minecraft:warped_fungus"
+  }
 }

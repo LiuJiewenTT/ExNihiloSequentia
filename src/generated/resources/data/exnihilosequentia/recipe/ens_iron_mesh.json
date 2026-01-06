@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "i": "#c:ingots/iron",
-    "m": "exnihilosequentia:flint_mesh"
+    "i": {
+      "tag": "c:ingots/iron"
+    },
+    "m": {
+      "item": "exnihilosequentia:flint_mesh"
+    }
   },
   "pattern": [
     "i i",

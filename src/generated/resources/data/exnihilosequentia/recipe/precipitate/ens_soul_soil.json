@@ -4,7 +4,9 @@
     "amount": 1000,
     "id": "exnihilosequentia:witch_water"
   },
-  "input": "minecraft:coarse_dirt",
+  "input": {
+    "item": "minecraft:coarse_dirt"
+  },
   "result": {
     "count": 1,
     "id": "minecraft:soul_soil"

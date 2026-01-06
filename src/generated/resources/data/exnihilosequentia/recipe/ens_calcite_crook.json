@@ -3,7 +3,9 @@
   "category": "equipment",
   "group": "exnihilosequentia",
   "key": {
-    "x": "exnihilosequentia:calcite_pebble"
+    "x": {
+      "item": "exnihilosequentia:calcite_pebble"
+    }
   },
   "pattern": [
     "xx",

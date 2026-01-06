@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 200,
-  "input": "minecraft:poisonous_potato"
+  "input": {
+    "item": "minecraft:poisonous_potato"
+  }
 }

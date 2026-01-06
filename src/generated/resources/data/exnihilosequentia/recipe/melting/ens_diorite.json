@@ -5,5 +5,7 @@
     "amount": 250,
     "id": "minecraft:lava"
   },
-  "input": "minecraft:diorite"
+  "input": {
+    "item": "minecraft:diorite"
+  }
 }

@@ -1,5 +1,7 @@
 {
   "type": "exnihilosequentia:compost",
   "amount": 100,
-  "input": "minecraft:weeping_vines"
+  "input": {
+    "item": "minecraft:weeping_vines"
+  }
 }
