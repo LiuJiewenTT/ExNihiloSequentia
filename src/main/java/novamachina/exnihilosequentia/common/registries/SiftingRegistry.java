@@ -61,6 +61,7 @@ public class SiftingRegistry {
           @Override
           public Boolean load(SiftingCacheKey key) {
             log.debug("Loading SiftingCacheKey: {}", key);
+            log.debug("recipeList size: {}", recipeList.size());
             boolean result = recipeList.stream()
                 .filter(recipe -> {
                   boolean matchesWaterlogged = recipe.isWaterlogged() == key.isWaterlogged();
