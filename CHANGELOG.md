@@ -4,23 +4,25 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [NeoForged Semantic Versioning](https://docs.neoforged.net/docs/gettingstarted/versioning).
 
-## [7.0.3](https://github.com/LiuJiewenTT/ExNihiloSequentia/compare/v7.0.2...v7.0.3) - 2026-01-04
+## [7.0.3](https://github.com/LiuJiewenTT/ExNihiloSequentia/compare/v7.0.2...v7.0.3) - 2026-01-07
 
 ### Added
-- Add missing bamboo crook durability configuration, and the tier is sugguested to be changed from stone to wood.
-- Add missing basalt crook durability configuration.
-- Add missing blackstone crook durability configuration.
-- Add missing calcite crook durability configuration.
+- Add bamboo crook durability configuration, and the tier is sugguested to be changed from stone to wood.
+- Add basalt crook durability configuration.
+- Add blackstone crook durability configuration.
+- Add calcite crook durability configuration.
 - Add dark oak sieve crafting recipe that was removed from initiating when upgrading to 1.21.3+.
 
 ### Changed
 - Bamboo crook no longer uses wood crook durability configuration, for now.
 - Basalt crook no longer uses andesite crook durability configuration, for now.
 - Blackstone crook no longer uses andesite crook durability configuration, for now.
-- Displayed default durability value for iron crook is corrected to actual value of 512.
+- Copper hammer no longer uses iron crook durability configuration, for now. It is using copper crook value.
 - Never enabled prismarine crook is now enabled in `EXNItems` and uses stone crook durability configuration, for now.
-- Copper hammer no longer uses iron crook durability configuration, for now. It is using cooper crook value.
 - Never enabled prismarine hammer is now enabled in `EXNItems` and uses stone crook durability configuration, for now.
+
+### Fixed
+- Displayed default durability value for iron crook is corrected to actual value of 512.
 
 ### Suggestion to Devs
 - Consider adding independent configuration for some materials of crooks and hammers. Currently some hammers share the value with the crooks.

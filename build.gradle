@@ -14,7 +14,8 @@ plugins {
 if (project.file('../gradletools.gradle').exists()) {
     apply from: '../gradletools.gradle'
 } else {
-    apply from: 'https://raw.githubusercontent.com/NovaMachina-Mods/MultiWorkspace/1.21/gradletools.gradle'
+    // apply from: 'https://raw.githubusercontent.com/NovaMachina-Mods/MultiWorkspace/1.21/gradletools.gradle'
+    apply from: 'https://raw.githubusercontent.com/LiuJiewenTT/NovaMachina-MultiWorkspace/1.21.1/gradletools.gradle'
 }
 
 def basicVersion = "${project.mod_version}-build." + ext.getBuildNumber()
