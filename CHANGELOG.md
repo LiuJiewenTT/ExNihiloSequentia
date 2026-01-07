@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Add basalt crook durability configuration.
 - Add blackstone crook durability configuration.
 - Add calcite crook durability configuration.
+- Add copper crook durability configuration.
 - Add dark oak sieve crafting recipe that was removed from initiating when upgrading to 1.21.3+.
 
 ### Changed
@@ -23,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 - Displayed default durability value for iron crook is corrected to actual value of 512.
+- Fixed a typo in crook's configuration GUI.
 
 ### Suggestion to Devs
 - Consider adding independent configuration for some materials of crooks and hammers. Currently some hammers share the value with the crooks.
