@@ -107,15 +107,20 @@ public class EXNLangProvider extends AbstractLangGenerator {
     addConfigEntry("hammerWoodValue", "Wooden Hammer");
 
     addConfigEntry("crookAndesiteValue", "Andesite Crook");
+    addConfigEntry("crookBasaltValue", "Basalt Crook");
+    addConfigEntry("crookCalciteValue", "Calcite Crook");
+    addConfigEntry("crookBlackstoneValue", "Blackstone Crook");
     addConfigEntry("crookBoneValue", "Bone Crook");
     addConfigEntry("crookDiamondValue", "Diamond Crook");
     addConfigEntry("crookDioriteValue", "Diorite Crook");
     addConfigEntry("crookGoldValue", "Gold Crook");
     addConfigEntry("crookGraniteValue", "Granite Crook");
     addConfigEntry("crookIronValue", "Iron Crook");
+    addConfigEntry("crookCopperValue", "Copper Crook");
     addConfigEntry("crookNetheriteValue", "Nether Crook");
     addConfigEntry("crookStoneValue", "Stone Crook");
-    addConfigEntry("crookWoodValue", "Wooden Crok");
+    addConfigEntry("crookWoodValue", "Wooden Crook");
+    addConfigEntry("crookBambooValue",  "Bamboo Crook");
 
     addConfigEntry("mesh", "Mesh Durability");
     addConfigEntry("meshStringValue", "String Mesh");
