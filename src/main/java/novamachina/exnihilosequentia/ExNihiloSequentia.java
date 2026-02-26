@@ -6,17 +6,15 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.loading.FMLPaths;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import novamachina.exnihilosequentia.client.setup.ClientSetup;
 import novamachina.exnihilosequentia.common.Config;
-import novamachina.exnihilosequentia.common.utility.ExNihiloConstants;
 import novamachina.exnihilosequentia.core.registries.InitBlockEntityTypes;
 import novamachina.exnihilosequentia.core.registries.InitBlocks;
 import novamachina.exnihilosequentia.core.registries.InitCreativeTabs;
@@ -50,7 +48,11 @@ public class ExNihiloSequentia {
   public ExNihiloSequentia(ModContainer container, IEventBus modEventBus) {
 
     container.registerConfig(ModConfig.Type.STARTUP, Config.COMMON_CONFIG);
-    container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+
+    // Only register config screen on client side
+    if (FMLEnvironment.dist.isClient()) {
+      container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+    }
 
     log.debug("Starting Ex Nihilo: Sequentia");
 
