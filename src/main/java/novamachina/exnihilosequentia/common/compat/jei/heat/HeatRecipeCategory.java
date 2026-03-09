@@ -37,6 +37,12 @@ public class HeatRecipeCategory implements IRecipeCategory<HeatRecipe> {
       ResourceLocation.fromNamespaceAndPath(ExNihiloConstants.ModIds.EX_NIHILO_SEQUENTIA, "heat");
 
   @Nonnull private final IDrawableStatic background;
+  @Nonnull private final IDrawableStatic slotTexture;
+
+  private static final int SLOT_SIZE = 18;
+  private static final int TEXT_LINE_HEIGHT = 9;
+  private static final int TEXT_GAP = 2;
+  private static final int SLOT_GAP = 3;
 
   public HeatRecipeCategory(@Nonnull final IGuiHelper guiHelper) {
     background =
@@ -50,6 +56,33 @@ public class HeatRecipeCategory implements IRecipeCategory<HeatRecipe> {
                 34)
             .addPadding(0, 0, 0, 80)
             .build();
+
+    slotTexture =
+        guiHelper
+            .drawableBuilder(
+                ResourceLocation.fromNamespaceAndPath(
+                    ExNihiloConstants.ModIds.EX_NIHILO_SEQUENTIA,
+                    "textures/gui/jei_single_slot.png"),
+                0,
+                0,
+                18,
+                18)
+            // Prevent zoomed/cropped UVs when the source image is larger than 18x18.
+            .setTextureSize(18, 18)
+            .build();
+  }
+
+  private int getCenteredSlotX() {
+    return (getWidth() - SLOT_SIZE) / 2;
+  }
+
+  private int getCenteredContentTopY() {
+    final int contentHeight = (TEXT_LINE_HEIGHT * 2) + TEXT_GAP + SLOT_GAP + SLOT_SIZE;
+    return (getHeight() - contentHeight) / 2;
+  }
+
+  private int getCenteredSlotY() {
+    return getCenteredContentTopY() + (TEXT_LINE_HEIGHT * 2) + TEXT_GAP + SLOT_GAP;
   }
 
   @Override
@@ -60,23 +93,50 @@ public class HeatRecipeCategory implements IRecipeCategory<HeatRecipe> {
       double mouseX,
       double mouseY) {
     @Nonnull final Minecraft minecraft = Minecraft.getInstance();
-    stack.drawString(minecraft.font, recipe.getAmount() + "X", 24, 12, Color.white.getRGB());
-    //    // TODO doing something better than just writing what it is
-    //
-    //    @Nullable final Ingredient block = recipe.getInput();
-    //    if (block == Blocks.WALL_TORCH) {
-    //      minecraft.font.draw(stack, "Wall Torch", 24, 0, Color.DARK_GRAY.getRGB());
-    //    } else if (block == Blocks.REDSTONE_WALL_TORCH) {
-    //      minecraft.font.draw(stack, "Redstone Wall Torch", 24, 0, Color.DARK_GRAY.getRGB());
-    //    } else if (block != null) {
-    //      minecraft.font.draw(stack, block.getName(), 24, 0, Color.DARK_GRAY.getRGB());
-    //    }
+    final int lineOneY = getCenteredContentTopY();
+    final int lineTwoY = lineOneY + TEXT_LINE_HEIGHT + TEXT_GAP;
+
+    // Display the heat source block name
+    @Nullable final Block inputBlock = recipe.getInputBlock();
+    if (inputBlock != null) {
+      String blockName;
+      // Special handling for wall torches
+      if (inputBlock == Blocks.WALL_TORCH) {
+        blockName = "Wall Torch";
+      } else if (inputBlock == Blocks.REDSTONE_WALL_TORCH) {
+        blockName = "Redstone Wall Torch";
+      } else {
+        blockName = inputBlock.getName().getString();
+      }
+      int textWidth = minecraft.font.width(blockName);
+      int centerX = (getWidth() - textWidth) / 2;
+      stack.drawString(minecraft.font, blockName, centerX, lineOneY, Color.DARK_GRAY.getRGB());
+    }
+
+    // Display the heat multiplier
+    String multiplier = recipe.getAmount() + "X";
+    int multiplierWidth = minecraft.font.width(multiplier);
+    int centerX = (getWidth() - multiplierWidth) / 2;
+    stack.drawString(minecraft.font, multiplier, centerX, lineTwoY, Color.white.getRGB());
+
+    // Draw the slot texture behind the slot
+    slotTexture.draw(stack, getCenteredSlotX(), getCenteredSlotY());
   }
 
   @Nullable
   @Override
   public IDrawable getIcon() {
     return null;
+  }
+
+  @Override
+  public int getWidth() {
+    return 166;
+  }
+
+  @Override
+  public int getHeight() {
+    return 58;
   }
 
   @Override
@@ -100,7 +160,7 @@ public class HeatRecipeCategory implements IRecipeCategory<HeatRecipe> {
     if (BuiltInRegistries.FLUID.containsKey(blockId)) {
       Fluid fluid = BuiltInRegistries.FLUID.get(blockId);
       builder
-          .addSlot(RecipeIngredientRole.INPUT, 1, 17)
+          .addSlot(RecipeIngredientRole.INPUT, getCenteredSlotX() + 1, getCenteredSlotY() + 1)
           .addIngredients(NeoForgeTypes.FLUID_STACK, List.of(new FluidStack(fluid, 1000)));
 
     } else {
@@ -111,7 +171,9 @@ public class HeatRecipeCategory implements IRecipeCategory<HeatRecipe> {
       if (input instanceof LiquidBlock liquidBlock) {
         input = liquidBlock.defaultBlockState().getFluidState().getType().getBucket();
       }
-      builder.addSlot(RecipeIngredientRole.INPUT, 1, 17).addIngredients(Ingredient.of(input));
+      builder
+          .addSlot(RecipeIngredientRole.INPUT, getCenteredSlotX() + 1, getCenteredSlotY() + 1)
+          .addIngredients(Ingredient.of(input));
     }
   }
 }
