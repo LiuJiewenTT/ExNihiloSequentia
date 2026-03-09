@@ -2,14 +2,11 @@ package novamachina.exnihilosequentia.world.item.crafting;
 
 import com.google.common.base.Objects;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.handler.codec.DecoderException;
 import io.netty.handler.codec.EncoderException;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
@@ -98,13 +95,18 @@ public class ItemStackWithChance {
       return of(
           new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemString)), count),
           // This is for 1.21.3+
-          // new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemString)).get().value(), count),
+          // new
+          // ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemString)).get().value(),
+          // count),
           chance);
     } else {
       String itemString = GsonHelper.convertToString(json, BASE_KEY);
-      return of(new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemString))), 1.0F);
+      return of(
+          new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemString))), 1.0F);
       // This is for 1.21.3+
-      // return of(new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemString)).get().value()), 1.0F);
+      // return of(new
+      // ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemString)).get().value()),
+      // 1.0F);
     }
   }
 

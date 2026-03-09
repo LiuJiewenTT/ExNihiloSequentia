@@ -3,17 +3,13 @@ package novamachina.exnihilosequentia.data.recipes.providers;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -29,8 +25,8 @@ import novamachina.novacore.data.recipes.ISubRecipeProvider;
 public class SiftingRecipes implements ISubRecipeProvider {
   @Override
   public void addRecipes(RecipeOutput consumer) {
-  // This is for 1.21.3+
-  // public void addRecipes(HolderGetter.Provider holderGetter, RecipeOutput consumer) {
+    // This is for 1.21.3+
+    // public void addRecipes(HolderGetter.Provider holderGetter, RecipeOutput consumer) {
     SiftingRecipeBuilder.sifting(Ingredient.of(Blocks.DIRT), EXNItems.PEBBLE_STONE)
         .addRoll(new MeshWithChance(EXNItems.MESH_STRING.asItem().getType(), 1.0F))
         .addRoll(new MeshWithChance(EXNItems.MESH_STRING.asItem().getType(), 1.0F))
@@ -287,7 +283,8 @@ public class SiftingRecipes implements ISubRecipeProvider {
             Ingredient.of(ItemTags.SAND),
             // This is for 1.21.3+
             // Ingredient.of(
-            //     holderGetter.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(ItemTags.SAND)),
+            //
+            // holderGetter.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(ItemTags.SAND)),
             EXNItems.TUBE_CORAL_LARVA.asItem(),
             true)
         .addRoll(new MeshWithChance(EXNItems.MESH_IRON.asItem().getType(), 0.05F))
@@ -296,7 +293,8 @@ public class SiftingRecipes implements ISubRecipeProvider {
             Ingredient.of(ItemTags.SAND),
             // This is for 1.21.3+
             // Ingredient.of(
-            //     holderGetter.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(ItemTags.SAND)),
+            //
+            // holderGetter.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(ItemTags.SAND)),
             EXNItems.BUBBLE_CORAL_LARVA.asItem(),
             true)
         .addRoll(new MeshWithChance(EXNItems.MESH_IRON.asItem().getType(), 0.05F))
@@ -305,7 +303,8 @@ public class SiftingRecipes implements ISubRecipeProvider {
             Ingredient.of(ItemTags.SAND),
             // This is for 1.21.3+
             // Ingredient.of(
-            //     holderGetter.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(ItemTags.SAND)),
+            //
+            // holderGetter.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(ItemTags.SAND)),
             EXNItems.BRAIN_CORAL_LARVA.asItem(),
             true)
         .addRoll(new MeshWithChance(EXNItems.MESH_IRON.asItem().getType(), 0.05F))
@@ -314,7 +313,8 @@ public class SiftingRecipes implements ISubRecipeProvider {
             Ingredient.of(ItemTags.SAND),
             // This is for 1.21.3+
             // Ingredient.of(
-            //     holderGetter.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(ItemTags.SAND)),
+            //
+            // holderGetter.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(ItemTags.SAND)),
             EXNItems.HORN_CORAL_LARVA.asItem(),
             true)
         .addRoll(new MeshWithChance(EXNItems.MESH_IRON.asItem().getType(), 0.05F))
@@ -323,7 +323,8 @@ public class SiftingRecipes implements ISubRecipeProvider {
             Ingredient.of(ItemTags.SAND),
             // This is for 1.21.3+
             // Ingredient.of(
-            //     holderGetter.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(ItemTags.SAND)),
+            //
+            // holderGetter.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(ItemTags.SAND)),
             EXNItems.FIRE_CORAL_LARVA.asItem(),
             true)
         .addRoll(new MeshWithChance(EXNItems.MESH_IRON.asItem().getType(), 0.05F))
@@ -332,7 +333,8 @@ public class SiftingRecipes implements ISubRecipeProvider {
             Ingredient.of(ItemTags.SAND),
             // This is for 1.21.3+
             // Ingredient.of(
-            //     holderGetter.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(ItemTags.SAND)),
+            //
+            // holderGetter.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(ItemTags.SAND)),
             Items.SEAGRASS,
             true)
         .addRoll(new MeshWithChance(EXNItems.MESH_IRON.asItem().getType(), 0.05F))
@@ -405,7 +407,8 @@ public class SiftingRecipes implements ISubRecipeProvider {
   // private ResourceKey<Recipe<?>> siftingLoc(String id) {
   //   ResourceLocation rl =
   //       ResourceLocation.fromNamespaceAndPath(
-  //           ExNihiloSequentia.MOD_ID, "sifting/" + RecipeProviderUtilities.prependRecipePrefix(id));
+  //           ExNihiloSequentia.MOD_ID, "sifting/" +
+  // RecipeProviderUtilities.prependRecipePrefix(id));
   //   return ResourceKey.create(Registries.RECIPE, rl);
   // }
 
@@ -421,14 +424,14 @@ public class SiftingRecipes implements ISubRecipeProvider {
   }
 
   private void addWaterSeeds(ItemLike seed, RecipeOutput consumer) {
-  // This is for 1.21.3+
-  // private void addWaterSeeds(ItemLike seed, RecipeOutput consumer, HolderGetter.Provider provider) {
+    // This is for 1.21.3+
+    // private void addWaterSeeds(ItemLike seed, RecipeOutput consumer, HolderGetter.Provider
+    // provider) {
     ResourceLocation resourceLocation = BuiltInRegistries.ITEM.getKey(seed.asItem());
     SiftingRecipeBuilder.sifting(
-            Ingredient.of(
-                ItemTags.SAND),
-                // This is for 1.21.3+
-                // provider.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(ItemTags.SAND)),
+            Ingredient.of(ItemTags.SAND),
+            // This is for 1.21.3+
+            // provider.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(ItemTags.SAND)),
             seed,
             true)
         .addRoll(new MeshWithChance(EXNItems.MESH_STRING.asItem().getType(), 0.05F))

@@ -4,18 +4,13 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 // import net.minecraft.world.item.crafting.PlacementInfo;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.neoforge.fluids.FluidStack;
-import novamachina.exnihilosequentia.world.level.block.EXNBlocks;
 import novamachina.novacore.world.item.crafting.AbstractRecipe;
 import org.checkerframework.checker.nullness.qual.NonNull;
-
-import java.util.List;
-import java.util.Optional;
 
 public class TransitionRecipe extends AbstractRecipe {
 

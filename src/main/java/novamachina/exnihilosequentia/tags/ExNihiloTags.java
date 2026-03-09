@@ -56,7 +56,8 @@ public class ExNihiloTags {
   }
 
   private static ResourceLocation modLoc(String path) {
-    return ResourceLocation.fromNamespaceAndPath(ExNihiloConstants.ModIds.EX_NIHILO_SEQUENTIA, path);
+    return ResourceLocation.fromNamespaceAndPath(
+        ExNihiloConstants.ModIds.EX_NIHILO_SEQUENTIA, path);
   }
 
   public static class OreTag {

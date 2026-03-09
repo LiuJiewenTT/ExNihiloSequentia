@@ -1,12 +1,8 @@
 package novamachina.exnihilosequentia.data.recipes.providers;
 
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.Tags;
@@ -31,33 +27,29 @@ public class PrecipitateRecipes implements ISubRecipeProvider {
 
   @Override
   public void addRecipes(RecipeOutput consumer) {
-  // This is for 1.21.3+
-  // public void addRecipes(HolderGetter.Provider holderGetter, RecipeOutput consumer) {
+    // This is for 1.21.3+
+    // public void addRecipes(HolderGetter.Provider holderGetter, RecipeOutput consumer) {
     PrecipitateRecipeBuilder.precipitate(water, EXNBlocks.DUST, Blocks.CLAY)
         .build(consumer, precipitateLoc("clay"));
     PrecipitateRecipeBuilder.precipitate(water, Blocks.DIRT, Blocks.MUD)
         .build(consumer, precipitateLoc("mud"));
-    PrecipitateRecipeBuilder.precipitate(
-            lava, Tags.Items.DUSTS_REDSTONE, Blocks.NETHERRACK)
-            // This is for 1.21.3+
-            // lava, Tags.Items.DUSTS_REDSTONE, Blocks.NETHERRACK, holderGetter)
+    PrecipitateRecipeBuilder.precipitate(lava, Tags.Items.DUSTS_REDSTONE, Blocks.NETHERRACK)
+        // This is for 1.21.3+
+        // lava, Tags.Items.DUSTS_REDSTONE, Blocks.NETHERRACK, holderGetter)
         .build(consumer, precipitateLoc("netherrack"));
-    PrecipitateRecipeBuilder.precipitate(
-            lava, Tags.Items.DUSTS_GLOWSTONE, Blocks.END_STONE)
-            // This is for 1.21.3+
-            // lava, Tags.Items.DUSTS_GLOWSTONE, Blocks.END_STONE, holderGetter)
+    PrecipitateRecipeBuilder.precipitate(lava, Tags.Items.DUSTS_GLOWSTONE, Blocks.END_STONE)
+        // This is for 1.21.3+
+        // lava, Tags.Items.DUSTS_GLOWSTONE, Blocks.END_STONE, holderGetter)
         .build(consumer, precipitateLoc("end_stone"));
-    PrecipitateRecipeBuilder.precipitate(
-            witchwater, Tags.Items.SANDS, Blocks.SOUL_SAND)
-            // This is for 1.21.3+
-            // witchwater, Tags.Items.SANDS, Blocks.SOUL_SAND, holderGetter)
+    PrecipitateRecipeBuilder.precipitate(witchwater, Tags.Items.SANDS, Blocks.SOUL_SAND)
+        // This is for 1.21.3+
+        // witchwater, Tags.Items.SANDS, Blocks.SOUL_SAND, holderGetter)
         .build(consumer, precipitateLoc("soul_sand"));
     PrecipitateRecipeBuilder.precipitate(witchwater, Items.COARSE_DIRT, Blocks.SOUL_SOIL)
         .build(consumer, precipitateLoc("soul_soil"));
-    PrecipitateRecipeBuilder.precipitate(
-            witchwater, Tags.Items.MUSHROOMS, Blocks.SLIME_BLOCK)
-            // This is for 1.21.3+
-            // witchwater, Tags.Items.MUSHROOMS, Blocks.SLIME_BLOCK, holderGetter)
+    PrecipitateRecipeBuilder.precipitate(witchwater, Tags.Items.MUSHROOMS, Blocks.SLIME_BLOCK)
+        // This is for 1.21.3+
+        // witchwater, Tags.Items.MUSHROOMS, Blocks.SLIME_BLOCK, holderGetter)
         .build(consumer, precipitateLoc("slime"));
     PrecipitateRecipeBuilder.precipitate(
             seawater, EXNItems.TUBE_CORAL_LARVA, Blocks.TUBE_CORAL_BLOCK)

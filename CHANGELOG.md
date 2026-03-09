@@ -35,7 +35,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Client Item files
 - Item factory methods
 - Furnace fuel files
-- 
+-
 
 ### Changed
 - Recipes now match vanilla item fields

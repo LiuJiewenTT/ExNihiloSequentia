@@ -5,7 +5,6 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nonnull;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -62,9 +61,7 @@ public class CrushingRecipe extends AbstractRecipe {
             instance ->
                 instance
                     .group(
-                        Ingredient.CODEC
-                            .fieldOf("input")
-                            .forGetter(CrushingRecipe::getInput),
+                        Ingredient.CODEC.fieldOf("input").forGetter(CrushingRecipe::getInput),
                         Codec.list(ItemStackWithChance.CODEC)
                             .fieldOf("results")
                             .forGetter(CrushingRecipe::getDrops))

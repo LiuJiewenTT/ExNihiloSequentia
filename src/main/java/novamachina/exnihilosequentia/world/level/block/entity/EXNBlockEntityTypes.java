@@ -12,8 +12,7 @@ import novamachina.novacore.world.level.block.entity.BlockEntityTypeDefinition;
 public class EXNBlockEntityTypes {
 
   private static final BlockEntityTypeRegistry BLOCK_ENTITY_TYPES =
-      new BlockEntityTypeRegistry(
-          ExNihiloSequentia.MOD_ID, NovaCore.SERVICE_PROVIDER);
+      new BlockEntityTypeRegistry(ExNihiloSequentia.MOD_ID, NovaCore.SERVICE_PROVIDER);
 
   private EXNBlockEntityTypes() {}
 

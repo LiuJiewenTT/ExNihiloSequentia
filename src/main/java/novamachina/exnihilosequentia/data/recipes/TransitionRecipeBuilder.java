@@ -1,14 +1,10 @@
 package novamachina.exnihilosequentia.data.recipes;
 
 import com.google.common.base.Preconditions;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.fluids.FluidStack;
 import novamachina.exnihilosequentia.world.item.crafting.EXNRecipeSerializers;
@@ -42,8 +38,11 @@ public class TransitionRecipeBuilder extends RecipeBuilder<TransitionRecipe> {
 
   // This is for 1.21.3+
   // public static TransitionRecipeBuilder transition(
-  //     FluidStack fluidInTank, TagKey<Item> catalyst, FluidStack result, HolderGetter.Provider provider) {
-  //   return transition(fluidInTank, Ingredient.of(provider.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(catalyst)), result);
+  //     FluidStack fluidInTank, TagKey<Item> catalyst, FluidStack result, HolderGetter.Provider
+  // provider) {
+  //   return transition(fluidInTank,
+  // Ingredient.of(provider.lookupOrThrow(BuiltInRegistries.ITEM.key()).getOrThrow(catalyst)),
+  // result);
   // }
 
   public static TransitionRecipeBuilder transition(
@@ -53,15 +52,15 @@ public class TransitionRecipeBuilder extends RecipeBuilder<TransitionRecipe> {
 
   @Override
   protected TransitionRecipe getRecipe(ResourceLocation id) {
-  // This is for 1.21.3+
-  // protected TransitionRecipe getRecipe(ResourceKey<Recipe<?>> id) {
+    // This is for 1.21.3+
+    // protected TransitionRecipe getRecipe(ResourceKey<Recipe<?>> id) {
     return new TransitionRecipe(catalyst, fluidInTank, result);
   }
 
   @Override
   protected void validate(ResourceLocation id) {
-  // This is for 1.21.3+
-  // protected void validate(ResourceKey<Recipe<?>> id) {
+    // This is for 1.21.3+
+    // protected void validate(ResourceKey<Recipe<?>> id) {
     Preconditions.checkNotNull(fluidInTank, "Fluid in tank cannot be null");
     Preconditions.checkArgument(!fluidInTank.isEmpty(), "Fluid in tank amount amount cannot be 0");
     Preconditions.checkNotNull(fluidInTank, "Catalyst cannot be null.");

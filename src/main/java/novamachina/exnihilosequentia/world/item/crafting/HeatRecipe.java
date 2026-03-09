@@ -3,16 +3,12 @@ package novamachina.exnihilosequentia.world.item.crafting;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Optional;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
 // import net.minecraft.world.item.crafting.PlacementInfo;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -98,7 +94,8 @@ public class HeatRecipe extends AbstractRecipe {
       Block inputBlock = BuiltInRegistries.BLOCK.get(ResourceLocation.STREAM_CODEC.decode(buffer));
       // This is for 1.21.3+
       // Block inputBlock =
-      //     BuiltInRegistries.BLOCK.get(ResourceLocation.STREAM_CODEC.decode(buffer)).get().value();
+      //
+      // BuiltInRegistries.BLOCK.get(ResourceLocation.STREAM_CODEC.decode(buffer)).get().value();
       int amount = buffer.readInt();
       boolean hasProperties =
           buffer.readBoolean(); // flag showing whether recipe depends on block state

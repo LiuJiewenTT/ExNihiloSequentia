@@ -21,10 +21,9 @@ public class ClientPayloadHandler {
         .enqueueWork(() -> Ore.updateEnabledOres(payload))
         .exceptionally(
             e -> {
-              context
-                  .disconnect(
-                      Component.literal(
-                          "Connection closed - [Ex Nihilo: Sequentia] Failed to synchronize ore list from server."));
+              context.disconnect(
+                  Component.literal(
+                      "Connection closed - [Ex Nihilo: Sequentia] Failed to synchronize ore list from server."));
               return null;
             })
         .thenAccept(v -> context.reply(new OreAckPayload()));

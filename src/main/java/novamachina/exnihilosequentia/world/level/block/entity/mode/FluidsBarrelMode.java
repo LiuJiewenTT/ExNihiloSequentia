@@ -9,7 +9,6 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -127,8 +126,8 @@ public class FluidsBarrelMode extends AbstractBarrelMode {
   @Override
   @Nonnull
   public ItemInteractionResult onBlockActivated(
-  // This is for 1.21.3+
-  // public InteractionResult onBlockActivated(
+      // This is for 1.21.3+
+      // public InteractionResult onBlockActivated(
       @Nonnull final BarrelBlockEntity barrelTile,
       @Nonnull final Player player,
       @Nonnull final InteractionHand handIn,
@@ -227,8 +226,7 @@ public class FluidsBarrelMode extends AbstractBarrelMode {
   protected boolean isTriggerItem(@Nonnull final ItemStack stack) {
     return FluidUtil.getFluidContained(stack).map(FluidStack::getAmount).orElse(0)
             >= FluidType.BUCKET_VOLUME
-        || ItemStack.isSameItem(
-            stack, PotionContents.createItemStack(Items.POTION, Potions.WATER));
+        || ItemStack.isSameItem(stack, PotionContents.createItemStack(Items.POTION, Potions.WATER));
   }
 
   @Override

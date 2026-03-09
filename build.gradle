@@ -34,6 +34,10 @@ ext.processResources([[ modId: "novacore", type: "required", ordering: "AFTER", 
 dependencies {
     mc()
     novacore()
+
+    // JEI integration
+    compileOnly "mezz.jei:jei-1.21.1-neoforge-api:${jei_version}"
+    runtimeOnly "mezz.jei:jei-1.21.1-neoforge:${jei_version}"
 }
 
 ext.publish()

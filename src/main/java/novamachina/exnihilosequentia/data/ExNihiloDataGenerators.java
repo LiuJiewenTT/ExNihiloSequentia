@@ -11,7 +11,8 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import novamachina.exnihilosequentia.data.loot.EXNLootModifierProvider;
 import novamachina.exnihilosequentia.data.loot.EXNLootProvider;
-// import novamachina.exnihilosequentia.data.models.ItemModelProvider;  // This was renamed to EXNItemModelProvider when upgrading to 1.21.4
+// import novamachina.exnihilosequentia.data.models.ItemModelProvider;  // This was renamed to
+// EXNItemModelProvider when upgrading to 1.21.4
 import novamachina.exnihilosequentia.data.models.EXNItemModelProvider;
 import novamachina.exnihilosequentia.data.recipes.packs.EXNRecipeProvider;
 import novamachina.exnihilosequentia.data.tags.EXNTagProvider;
@@ -23,8 +24,8 @@ public class ExNihiloDataGenerators {
 
   @SubscribeEvent
   public static void gatherData(@Nonnull final GatherDataEvent event) {
-  // This is for 1.21.4
-  // public static void gatherData(@Nonnull final GatherDataEvent.Client event) {
+    // This is for 1.21.4
+    // public static void gatherData(@Nonnull final GatherDataEvent.Client event) {
     DataGenerator generator = event.getGenerator();
     PackOutput output = generator.getPackOutput();
     ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
@@ -34,10 +35,13 @@ public class ExNihiloDataGenerators {
     generator.addProvider(event.includeServer(), new EXNRecipeProvider(output, lookupProvider));
     generator.addProvider(
         event.includeServer(), new EXNTagProvider(output, lookupProvider, existingFileHelper));
-    generator.addProvider(event.includeServer(), new EXNLootModifierProvider(lookupProvider, output));
-    generator.addProvider(event.includeClient(), new ExNihiloFurnaceFuleGenerator(output, lookupProvider));
+    generator.addProvider(
+        event.includeServer(), new EXNLootModifierProvider(lookupProvider, output));
+    generator.addProvider(
+        event.includeClient(), new ExNihiloFurnaceFuleGenerator(output, lookupProvider));
 
-    generator.addProvider(event.includeClient(), new EXNItemModelProvider(output, existingFileHelper));
+    generator.addProvider(
+        event.includeClient(), new EXNItemModelProvider(output, existingFileHelper));
     generator.addProvider(event.includeClient(), new EXNLangProvider(output, "en_us"));
     generator.addProvider(
         event.includeClient(), new ExNihiloBlockStateGenerator(output, existingFileHelper));

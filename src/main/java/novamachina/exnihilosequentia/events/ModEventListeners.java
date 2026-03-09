@@ -4,7 +4,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.core.dispenser.DispenseItemBehavior;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -14,13 +13,11 @@ import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 // import net.neoforged.neoforge.client.event.RegisterSelectItemModelPropertyEvent;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
-import novamachina.exnihilosequentia.ExNihiloSequentia;
 // import novamachina.exnihilosequentia.client.renderer.item.properties.Holiday;
 import novamachina.exnihilosequentia.common.utility.ExNihiloConstants;
 import novamachina.exnihilosequentia.world.item.EXNItems;
@@ -114,7 +111,8 @@ public class ModEventListeners {
 
   @SubscribeEvent
   public static void onRegisterClientExtensions(RegisterClientExtensionsEvent event) {
-    event.registerFluidType(WitchWaterFluidType.fluidTextures(), EXNFluids.WITCH_WATER.getFluidType());
+    event.registerFluidType(
+        WitchWaterFluidType.fluidTextures(), EXNFluids.WITCH_WATER.getFluidType());
     event.registerFluidType(SeaWaterFluidType.fluidTextures(), EXNFluids.SEA_WATER.getFluidType());
   }
 
@@ -134,6 +132,7 @@ public class ModEventListeners {
   // This is added when upgrading to 1.21.3+
   // @SubscribeEvent
   // public static void registerSelectProperties(RegisterSelectItemModelPropertyEvent event) {
-  //   event.register(ResourceLocation.fromNamespaceAndPath(ExNihiloSequentia.MOD_ID, "holiday"), Holiday.TYPE);
+  //   event.register(ResourceLocation.fromNamespaceAndPath(ExNihiloSequentia.MOD_ID, "holiday"),
+  // Holiday.TYPE);
   // }
 }

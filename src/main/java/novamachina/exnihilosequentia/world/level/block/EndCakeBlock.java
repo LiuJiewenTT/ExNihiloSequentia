@@ -16,7 +16,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.CakeBlock;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.EndPlatformFeature;
@@ -34,8 +33,8 @@ public class EndCakeBlock extends CakeBlock {
 
   @Override
   protected ItemInteractionResult useItemOn(
-  // This is for 1.21.3+
-  // protected InteractionResult useItemOn(
+      // This is for 1.21.3+
+      // protected InteractionResult useItemOn(
       ItemStack itemStack,
       BlockState blockState,
       Level level,
@@ -139,10 +138,13 @@ public class EndCakeBlock extends CakeBlock {
     return InteractionResult.SUCCESS;
   }
 
-  private DimensionTransition getPortalDestination(ServerLevel serverLevel, Entity entity, BlockPos blockPos) {
-  // This is for 1.21.3+
-  // private TeleportTransition getPortalDestination(ServerLevel serverLevel, Entity entity, BlockPos blockPos) {
-    ResourceKey<Level> resourcekey = serverLevel.dimension() == Level.END ? Level.OVERWORLD : Level.END;
+  private DimensionTransition getPortalDestination(
+      ServerLevel serverLevel, Entity entity, BlockPos blockPos) {
+    // This is for 1.21.3+
+    // private TeleportTransition getPortalDestination(ServerLevel serverLevel, Entity entity,
+    // BlockPos blockPos) {
+    ResourceKey<Level> resourcekey =
+        serverLevel.dimension() == Level.END ? Level.OVERWORLD : Level.END;
     ServerLevel serverlevel = serverLevel.getServer().getLevel(resourcekey);
     if (serverlevel == null) {
       return null;
@@ -159,9 +161,11 @@ public class EndCakeBlock extends CakeBlock {
         }
       } else {
         if (entity instanceof ServerPlayer serverplayer) {
-          return serverplayer.findRespawnPositionAndUseSpawnBlock(false, DimensionTransition.DO_NOTHING);
+          return serverplayer.findRespawnPositionAndUseSpawnBlock(
+              false, DimensionTransition.DO_NOTHING);
           // This is for 1.21.3+
-          // return serverplayer.findRespawnPositionAndUseSpawnBlock(false, TeleportTransition.DO_NOTHING);
+          // return serverplayer.findRespawnPositionAndUseSpawnBlock(false,
+          // TeleportTransition.DO_NOTHING);
         }
 
         vec3 = entity.adjustSpawnLocation(serverlevel, blockpos).getBottomCenter();
@@ -173,8 +177,7 @@ public class EndCakeBlock extends CakeBlock {
           entity.getDeltaMovement(),
           f,
           entity.getXRot(),
-          DimensionTransition.PLAY_PORTAL_SOUND.then(DimensionTransition.PLACE_PORTAL_TICKET)
-      );
+          DimensionTransition.PLAY_PORTAL_SOUND.then(DimensionTransition.PLACE_PORTAL_TICKET));
 
       // This is for 1.21.3+
       // return new TeleportTransition(

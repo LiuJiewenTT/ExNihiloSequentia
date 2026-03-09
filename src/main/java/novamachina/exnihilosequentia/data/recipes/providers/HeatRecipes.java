@@ -2,12 +2,8 @@ package novamachina.exnihilosequentia.data.recipes.providers;
 
 import java.util.Optional;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import novamachina.exnihilosequentia.ExNihiloSequentia;
@@ -18,8 +14,8 @@ import novamachina.novacore.data.recipes.ISubRecipeProvider;
 public class HeatRecipes implements ISubRecipeProvider {
   @Override
   public void addRecipes(RecipeOutput consumer) {
-  // This is for 1.21.3+
-  // public void addRecipes(HolderGetter.Provider holderGetter, RecipeOutput consumer) {
+    // This is for 1.21.3+
+    // public void addRecipes(HolderGetter.Provider holderGetter, RecipeOutput consumer) {
     HeatRecipeBuilder.heat(Blocks.LAVA, 3).build(consumer, heatLoc("lava"));
     HeatRecipeBuilder.heat(Blocks.FIRE, 4).build(consumer, heatLoc("fire"));
     HeatRecipeBuilder.heat(Blocks.TORCH, 1).build(consumer, heatLoc("torch"));

@@ -1,10 +1,8 @@
 package novamachina.exnihilosequentia.data.recipes;
 
 import com.google.common.base.Preconditions;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.fluids.FluidStack;
 import novamachina.exnihilosequentia.world.item.crafting.EXNRecipeSerializers;
@@ -32,15 +30,15 @@ public class SolidifyingRecipeBuilder extends RecipeBuilder<SolidifyingRecipe> {
 
   @Override
   protected SolidifyingRecipe getRecipe(ResourceLocation id) {
-  // This is for 1.21.3+
-  // protected SolidifyingRecipe getRecipe(ResourceKey<Recipe<?>> id) {
+    // This is for 1.21.3+
+    // protected SolidifyingRecipe getRecipe(ResourceKey<Recipe<?>> id) {
     return new SolidifyingRecipe(fluidInTank, fluidOnTop, result);
   }
 
   @Override
   protected void validate(ResourceLocation id) {
-  // This is for 1.21.3+
-  // protected void validate(ResourceKey<Recipe<?>> id) {
+    // This is for 1.21.3+
+    // protected void validate(ResourceKey<Recipe<?>> id) {
     Preconditions.checkNotNull(fluidInTank, "Fluid in barrel cannot be null");
     Preconditions.checkArgument(!fluidInTank.isEmpty(), "Fluid in barrel amount cannot be 0");
     Preconditions.checkNotNull(fluidOnTop, "Fluid on top cannot be null");

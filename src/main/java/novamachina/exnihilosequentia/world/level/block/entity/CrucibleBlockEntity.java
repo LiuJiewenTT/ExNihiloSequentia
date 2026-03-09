@@ -12,7 +12,6 @@ import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -131,8 +130,8 @@ public abstract class CrucibleBlockEntity extends BlockEntity {
   }
 
   public ItemInteractionResult onBlockActivated(
-  // This is for 1.21.3+
-  // public InteractionResult onBlockActivated(
+      // This is for 1.21.3+
+      // public InteractionResult onBlockActivated(
       @Nonnull final Player player,
       @Nonnull final InteractionHand handIn,
       @Nonnull final IFluidHandler handler) {
@@ -355,14 +354,13 @@ public abstract class CrucibleBlockEntity extends BlockEntity {
   private void consumeNewSolid() {
     ExNihiloRegistries.CRUCIBLE_REGISTRY
         .findRecipe(MeltableItemHandler.getHandler(this).getStackInSlot(0).getItem())
-        .ifPresent(recipe -> {
-          setSolidAmount(recipe.getResultFluid().getAmount());
-          setCurrentItem(MeltableItemHandler.getHandler(this).getStackInSlot(0).copy());
-          currentItem.setCount(1);
-          MeltableItemHandler.getHandler(this).getStackInSlot(0).shrink(1);
-        });
-
-
+        .ifPresent(
+            recipe -> {
+              setSolidAmount(recipe.getResultFluid().getAmount());
+              setCurrentItem(MeltableItemHandler.getHandler(this).getStackInSlot(0).copy());
+              currentItem.setCount(1);
+              MeltableItemHandler.getHandler(this).getStackInSlot(0).shrink(1);
+            });
 
     if (MeltableItemHandler.getHandler(this).getStackInSlot(0).isEmpty()) {
       MeltableItemHandler.getHandler(this).setStackInSlot(0, ItemStack.EMPTY);

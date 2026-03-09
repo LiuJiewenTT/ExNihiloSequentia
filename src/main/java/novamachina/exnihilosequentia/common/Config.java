@@ -1,8 +1,5 @@
 package novamachina.exnihilosequentia.common;
 
-import com.electronwill.nightconfig.core.file.CommentedFileConfig;
-import com.electronwill.nightconfig.core.io.WritingMode;
-import java.nio.file.Path;
 import javax.annotation.Nonnull;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.ModConfigSpec.Builder;
@@ -371,7 +368,7 @@ public class Config {
     crookBlackstoneValue =
         COMMON_BUILDER
             .comment("Durability of Blackstone Crook (Default: 256)")
-             .defineInRange("crookBlackstoneValue", 256, 1, Integer.MAX_VALUE);
+            .defineInRange("crookBlackstoneValue", 256, 1, Integer.MAX_VALUE);
     crookGraniteValue =
         COMMON_BUILDER
             .comment("Durability of Granite Crook (Default: 256)")

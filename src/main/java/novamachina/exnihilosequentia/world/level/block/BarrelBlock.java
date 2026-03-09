@@ -9,7 +9,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -61,9 +60,18 @@ public abstract class BarrelBlock extends Block implements ITooltipProvider {
   }
 
   @Override
-  protected ItemInteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-  // This is for 1.21.3+
-  // protected InteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+  protected ItemInteractionResult useItemOn(
+      ItemStack itemStack,
+      BlockState blockState,
+      Level level,
+      BlockPos blockPos,
+      Player player,
+      InteractionHand interactionHand,
+      BlockHitResult blockHitResult) {
+    // This is for 1.21.3+
+    // protected InteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level
+    // level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult
+    // blockHitResult) {
     if (level.isClientSide()) {
       return ItemInteractionResult.SUCCESS;
       // This is for 1.21.3+
@@ -76,11 +84,19 @@ public abstract class BarrelBlock extends Block implements ITooltipProvider {
       @Nonnull
       final IFluidHandler fluidHandler =
           level.getCapability(
-              Capabilities.FluidHandler.BLOCK, blockPos, blockState, tile, blockHitResult.getDirection());
+              Capabilities.FluidHandler.BLOCK,
+              blockPos,
+              blockState,
+              tile,
+              blockHitResult.getDirection());
       @Nonnull
       final IItemHandler itemHandler =
           level.getCapability(
-              Capabilities.ItemHandler.BLOCK, blockPos, blockState, tile, blockHitResult.getDirection());
+              Capabilities.ItemHandler.BLOCK,
+              blockPos,
+              blockState,
+              tile,
+              blockHitResult.getDirection());
       return tile.onBlockActivated(player, interactionHand, fluidHandler, itemHandler);
     }
 

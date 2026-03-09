@@ -9,3 +9,4 @@ runserver
 bin
 changelog.html
 changelog.md
+/src/generated

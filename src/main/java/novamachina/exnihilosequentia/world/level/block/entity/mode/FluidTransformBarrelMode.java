@@ -5,14 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -59,8 +57,8 @@ public class FluidTransformBarrelMode extends AbstractBarrelMode {
   @Override
   @Nonnull
   public ItemInteractionResult onBlockActivated(
-  // This is for 1.21.3+
-  // public InteractionResult onBlockActivated(
+      // This is for 1.21.3+
+      // public InteractionResult onBlockActivated(
       @Nonnull final BarrelBlockEntity barrelTile,
       @Nonnull final Player player,
       @Nonnull final InteractionHand handIn,

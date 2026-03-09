@@ -3,12 +3,9 @@ package novamachina.exnihilosequentia.data.recipes;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import java.util.List;
-
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import novamachina.exnihilosequentia.world.item.crafting.EXNRecipeSerializers;
 import novamachina.exnihilosequentia.world.item.crafting.MeshWithChance;
@@ -75,15 +72,15 @@ public class SiftingRecipeBuilder extends RecipeBuilder<SiftingRecipe> {
 
   @Override
   protected SiftingRecipe getRecipe(ResourceLocation id) {
-  // This is for 1.21.3+
-  // protected SiftingRecipe getRecipe(ResourceKey<Recipe<?>> id) {
+    // This is for 1.21.3+
+    // protected SiftingRecipe getRecipe(ResourceKey<Recipe<?>> id) {
     return new SiftingRecipe(input, drop, isWaterlogged, rolls);
   }
 
   @Override
   protected void validate(ResourceLocation id) {
-  // This is for 1.21.3+
-  // protected void validate(ResourceKey<Recipe<?>> id) {
+    // This is for 1.21.3+
+    // protected void validate(ResourceKey<Recipe<?>> id) {
     Preconditions.checkNotNull(input, "Input cannot be null.");
     Preconditions.checkNotNull(drop, "Drop cannot be null.");
     Preconditions.checkArgument(!drop.isEmpty(), "Recipe needs at least one drop.");

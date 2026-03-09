@@ -1,14 +1,11 @@
 package novamachina.exnihilosequentia.common.loot.modifier;
 
-import com.google.common.base.Suppliers;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
-import java.util.function.Supplier;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import net.minecraft.world.item.ItemStack;
@@ -29,8 +26,7 @@ public class UseHammerModifier extends LootModifier {
   private static Logger log = LoggerFactory.getLogger(UseHammerModifier.class);
 
   public static final MapCodec<UseHammerModifier> CODEC =
-      RecordCodecBuilder.mapCodec(
-                  inst -> codecStart(inst).apply(inst, UseHammerModifier::new));
+      RecordCodecBuilder.mapCodec(inst -> codecStart(inst).apply(inst, UseHammerModifier::new));
 
   private final Random random = new SecureRandom();
 

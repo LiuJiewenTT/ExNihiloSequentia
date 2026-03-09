@@ -53,11 +53,11 @@ public class NeoForgeEventListeners {
     ExNihiloRegistries.clearRegistries();
   }
 
-//  @SubscribeEvent
-//  public static void loadClientRecipes(@Nonnull final RecipesUpdatedEvent event) {
-//    ExNihiloRegistries.clearRegistries();
-//    loadRecipes(event.getRecipeManager());
-//  }
+  //  @SubscribeEvent
+  //  public static void loadClientRecipes(@Nonnull final RecipesUpdatedEvent event) {
+  //    ExNihiloRegistries.clearRegistries();
+  //    loadRecipes(event.getRecipeManager());
+  //  }
 
   @SubscribeEvent
   public static void onPlayerLogin(@Nonnull final PlayerEvent.PlayerLoggedInEvent event) {
@@ -85,8 +85,7 @@ public class NeoForgeEventListeners {
     registerOreCompat();
     overrideOres();
     loadRecipes(event.getServer().getRecipeManager());
-    if (event.getServer().isDedicatedServer()) {
-    }
+    if (event.getServer().isDedicatedServer()) {}
   }
 
   private static <R extends Recipe<?>> List<R> filterRecipes(

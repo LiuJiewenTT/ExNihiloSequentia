@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -13,7 +12,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -61,8 +59,8 @@ public class MobSpawnBarrelMode extends AbstractBarrelMode {
   @Override
   @Nonnull
   public ItemInteractionResult onBlockActivated(
-  // This is for 1.21.3+
-  // public InteractionResult onBlockActivated(
+      // This is for 1.21.3+
+      // public InteractionResult onBlockActivated(
       @Nonnull final BarrelBlockEntity barrelTile,
       @Nonnull final Player player,
       @Nonnull final InteractionHand handIn,
@@ -97,10 +95,12 @@ public class MobSpawnBarrelMode extends AbstractBarrelMode {
     }
     if (nbt.contains(DOLL_TYPE_TAG)) {
       doll =
-          (DollItem) BuiltInRegistries.ITEM.get(ResourceLocation.parse(nbt.getString(DOLL_TYPE_TAG)));
+          (DollItem)
+              BuiltInRegistries.ITEM.get(ResourceLocation.parse(nbt.getString(DOLL_TYPE_TAG)));
       // This is for 1.21.3+
       // doll =
-      //     (DollItem) BuiltInRegistries.ITEM.get(ResourceLocation.parse(nbt.getString(DOLL_TYPE_TAG))).get().value();
+      //     (DollItem)
+      // BuiltInRegistries.ITEM.get(ResourceLocation.parse(nbt.getString(DOLL_TYPE_TAG))).get().value();
     } else {
       doll = null;
     }
