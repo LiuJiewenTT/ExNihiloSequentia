@@ -4,7 +4,6 @@ import mezz.jei.api.recipe.RecipeType;
 import novamachina.exnihilosequentia.ExNihiloSequentia;
 import novamachina.exnihilosequentia.common.compat.jei.melting.JEICrucibleRecipe;
 import novamachina.exnihilosequentia.common.compat.jei.sifting.JEISieveRecipe;
-import novamachina.exnihilosequentia.common.utility.ExNihiloConstants;
 import novamachina.exnihilosequentia.world.item.crafting.CompostRecipe;
 import novamachina.exnihilosequentia.world.item.crafting.CrushingRecipe;
 import novamachina.exnihilosequentia.world.item.crafting.HarvestRecipe;
@@ -24,13 +23,9 @@ public class RecipeTypes {
   public static final RecipeType<HeatRecipe> HEAT =
       RecipeType.create(ExNihiloSequentia.MOD_ID, "heat", HeatRecipe.class);
   public static final RecipeType<JEICrucibleRecipe> MELTING =
-      RecipeType.create(
-          ExNihiloSequentia.MOD_ID, ExNihiloConstants.Blocks.CRUCIBLES, JEICrucibleRecipe.class);
+      RecipeType.create(ExNihiloSequentia.MOD_ID, "melting", JEICrucibleRecipe.class);
   public static final RecipeType<JEICrucibleRecipe> FIRED_MELTING =
-      RecipeType.create(
-          ExNihiloSequentia.MOD_ID,
-          ExNihiloConstants.Blocks.FIRED_CRUCIBLE,
-          JEICrucibleRecipe.class);
+      RecipeType.create(ExNihiloSequentia.MOD_ID, "fired_melting", JEICrucibleRecipe.class);
   public static final RecipeType<PrecipitateRecipe> PRECIPITATE =
       RecipeType.create(ExNihiloSequentia.MOD_ID, "precipitate", PrecipitateRecipe.class);
   public static final RecipeType<JEISieveRecipe> DRY_SIFTING =
