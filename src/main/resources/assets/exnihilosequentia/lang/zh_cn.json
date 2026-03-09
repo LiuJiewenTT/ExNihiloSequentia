@@ -448,15 +448,5 @@
   "jei.category.transition": "转化",
   "jei.category.wet_sifting": "浸水地筛",
   "throwing.pebble": "飞翔的石子",
-  "waila.crucible.no_heat": "没有热源",
-  "jei.exnihilosequentia.compost": "堆肥",
-  "jei.exnihilosequentia.compost.amount": "量: %s",
-  "jei.exnihilosequentia.crucible_heat": "热源",
-  "jei.exnihilosequentia.crucible_melting": "坩埚融化",
-  "jei.exnihilosequentia.crushing": "粉碎",
-  "jei.exnihilosequentia.fluid_on_top": "液体固化",
-  "jei.exnihilosequentia.fluid_transform": "液体转化",
-  "jei.exnihilosequentia.heat.amount": "热量: %s",
-  "jei.exnihilosequentia.sifting": "筛选",
-  "jei.exnihilosequentia.waterlogged": "已浸水"
+  "waila.crucible.no_heat": "没有热源"
 }
