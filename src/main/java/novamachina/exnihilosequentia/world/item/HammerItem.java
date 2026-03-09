@@ -2,7 +2,6 @@ package novamachina.exnihilosequentia.world.item;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -20,7 +19,8 @@ public class HammerItem extends DiggerItem {
   }
 
   // This is for 1.21.3+
-  // public HammerItem(ToolMaterial tier, final float baseDamage, final float attackSpeed, Item.Properties properties) {
+  // public HammerItem(ToolMaterial tier, final float baseDamage, final float attackSpeed,
+  // Item.Properties properties) {
   //   super(
   //       tier,
   //       ExNihiloTags.MINEABLE_WITH_HAMMER,
@@ -57,6 +57,7 @@ public class HammerItem extends DiggerItem {
   // This is added when upgrading to 1.21.3+
   // @FunctionalInterface
   // public interface HammerFunction {
-  //   HammerItem apply(ToolMaterial tier, float baseDamage, float attackSpeed, Item.Properties properties);
+  //   HammerItem apply(ToolMaterial tier, float baseDamage, float attackSpeed, Item.Properties
+  // properties);
   // }
 }

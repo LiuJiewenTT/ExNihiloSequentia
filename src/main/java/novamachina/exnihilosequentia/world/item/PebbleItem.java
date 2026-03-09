@@ -6,7 +6,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -29,8 +28,8 @@ public class PebbleItem extends SnowballItem {
   @Override
   @Nonnull
   public InteractionResultHolder<ItemStack> use(
-  // This is for 1.21.3+
-  // public InteractionResult use(
+      // This is for 1.21.3+
+      // public InteractionResult use(
       @Nonnull final Level world,
       @Nonnull final Player player,
       @Nonnull final InteractionHand hand) {

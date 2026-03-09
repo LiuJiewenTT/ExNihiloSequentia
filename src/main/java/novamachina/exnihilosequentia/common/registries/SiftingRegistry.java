@@ -39,8 +39,7 @@ public class SiftingRegistry {
           public List<SiftingRecipe> load(SiftingCacheKey key) {
             return recipeList.parallelStream()
                 .filter(recipe -> recipe.isWaterlogged() == key.isWaterlogged())
-                .filter(
-                    recipe -> recipe.getInput().equals(key.input()))
+                .filter(recipe -> recipe.getInput().equals(key.input()))
                 .map(recipe -> recipe.filterByMesh(key.meshType(), flattenRecipes))
                 .filter(
                     recipe -> {

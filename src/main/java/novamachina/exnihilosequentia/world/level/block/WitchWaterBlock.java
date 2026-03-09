@@ -37,9 +37,7 @@ import novamachina.exnihilosequentia.world.level.material.EXNFluids;
 public class WitchWaterBlock extends LiquidBlock {
 
   public WitchWaterBlock(BlockBehaviour.Properties properties) {
-    super(
-        EXNFluids.WITCH_WATER.getStillFluid(),
-        properties);
+    super(EXNFluids.WITCH_WATER.getStillFluid(), properties);
   }
 
   @Override
@@ -53,17 +51,15 @@ public class WitchWaterBlock extends LiquidBlock {
     }
 
     if (entityIn instanceof Skeleton skeleton) {
-      replaceMob(
-          worldIn, skeleton, new WitherSkeleton(EntityType.WITHER_SKELETON, worldIn));
+      replaceMob(worldIn, skeleton, new WitherSkeleton(EntityType.WITHER_SKELETON, worldIn));
     }
 
     if (entityIn instanceof Creeper creeper && !creeper.isPowered()) {
       Optional<LightningBolt> createLightning =
-          Optional.ofNullable(
-              EntityType.LIGHTNING_BOLT.create(worldIn));
-          // This is for 1.21.3+
-          // Optional.ofNullable(
-          //     EntityType.LIGHTNING_BOLT.create(worldIn, EntitySpawnReason.SPAWN_ITEM_USE));
+          Optional.ofNullable(EntityType.LIGHTNING_BOLT.create(worldIn));
+      // This is for 1.21.3+
+      // Optional.ofNullable(
+      //     EntityType.LIGHTNING_BOLT.create(worldIn, EntitySpawnReason.SPAWN_ITEM_USE));
       createLightning.ifPresent(
           (lightningBolt -> {
             entityIn.thunderHit((ServerLevel) worldIn, lightningBolt);
@@ -104,11 +100,9 @@ public class WitchWaterBlock extends LiquidBlock {
     // TODO Cows
 
     if (entityIn instanceof Animal) {
-      @Nullable
-      final LightningBolt lightningBolt =
-          EntityType.LIGHTNING_BOLT.create(worldIn);
-          // This is for 1.21.3+
-          // EntityType.LIGHTNING_BOLT.create(worldIn, EntitySpawnReason.SPAWN_ITEM_USE);
+      @Nullable final LightningBolt lightningBolt = EntityType.LIGHTNING_BOLT.create(worldIn);
+      // This is for 1.21.3+
+      // EntityType.LIGHTNING_BOLT.create(worldIn, EntitySpawnReason.SPAWN_ITEM_USE);
       if (lightningBolt != null) {
         entityIn.thunderHit((ServerLevel) worldIn, lightningBolt);
       }

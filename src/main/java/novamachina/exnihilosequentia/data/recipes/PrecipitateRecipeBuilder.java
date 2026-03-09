@@ -1,15 +1,11 @@
 package novamachina.exnihilosequentia.data.recipes;
 
 import com.google.common.base.Preconditions;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.fluids.FluidStack;
 import novamachina.exnihilosequentia.world.item.crafting.EXNRecipeSerializers;
@@ -54,15 +50,15 @@ public class PrecipitateRecipeBuilder extends RecipeBuilder<PrecipitateRecipe> {
 
   @Override
   protected PrecipitateRecipe getRecipe(ResourceLocation resourceLocation) {
-  // This is for 1.21.3+
-  // protected PrecipitateRecipe getRecipe(ResourceKey<Recipe<?>> resourceLocation) {
+    // This is for 1.21.3+
+    // protected PrecipitateRecipe getRecipe(ResourceKey<Recipe<?>> resourceLocation) {
     return new PrecipitateRecipe(fluid, input, output);
   }
 
   @Override
   protected void validate(ResourceLocation id) {
-  // This is for 1.21.3+
-  // protected void validate(ResourceKey<Recipe<?>> id) {
+    // This is for 1.21.3+
+    // protected void validate(ResourceKey<Recipe<?>> id) {
     Preconditions.checkNotNull(input, "Input cannot be null.");
     Preconditions.checkNotNull(fluid, "Fluid cannot be null");
     Preconditions.checkArgument(!fluid.isEmpty(), "Fluid amount cannot be 0");

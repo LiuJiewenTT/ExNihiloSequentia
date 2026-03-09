@@ -12,13 +12,8 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.fluids.FluidStack;
-import novamachina.exnihilosequentia.world.level.block.EXNBlocks;
 import novamachina.novacore.world.item.crafting.AbstractRecipe;
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
-import java.util.Optional;
 
 public class PrecipitateRecipe extends AbstractRecipe {
 
@@ -68,9 +63,7 @@ public class PrecipitateRecipe extends AbstractRecipe {
                 instance
                     .group(
                         FluidStack.CODEC.fieldOf("fluid").forGetter(PrecipitateRecipe::getFluid),
-                        Ingredient.CODEC
-                            .fieldOf("input")
-                            .forGetter(PrecipitateRecipe::getInput),
+                        Ingredient.CODEC.fieldOf("input").forGetter(PrecipitateRecipe::getInput),
                         ItemStack.CODEC.fieldOf("result").forGetter(PrecipitateRecipe::getOutput))
                     .apply(instance, PrecipitateRecipe::new));
     public static final StreamCodec<RegistryFriendlyByteBuf, PrecipitateRecipe> STREAM_CODEC =

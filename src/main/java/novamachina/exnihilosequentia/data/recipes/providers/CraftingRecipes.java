@@ -5,16 +5,13 @@ import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -78,12 +75,12 @@ public class CraftingRecipes implements ISubRecipeProvider {
   // }
 
   private void addMisc(RecipeOutput consumer) {
-  // This is for 1.21.3+
-  // private void addMisc(HolderGetter<Item> holderGetter, RecipeOutput consumer) {
+    // This is for 1.21.3+
+    // private void addMisc(HolderGetter<Item> holderGetter, RecipeOutput consumer) {
     ResourceLocation beehive = BuiltInRegistries.BLOCK.getKey(Blocks.BEEHIVE);
     ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Blocks.BEEHIVE)
-    // This is for 1.21.3+
-    // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, Blocks.BEEHIVE)
+        // This is for 1.21.3+
+        // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, Blocks.BEEHIVE)
         .pattern("xxx")
         .pattern("fff")
         .pattern("xxx")
@@ -95,8 +92,9 @@ public class CraftingRecipes implements ISubRecipeProvider {
         .save(consumer, RecipeProviderUtilities.createSaveLocation(beehive));
 
     ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EXNItems.BEEHIVE_FRAME.asItem())
-    // This is for 1.21.3+
-    // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, EXNItems.BEEHIVE_FRAME.asItem())
+        // This is for 1.21.3+
+        // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC,
+        // EXNItems.BEEHIVE_FRAME.asItem())
         .pattern("xxx")
         .pattern("xfx")
         .pattern("xxx")
@@ -106,14 +104,14 @@ public class CraftingRecipes implements ISubRecipeProvider {
             "has_stick",
             InventoryChangeTrigger.TriggerInstance.hasItems(
                 ItemPredicate.Builder.item().of(Tags.Items.RODS_WOODEN).build()))
-                // This is for 1.21.3+
-                // ItemPredicate.Builder.item().of(holderGetter, Tags.Items.RODS_WOODEN).build()))
+        // This is for 1.21.3+
+        // ItemPredicate.Builder.item().of(holderGetter, Tags.Items.RODS_WOODEN).build()))
         .unlockedBy(
             "has_string",
             InventoryChangeTrigger.TriggerInstance.hasItems(
                 ItemPredicate.Builder.item().of(Tags.Items.STRINGS).build()))
-                // This is for 1.21.3+
-                // ItemPredicate.Builder.item().of(holderGetter, Tags.Items.STRINGS).build()))
+        // This is for 1.21.3+
+        // ItemPredicate.Builder.item().of(holderGetter, Tags.Items.STRINGS).build()))
         .save(consumer, RecipeProviderUtilities.createSaveLocation(EXNItems.BEEHIVE_FRAME.getId()));
 
     createCookingRecipe(
@@ -148,8 +146,8 @@ public class CraftingRecipes implements ISubRecipeProvider {
         "has_uncooked_crucible",
         EXNBlocks.FIRED_CRUCIBLE.getId());
     ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EXNBlocks.UNFIRED_CRUCIBLE)
-    // This is for 1.21.3+
-    // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, EXNBlocks.UNFIRED_CRUCIBLE)
+        // This is for 1.21.3+
+        // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, EXNBlocks.UNFIRED_CRUCIBLE)
         .pattern("c c")
         .pattern("c c")
         .pattern("ccc")
@@ -161,10 +159,9 @@ public class CraftingRecipes implements ISubRecipeProvider {
             consumer,
             RecipeProviderUtilities.createSaveLocation(EXNBlocks.UNFIRED_CRUCIBLE.getId()));
 
-    ShapedRecipeBuilder.shaped(
-            RecipeCategory.MISC, EXNItems.CRAFTING_DOLL.asItem(), 4)
-            // This is for 1.21.3+
-            // holderGetter, RecipeCategory.MISC, EXNItems.CRAFTING_DOLL.asItem(), 4)
+    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EXNItems.CRAFTING_DOLL.asItem(), 4)
+        // This is for 1.21.3+
+        // holderGetter, RecipeCategory.MISC, EXNItems.CRAFTING_DOLL.asItem(), 4)
         .pattern("xex")
         .pattern(" x ")
         .pattern("x x")
@@ -177,17 +174,17 @@ public class CraftingRecipes implements ISubRecipeProvider {
             "has_diamond",
             InventoryChangeTrigger.TriggerInstance.hasItems(
                 ItemPredicate.Builder.item().of(Tags.Items.GEMS_DIAMOND).build()))
-                // This is for 1.21.3+
-                // ItemPredicate.Builder.item().of(holderGetter, Tags.Items.GEMS_DIAMOND).build()))
+        // This is for 1.21.3+
+        // ItemPredicate.Builder.item().of(holderGetter, Tags.Items.GEMS_DIAMOND).build()))
         .save(
             consumer,
             RecipeProviderUtilities.createSaveLocation(
                 ResourceLocation.fromNamespaceAndPath(ExNihiloSequentia.MOD_ID, "doll_x4")));
 
     ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EXNItems.CRAFTING_DOLL.asItem(), 6)
-    // This is for 1.21.3+
-    // ShapedRecipeBuilder.shaped(
-    //         holderGetter, RecipeCategory.MISC, EXNItems.CRAFTING_DOLL.asItem(), 6)
+        // This is for 1.21.3+
+        // ShapedRecipeBuilder.shaped(
+        //         holderGetter, RecipeCategory.MISC, EXNItems.CRAFTING_DOLL.asItem(), 6)
         .pattern("xex")
         .pattern(" x ")
         .pattern("x x")
@@ -200,16 +197,16 @@ public class CraftingRecipes implements ISubRecipeProvider {
             "has_emerald",
             InventoryChangeTrigger.TriggerInstance.hasItems(
                 ItemPredicate.Builder.item().of(Tags.Items.GEMS_EMERALD).build()))
-                // This is for 1.21.3+
-                // ItemPredicate.Builder.item().of(holderGetter, Tags.Items.GEMS_EMERALD).build()))
+        // This is for 1.21.3+
+        // ItemPredicate.Builder.item().of(holderGetter, Tags.Items.GEMS_EMERALD).build()))
         .save(
             consumer,
             RecipeProviderUtilities.createSaveLocation(
                 ResourceLocation.fromNamespaceAndPath(ExNihiloSequentia.MOD_ID, "doll_x6")));
 
     ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, EXNBlocks.END_CAKE)
-    // This is for 1.21.3+
-    // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.FOOD, EXNBlocks.END_CAKE)
+        // This is for 1.21.3+
+        // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.FOOD, EXNBlocks.END_CAKE)
         .pattern("ece")
         .pattern("eke")
         .pattern("ece")
@@ -221,17 +218,17 @@ public class CraftingRecipes implements ISubRecipeProvider {
         .save(consumer, RecipeProviderUtilities.createSaveLocation(EXNBlocks.END_CAKE.getId()));
 
     ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, EXNItems.PORCELAIN_CLAY.asItem())
-    // This is for 1.21.3+
-    // ShapelessRecipeBuilder.shapeless(
-    //         holderGetter, RecipeCategory.MISC, EXNItems.PORCELAIN_CLAY.asItem())
+        // This is for 1.21.3+
+        // ShapelessRecipeBuilder.shapeless(
+        //         holderGetter, RecipeCategory.MISC, EXNItems.PORCELAIN_CLAY.asItem())
         .requires(ExNihiloTags.CLAY)
         .requires(Items.BONE_MEAL)
         .unlockedBy(
             "has_clay",
             InventoryChangeTrigger.TriggerInstance.hasItems(
                 ItemPredicate.Builder.item().of(ExNihiloTags.CLAY).build()))
-                // This is for 1.21.3+
-                // ItemPredicate.Builder.item().of(holderGetter, ExNihiloTags.CLAY).build()))
+        // This is for 1.21.3+
+        // ItemPredicate.Builder.item().of(holderGetter, ExNihiloTags.CLAY).build()))
         .save(
             consumer, RecipeProviderUtilities.createSaveLocation(EXNItems.PORCELAIN_CLAY.getId()));
 
@@ -240,8 +237,9 @@ public class CraftingRecipes implements ISubRecipeProvider {
         BuiltInRegistries.BLOCK.getKey(Blocks.GILDED_BLACKSTONE);
     if (EXNItems.GOLD.getRawOreItem() != null) {
       ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.GILDED_BLACKSTONE)
-      // This is for 1.21.3+
-      // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.DECORATIONS, Blocks.GILDED_BLACKSTONE)
+          // This is for 1.21.3+
+          // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.DECORATIONS,
+          // Blocks.GILDED_BLACKSTONE)
           .pattern("xxx")
           .pattern("xgx")
           .pattern("xxx")
@@ -255,8 +253,9 @@ public class CraftingRecipes implements ISubRecipeProvider {
     ResourceLocation cryingObsidianResourceLocation =
         BuiltInRegistries.BLOCK.getKey(Blocks.CRYING_OBSIDIAN);
     ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.CRYING_OBSIDIAN)
-    // This is for 1.21.3+
-    // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.DECORATIONS, Blocks.CRYING_OBSIDIAN)
+        // This is for 1.21.3+
+        // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.DECORATIONS,
+        // Blocks.CRYING_OBSIDIAN)
         .pattern(" o ")
         .pattern("obo")
         .pattern(" o ")
@@ -268,8 +267,9 @@ public class CraftingRecipes implements ISubRecipeProvider {
     ResourceLocation ancientDebrisResourceLocation =
         BuiltInRegistries.BLOCK.getKey(Blocks.ANCIENT_DEBRIS);
     ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Blocks.ANCIENT_DEBRIS)
-    // This is for 1.21.3+
-    // ShapelessRecipeBuilder.shapeless(holderGetter, RecipeCategory.MISC, Blocks.ANCIENT_DEBRIS)
+        // This is for 1.21.3+
+        // ShapelessRecipeBuilder.shapeless(holderGetter, RecipeCategory.MISC,
+        // Blocks.ANCIENT_DEBRIS)
         .requires(Items.NETHERITE_SCRAP)
         .requires(Blocks.OBSIDIAN)
         .unlockedBy(
@@ -278,11 +278,12 @@ public class CraftingRecipes implements ISubRecipeProvider {
   }
 
   private void addMeshes(RecipeOutput consumer) {
-  // This is for 1.21.3+
-  // private void addMeshes(HolderGetter<Item> holderGetter, RecipeOutput consumer) {
+    // This is for 1.21.3+
+    // private void addMeshes(HolderGetter<Item> holderGetter, RecipeOutput consumer) {
     createMesh(EXNItems.MESH_FLINT.asItem(), EXNItems.MESH_STRING.asItem(), Items.FLINT, consumer);
     // This is for 1.21.3+
-    // createMesh(EXNItems.MESH_FLINT.asItem(), EXNItems.MESH_STRING.asItem(), Items.FLINT, holderGetter, consumer);
+    // createMesh(EXNItems.MESH_FLINT.asItem(), EXNItems.MESH_STRING.asItem(), Items.FLINT,
+    // holderGetter, consumer);
     createMesh(
         EXNItems.MESH_IRON.asItem(),
         EXNItems.MESH_FLINT.asItem(),
@@ -319,8 +320,8 @@ public class CraftingRecipes implements ISubRecipeProvider {
             MATERIAL_CONDITION,
             InventoryChangeTrigger.TriggerInstance.hasItems(
                 ItemPredicate.Builder.item().of(Tags.Items.INGOTS_NETHERITE).build()))
-                // This is for 1.21.3+
-                // ItemPredicate.Builder.item().of(holderGetter, Tags.Items.INGOTS_NETHERITE).build()))
+        // This is for 1.21.3+
+        // ItemPredicate.Builder.item().of(holderGetter, Tags.Items.INGOTS_NETHERITE).build()))
         .save(
             consumer,
             RecipeProviderUtilities.createSaveLocation(
@@ -328,8 +329,9 @@ public class CraftingRecipes implements ISubRecipeProvider {
                     ExNihiloSequentia.MOD_ID, ExNihiloConstants.Items.NETHERITE_MESH)));
 
     ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EXNItems.MESH_STRING.asItem())
-    // This is for 1.21.3+
-    // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, EXNItems.MESH_STRING.asItem())
+        // This is for 1.21.3+
+        // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC,
+        // EXNItems.MESH_STRING.asItem())
         .pattern("iii")
         .pattern("iii")
         .pattern("iii")
@@ -352,11 +354,12 @@ public class CraftingRecipes implements ISubRecipeProvider {
   }
 
   private void addDolls(RecipeOutput consumer) {
-  // This is for 1.21.3+
-  // private void addDolls(HolderGetter<Item> holderGetter, RecipeOutput consumer) {
-    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EXNItems.SHULKER_DOLL.asItem())
     // This is for 1.21.3+
-    // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, EXNItems.SHULKER_DOLL.asItem())
+    // private void addDolls(HolderGetter<Item> holderGetter, RecipeOutput consumer) {
+    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EXNItems.SHULKER_DOLL.asItem())
+        // This is for 1.21.3+
+        // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC,
+        // EXNItems.SHULKER_DOLL.asItem())
         .pattern("ctc")
         .pattern("sms")
         .pattern("cbc")
@@ -370,8 +373,9 @@ public class CraftingRecipes implements ISubRecipeProvider {
             InventoryChangeTrigger.TriggerInstance.hasItems(EXNItems.CRAFTING_DOLL.asItem()))
         .save(consumer, RecipeProviderUtilities.createSaveLocation(EXNItems.SHULKER_DOLL.getId()));
     ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EXNItems.GUARDIAN_DOLL.asItem())
-    // This is for 1.21.3+
-    // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, EXNItems.GUARDIAN_DOLL.asItem())
+        // This is for 1.21.3+
+        // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC,
+        // EXNItems.GUARDIAN_DOLL.asItem())
         .pattern("ctc")
         .pattern("sms")
         .pattern("cbc")
@@ -385,8 +389,8 @@ public class CraftingRecipes implements ISubRecipeProvider {
             InventoryChangeTrigger.TriggerInstance.hasItems(EXNItems.CRAFTING_DOLL.asItem()))
         .save(consumer, RecipeProviderUtilities.createSaveLocation(EXNItems.GUARDIAN_DOLL.getId()));
     ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EXNItems.BEE_DOLL.asItem())
-    // This is for 1.21.3+
-    // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, EXNItems.BEE_DOLL.asItem())
+        // This is for 1.21.3+
+        // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, EXNItems.BEE_DOLL.asItem())
         .pattern("ctc")
         .pattern("sms")
         .pattern("cbc")
@@ -400,8 +404,9 @@ public class CraftingRecipes implements ISubRecipeProvider {
             InventoryChangeTrigger.TriggerInstance.hasItems(EXNItems.CRAFTING_DOLL.asItem()))
         .save(consumer, RecipeProviderUtilities.createSaveLocation(EXNItems.BEE_DOLL.getId()));
     ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EXNItems.BLAZE_DOLL.asItem())
-    // This is for 1.21.3+
-    // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, EXNItems.BLAZE_DOLL.asItem())
+        // This is for 1.21.3+
+        // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC,
+        // EXNItems.BLAZE_DOLL.asItem())
         .pattern("ctc")
         .pattern("sms")
         .pattern("cbc")
@@ -415,8 +420,9 @@ public class CraftingRecipes implements ISubRecipeProvider {
             InventoryChangeTrigger.TriggerInstance.hasItems(EXNItems.CRAFTING_DOLL.asItem()))
         .save(consumer, RecipeProviderUtilities.createSaveLocation(EXNItems.BLAZE_DOLL.getId()));
     ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EXNItems.ENDERMAN_DOLL.asItem())
-    // This is for 1.21.3+
-    // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, EXNItems.ENDERMAN_DOLL.asItem())
+        // This is for 1.21.3+
+        // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC,
+        // EXNItems.ENDERMAN_DOLL.asItem())
         .pattern("ctc")
         .pattern("sms")
         .pattern("cbc")
@@ -432,8 +438,8 @@ public class CraftingRecipes implements ISubRecipeProvider {
   }
 
   private void addHammers(RecipeOutput consumer) {
-  // This is for 1.21.3+
-  // private void addHammers(HolderGetter<Item> holderGetter, RecipeOutput consumer) {
+    // This is for 1.21.3+
+    // private void addHammers(HolderGetter<Item> holderGetter, RecipeOutput consumer) {
 
     createHammer(EXNItems.HAMMER_ANDESITE.asItem(), Items.ANDESITE, consumer);
     createHammer(EXNItems.HAMMER_BAMBOO.asItem(), Items.BAMBOO, consumer);
@@ -449,7 +455,8 @@ public class CraftingRecipes implements ISubRecipeProvider {
     // createHammer(EXNItems.HAMMER_BLACKSTONE.asItem(), Items.BLACKSTONE, holderGetter, consumer);
     // createHammer(EXNItems.HAMMER_CALCITE.asItem(), Items.CALCITE, holderGetter, consumer);
     // createHammer(EXNItems.HAMMER_CHERRY.asItem(), Items.CHERRY_PLANKS, holderGetter, consumer);
-    // createHammer(EXNItems.HAMMER_COPPER.asItem(), Tags.Items.INGOTS_COPPER, holderGetter, consumer);
+    // createHammer(EXNItems.HAMMER_COPPER.asItem(), Tags.Items.INGOTS_COPPER, holderGetter,
+    // consumer);
 
     //    createHammer(ExNihiloItems.HAMMER_CRIMSON_FUNGUS.asItem(), Items.CRIMSON_PLANKS,
     // consumer);
@@ -464,13 +471,16 @@ public class CraftingRecipes implements ISubRecipeProvider {
     createHammer(EXNItems.HAMMER_NETHER_BRICK.asItem(), Items.NETHER_BRICKS, consumer);
     // This is for 1.21.3+
     // createHammer(EXNItems.HAMMER_DEEPSLATE.asItem(), Items.DEEPSLATE, holderGetter, consumer);
-    // createHammer(EXNItems.HAMMER_DIAMOND.asItem(), Tags.Items.GEMS_DIAMOND, holderGetter, consumer);
+    // createHammer(EXNItems.HAMMER_DIAMOND.asItem(), Tags.Items.GEMS_DIAMOND, holderGetter,
+    // consumer);
     // createHammer(EXNItems.HAMMER_DIORITE.asItem(), Items.DIORITE, holderGetter, consumer);
-    // createHammer(EXNItems.HAMMER_DRIPSTONE.asItem(), Items.DRIPSTONE_BLOCK, holderGetter, consumer);
+    // createHammer(EXNItems.HAMMER_DRIPSTONE.asItem(), Items.DRIPSTONE_BLOCK, holderGetter,
+    // consumer);
     // createHammer(EXNItems.HAMMER_GOLD.asItem(), Tags.Items.INGOTS_GOLD, holderGetter, consumer);
     // createHammer(EXNItems.HAMMER_GRANITE.asItem(), Items.GRANITE, holderGetter, consumer);
     // createHammer(EXNItems.HAMMER_IRON.asItem(), Tags.Items.INGOTS_IRON, holderGetter, consumer);
-    // createHammer(EXNItems.HAMMER_NETHER_BRICK.asItem(), Items.NETHER_BRICKS, holderGetter, consumer);
+    // createHammer(EXNItems.HAMMER_NETHER_BRICK.asItem(), Items.NETHER_BRICKS, holderGetter,
+    // consumer);
 
     SmithingTransformRecipeBuilder.smithing(
             Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
@@ -487,8 +497,8 @@ public class CraftingRecipes implements ISubRecipeProvider {
             MATERIAL_CONDITION,
             InventoryChangeTrigger.TriggerInstance.hasItems(
                 ItemPredicate.Builder.item().of(Tags.Items.INGOTS_NETHERITE).build()))
-                // This is for 1.21.3+
-                // ItemPredicate.Builder.item().of(holderGetter, Tags.Items.INGOTS_NETHERITE).build()))
+        // This is for 1.21.3+
+        // ItemPredicate.Builder.item().of(holderGetter, Tags.Items.INGOTS_NETHERITE).build()))
         .save(
             consumer,
             RecipeProviderUtilities.createSaveLocation(
@@ -502,12 +512,14 @@ public class CraftingRecipes implements ISubRecipeProvider {
     createHammer(EXNItems.HAMMER_TERRACOTTA.asItem(), Items.TERRACOTTA, consumer);
     createHammer(EXNItems.HAMMER_TUFF.asItem(), Items.TUFF, consumer);
     // This is for 1.21.3+
-    // createHammer(EXNItems.HAMMER_RED_NETHER_BRICK.asItem(), Items.RED_NETHER_BRICKS, holderGetter, consumer);
+    // createHammer(EXNItems.HAMMER_RED_NETHER_BRICK.asItem(), Items.RED_NETHER_BRICKS,
+    // holderGetter, consumer);
     // createHammer(EXNItems.HAMMER_STONE.asItem(), Items.COBBLESTONE, holderGetter, consumer);
     // createHammer(EXNItems.HAMMER_TERRACOTTA.asItem(), Items.TERRACOTTA, holderGetter, consumer);
     // createHammer(EXNItems.HAMMER_TUFF.asItem(), Items.TUFF, holderGetter, consumer);
 
-    //    createHammer(ExNihiloItems.HAMMER_WARPED_FUNGUS.asItem(), Items.WARPED_PLANKS, holderGetter, consumer);
+    //    createHammer(ExNihiloItems.HAMMER_WARPED_FUNGUS.asItem(), Items.WARPED_PLANKS,
+    // holderGetter, consumer);
 
     createHammer(EXNItems.HAMMER_WOOD.asItem(), ItemTags.PLANKS, consumer);
     // This is for 1.21.3+
@@ -515,8 +527,8 @@ public class CraftingRecipes implements ISubRecipeProvider {
   }
 
   private void addOres(RecipeOutput consumer) {
-  // This is for 1.21.3+
-  // private void addOres(HolderGetter<Item> holderGetter, RecipeOutput consumer) {
+    // This is for 1.21.3+
+    // private void addOres(HolderGetter<Item> holderGetter, RecipeOutput consumer) {
     createOre(EXNItems.IRON, consumer);
     createOre(EXNItems.GOLD, consumer);
     createOre(EXNItems.COPPER, consumer);
@@ -599,16 +611,25 @@ public class CraftingRecipes implements ISubRecipeProvider {
 
   // This is for 1.21.3+
   // private void addSieves(HolderGetter<Item> holderGetter, RecipeOutput consumer) {
-  //   createSieve(holderGetter, consumer, EXNBlocks.ACACIA_SIEVE, Items.ACACIA_PLANKS, Items.ACACIA_SLAB);
-  //   createSieve(holderGetter, consumer, EXNBlocks.BAMBOO_SIEVE, Items.BAMBOO_PLANKS, Items.BAMBOO_SLAB);
-  //   createSieve(holderGetter, consumer, EXNBlocks.BIRCH_SIEVE, Items.BIRCH_PLANKS, Items.BIRCH_SLAB);
-  //   createSieve(holderGetter, consumer, EXNBlocks.CHERRY_SIEVE, Items.CHERRY_PLANKS, Items.CHERRY_SLAB);
-  //   createSieve(holderGetter,consumer, EXNBlocks.JUNGLE_SIEVE, Items.JUNGLE_PLANKS, Items.JUNGLE_SLAB);
-  //   createSieve(holderGetter,consumer, EXNBlocks.MANGROVE_SIEVE, Items.MANGROVE_PLANKS, Items.MANGROVE_SLAB);
+  //   createSieve(holderGetter, consumer, EXNBlocks.ACACIA_SIEVE, Items.ACACIA_PLANKS,
+  // Items.ACACIA_SLAB);
+  //   createSieve(holderGetter, consumer, EXNBlocks.BAMBOO_SIEVE, Items.BAMBOO_PLANKS,
+  // Items.BAMBOO_SLAB);
+  //   createSieve(holderGetter, consumer, EXNBlocks.BIRCH_SIEVE, Items.BIRCH_PLANKS,
+  // Items.BIRCH_SLAB);
+  //   createSieve(holderGetter, consumer, EXNBlocks.CHERRY_SIEVE, Items.CHERRY_PLANKS,
+  // Items.CHERRY_SLAB);
+  //   createSieve(holderGetter,consumer, EXNBlocks.JUNGLE_SIEVE, Items.JUNGLE_PLANKS,
+  // Items.JUNGLE_SLAB);
+  //   createSieve(holderGetter,consumer, EXNBlocks.MANGROVE_SIEVE, Items.MANGROVE_PLANKS,
+  // Items.MANGROVE_SLAB);
   //   createSieve(holderGetter,consumer, EXNBlocks.OAK_SIEVE, Items.OAK_PLANKS, Items.OAK_SLAB);
-  //   createSieve(holderGetter,consumer, EXNBlocks.SPRUCE_SIEVE, Items.SPRUCE_PLANKS, Items.SPRUCE_SLAB);
-  //   createSieve(holderGetter,consumer, EXNBlocks.CRIMSON_SIEVE, Items.CRIMSON_PLANKS, Items.CRIMSON_SLAB);
-  //   createSieve(holderGetter,consumer, EXNBlocks.WARPED_SIEVE, Items.WARPED_PLANKS, Items.WARPED_SLAB);
+  //   createSieve(holderGetter,consumer, EXNBlocks.SPRUCE_SIEVE, Items.SPRUCE_PLANKS,
+  // Items.SPRUCE_SLAB);
+  //   createSieve(holderGetter,consumer, EXNBlocks.CRIMSON_SIEVE, Items.CRIMSON_PLANKS,
+  // Items.CRIMSON_SLAB);
+  //   createSieve(holderGetter,consumer, EXNBlocks.WARPED_SIEVE, Items.WARPED_PLANKS,
+  // Items.WARPED_SLAB);
   // }
 
   private void addCrucibles(RecipeOutput consumer) {
@@ -627,17 +648,28 @@ public class CraftingRecipes implements ISubRecipeProvider {
 
   // This is for 1.21.3+
   // private void addCrucibles(HolderGetter<Item> holderGetter, RecipeOutput consumer) {
-  //   createCrucible(holderGetter, consumer, EXNBlocks.ACACIA_CRUCIBLE, Items.ACACIA_LOG, Items.ACACIA_SLAB);
-  //   createCrucible(holderGetter, consumer, EXNBlocks.BAMBOO_CRUCIBLE, Items.BAMBOO_BLOCK, Items.BAMBOO_SLAB);
-  //   createCrucible(holderGetter, consumer, EXNBlocks.BIRCH_CRUCIBLE, Items.BIRCH_LOG, Items.BIRCH_SLAB);
-  //   createCrucible(holderGetter, consumer, EXNBlocks.CHERRY_CRUCIBLE, Items.CHERRY_LOG, Items.CHERRY_SLAB);
-  //   createCrucible(holderGetter, consumer, EXNBlocks.DARK_OAK_CRUCIBLE, Items.DARK_OAK_LOG, Items.DARK_OAK_SLAB);
-  //   createCrucible(holderGetter, consumer, EXNBlocks.JUNGLE_CRUCIBLE, Items.JUNGLE_LOG, Items.JUNGLE_SLAB);
-  //   createCrucible(holderGetter, consumer, EXNBlocks.MANGROVE_CRUCIBLE, Items.MANGROVE_LOG, Items.MANGROVE_SLAB);
-  //   createCrucible(holderGetter, consumer, EXNBlocks.OAK_CRUCIBLE, Items.OAK_LOG, Items.OAK_SLAB);
-  //   createCrucible(holderGetter, consumer, EXNBlocks.SPRUCE_CRUCIBLE, Items.SPRUCE_LOG, Items.SPRUCE_SLAB);
-  //   createCrucible(holderGetter, consumer, EXNBlocks.CRIMSON_CRUCIBLE, Items.CRIMSON_STEM, Items.CRIMSON_SLAB);
-  //   createCrucible(holderGetter, consumer, EXNBlocks.WARPED_CRUCIBLE, Items.WARPED_STEM, Items.WARPED_SLAB);
+  //   createCrucible(holderGetter, consumer, EXNBlocks.ACACIA_CRUCIBLE, Items.ACACIA_LOG,
+  // Items.ACACIA_SLAB);
+  //   createCrucible(holderGetter, consumer, EXNBlocks.BAMBOO_CRUCIBLE, Items.BAMBOO_BLOCK,
+  // Items.BAMBOO_SLAB);
+  //   createCrucible(holderGetter, consumer, EXNBlocks.BIRCH_CRUCIBLE, Items.BIRCH_LOG,
+  // Items.BIRCH_SLAB);
+  //   createCrucible(holderGetter, consumer, EXNBlocks.CHERRY_CRUCIBLE, Items.CHERRY_LOG,
+  // Items.CHERRY_SLAB);
+  //   createCrucible(holderGetter, consumer, EXNBlocks.DARK_OAK_CRUCIBLE, Items.DARK_OAK_LOG,
+  // Items.DARK_OAK_SLAB);
+  //   createCrucible(holderGetter, consumer, EXNBlocks.JUNGLE_CRUCIBLE, Items.JUNGLE_LOG,
+  // Items.JUNGLE_SLAB);
+  //   createCrucible(holderGetter, consumer, EXNBlocks.MANGROVE_CRUCIBLE, Items.MANGROVE_LOG,
+  // Items.MANGROVE_SLAB);
+  //   createCrucible(holderGetter, consumer, EXNBlocks.OAK_CRUCIBLE, Items.OAK_LOG,
+  // Items.OAK_SLAB);
+  //   createCrucible(holderGetter, consumer, EXNBlocks.SPRUCE_CRUCIBLE, Items.SPRUCE_LOG,
+  // Items.SPRUCE_SLAB);
+  //   createCrucible(holderGetter, consumer, EXNBlocks.CRIMSON_CRUCIBLE, Items.CRIMSON_STEM,
+  // Items.CRIMSON_SLAB);
+  //   createCrucible(holderGetter, consumer, EXNBlocks.WARPED_CRUCIBLE, Items.WARPED_STEM,
+  // Items.WARPED_SLAB);
   // }
 
   private void addBarrels(RecipeOutput consumer) {
@@ -657,18 +689,29 @@ public class CraftingRecipes implements ISubRecipeProvider {
 
   // This is for 1.21.3+
   // private void addBarrels(HolderGetter<Item> holderGetter, RecipeOutput consumer) {
-  //   createBarrel(holderGetter, consumer, EXNBlocks.STONE_BARREL, Tags.Items.STONES, Items.STONE_SLAB);
-  //   createBarrel(holderGetter, consumer, EXNBlocks.ACACIA_BARREL, Items.ACACIA_PLANKS, Items.ACACIA_SLAB);
-  //   createBarrel(holderGetter, consumer, EXNBlocks.BAMBOO_BARREL, Items.BAMBOO_PLANKS, Items.BAMBOO_SLAB);
-  //   createBarrel(holderGetter, consumer, EXNBlocks.BIRCH_BARREL, Items.BIRCH_PLANKS, Items.BIRCH_SLAB);
-  //   createBarrel(holderGetter, consumer, EXNBlocks.CHERRY_BARREL, Items.CHERRY_PLANKS, Items.CHERRY_SLAB);
-  //   createBarrel(holderGetter, consumer, EXNBlocks.DARK_OAK_BARREL, Items.DARK_OAK_PLANKS, Items.DARK_OAK_SLAB);
-  //   createBarrel(holderGetter, consumer, EXNBlocks.JUNGLE_BARREL, Items.JUNGLE_PLANKS, Items.JUNGLE_SLAB);
-  //   createBarrel(holderGetter, consumer, EXNBlocks.MANGROVE_BARREL, Items.MANGROVE_PLANKS, Items.MANGROVE_SLAB);
+  //   createBarrel(holderGetter, consumer, EXNBlocks.STONE_BARREL, Tags.Items.STONES,
+  // Items.STONE_SLAB);
+  //   createBarrel(holderGetter, consumer, EXNBlocks.ACACIA_BARREL, Items.ACACIA_PLANKS,
+  // Items.ACACIA_SLAB);
+  //   createBarrel(holderGetter, consumer, EXNBlocks.BAMBOO_BARREL, Items.BAMBOO_PLANKS,
+  // Items.BAMBOO_SLAB);
+  //   createBarrel(holderGetter, consumer, EXNBlocks.BIRCH_BARREL, Items.BIRCH_PLANKS,
+  // Items.BIRCH_SLAB);
+  //   createBarrel(holderGetter, consumer, EXNBlocks.CHERRY_BARREL, Items.CHERRY_PLANKS,
+  // Items.CHERRY_SLAB);
+  //   createBarrel(holderGetter, consumer, EXNBlocks.DARK_OAK_BARREL, Items.DARK_OAK_PLANKS,
+  // Items.DARK_OAK_SLAB);
+  //   createBarrel(holderGetter, consumer, EXNBlocks.JUNGLE_BARREL, Items.JUNGLE_PLANKS,
+  // Items.JUNGLE_SLAB);
+  //   createBarrel(holderGetter, consumer, EXNBlocks.MANGROVE_BARREL, Items.MANGROVE_PLANKS,
+  // Items.MANGROVE_SLAB);
   //   createBarrel(holderGetter, consumer, EXNBlocks.OAK_BARREL, Items.OAK_PLANKS, Items.OAK_SLAB);
-  //   createBarrel(holderGetter, consumer, EXNBlocks.SPRUCE_BARREL, Items.SPRUCE_PLANKS, Items.SPRUCE_SLAB);
-  //   createBarrel(holderGetter, consumer, EXNBlocks.CRIMSON_BARREL, Items.CRIMSON_PLANKS, Items.CRIMSON_SLAB);
-  //   createBarrel(holderGetter, consumer, EXNBlocks.WARPED_BARREL, Items.WARPED_PLANKS, Items.WARPED_SLAB);
+  //   createBarrel(holderGetter, consumer, EXNBlocks.SPRUCE_BARREL, Items.SPRUCE_PLANKS,
+  // Items.SPRUCE_SLAB);
+  //   createBarrel(holderGetter, consumer, EXNBlocks.CRIMSON_BARREL, Items.CRIMSON_PLANKS,
+  // Items.CRIMSON_SLAB);
+  //   createBarrel(holderGetter, consumer, EXNBlocks.WARPED_BARREL, Items.WARPED_PLANKS,
+  // Items.WARPED_SLAB);
   // }
 
   private void addPebbleBlocks(RecipeOutput consumer) {
@@ -688,23 +731,30 @@ public class CraftingRecipes implements ISubRecipeProvider {
 
   // This is for 1.21.3+
   // private void addPebbleBlocks(HolderGetter<Item> holderGetter, RecipeOutput consumer) {
-  //   createPebbleBlock(Blocks.ANDESITE, EXNItems.PEBBLE_ANDESITE.asItem(), holderGetter, consumer);
+  //   createPebbleBlock(Blocks.ANDESITE, EXNItems.PEBBLE_ANDESITE.asItem(), holderGetter,
+  // consumer);
   //   createPebbleBlock(Blocks.BASALT, EXNItems.PEBBLE_BASALT.asItem(), holderGetter, consumer);
-  //   createPebbleBlock(Blocks.BLACKSTONE, EXNItems.PEBBLE_BLACKSTONE.asItem(), holderGetter, consumer);
-  //   createPebbleBlock(Blocks.COBBLESTONE, EXNItems.PEBBLE_STONE.asItem(), holderGetter, consumer);
+  //   createPebbleBlock(Blocks.BLACKSTONE, EXNItems.PEBBLE_BLACKSTONE.asItem(), holderGetter,
+  // consumer);
+  //   createPebbleBlock(Blocks.COBBLESTONE, EXNItems.PEBBLE_STONE.asItem(), holderGetter,
+  // consumer);
   //   createPebbleBlock(Blocks.CALCITE, EXNItems.PEBBLE_CALCITE.asItem(), holderGetter, consumer);
-  //   createPebbleBlock(Blocks.DEEPSLATE, EXNItems.PEBBLE_DEEPSLATE.asItem(), holderGetter, consumer);
+  //   createPebbleBlock(Blocks.DEEPSLATE, EXNItems.PEBBLE_DEEPSLATE.asItem(), holderGetter,
+  // consumer);
   //   createPebbleBlock(Blocks.DIORITE, EXNItems.PEBBLE_DIORITE.asItem(), holderGetter, consumer);
-  //   createPebbleBlock(Blocks.DRIPSTONE_BLOCK, EXNItems.PEBBLE_DRIPSTONE.asItem(), holderGetter, consumer);
-  //   createPebbleBlock(Blocks.END_STONE, EXNItems.PEBBLE_END_STONE.asItem(), holderGetter, consumer);
+  //   createPebbleBlock(Blocks.DRIPSTONE_BLOCK, EXNItems.PEBBLE_DRIPSTONE.asItem(), holderGetter,
+  // consumer);
+  //   createPebbleBlock(Blocks.END_STONE, EXNItems.PEBBLE_END_STONE.asItem(), holderGetter,
+  // consumer);
   //   createPebbleBlock(Blocks.GRANITE, EXNItems.PEBBLE_GRANITE.asItem(), holderGetter, consumer);
-  //   createPebbleBlock(Blocks.NETHERRACK, EXNItems.PEBBLE_NETHERRACK.asItem(), holderGetter, consumer);
+  //   createPebbleBlock(Blocks.NETHERRACK, EXNItems.PEBBLE_NETHERRACK.asItem(), holderGetter,
+  // consumer);
   //   createPebbleBlock(Blocks.TUFF, EXNItems.PEBBLE_TUFF.asItem(), holderGetter, consumer);
   // }
 
   private void addCrooks(RecipeOutput consumer) {
-  // This is for 1.21.3+
-  // private void addCrooks(HolderGetter<Item> holderGetter, RecipeOutput consumer) {
+    // This is for 1.21.3+
+    // private void addCrooks(HolderGetter<Item> holderGetter, RecipeOutput consumer) {
     createCrook(EXNItems.CROOK_ANDESITE.asItem(), EXNItems.PEBBLE_ANDESITE.asItem(), consumer);
     createCrook(EXNItems.CROOK_BAMBOO.asItem(), Items.BAMBOO, consumer);
     createCrook(EXNItems.CROOK_BASALT.asItem(), EXNItems.PEBBLE_BASALT.asItem(), consumer);
@@ -724,23 +774,35 @@ public class CraftingRecipes implements ISubRecipeProvider {
     createCrook(EXNItems.CROOK_NETHER_BRICK.asItem(), Items.NETHER_BRICKS, consumer);
 
     // This is for 1.21.3+
-    // createCrook(EXNItems.CROOK_ANDESITE.asItem(), EXNItems.PEBBLE_ANDESITE.asItem(), holderGetter, consumer);
+    // createCrook(EXNItems.CROOK_ANDESITE.asItem(), EXNItems.PEBBLE_ANDESITE.asItem(),
+    // holderGetter, consumer);
     // createCrook(EXNItems.CROOK_BAMBOO.asItem(), Items.BAMBOO, holderGetter, consumer);
-    // createCrook(EXNItems.CROOK_BASALT.asItem(), EXNItems.PEBBLE_BASALT.asItem(), holderGetter, consumer);
-    // createCrook(EXNItems.CROOK_BLACKSTONE.asItem(), EXNItems.PEBBLE_BLACKSTONE.asItem(), holderGetter, consumer);
+    // createCrook(EXNItems.CROOK_BASALT.asItem(), EXNItems.PEBBLE_BASALT.asItem(), holderGetter,
+    // consumer);
+    // createCrook(EXNItems.CROOK_BLACKSTONE.asItem(), EXNItems.PEBBLE_BLACKSTONE.asItem(),
+    // holderGetter, consumer);
     // createCrook(EXNItems.CROOK_BONE.asItem(), Tags.Items.BONES, holderGetter, consumer);
-    // createCrook(EXNItems.CROOK_CALCITE.asItem(), EXNItems.PEBBLE_CALCITE.asItem(), holderGetter, consumer);
+    // createCrook(EXNItems.CROOK_CALCITE.asItem(), EXNItems.PEBBLE_CALCITE.asItem(), holderGetter,
+    // consumer);
     // createCrook(EXNItems.CROOK_CHERRY.asItem(), Items.CHERRY_PLANKS, holderGetter, consumer);
-    // createCrook(EXNItems.CROOK_COPPER.asItem(), ExNihiloTags.NUGGET_COPPER, holderGetter, consumer);
-    // //    createCrook(ExNihiloItems.CROOK_CRIMSON_FUNGUS.asItem(), Items.CRIMSON_PLANKS, consumer);
-    // createCrook(EXNItems.CROOK_DEEPSLATE.asItem(), EXNItems.PEBBLE_DEEPSLATE.asItem(), holderGetter, consumer);
-    // createCrook(EXNItems.CROOK_DIAMOND.asItem(), Tags.Items.GEMS_DIAMOND, holderGetter, consumer);
-    // createCrook(EXNItems.CROOK_DIORITE.asItem(), EXNItems.PEBBLE_DIORITE.asItem(), holderGetter, consumer);
-    // createCrook(EXNItems.CROOK_DRIPSTONE.asItem(), EXNItems.PEBBLE_DRIPSTONE.asItem(), holderGetter, consumer);
+    // createCrook(EXNItems.CROOK_COPPER.asItem(), ExNihiloTags.NUGGET_COPPER, holderGetter,
+    // consumer);
+    // //    createCrook(ExNihiloItems.CROOK_CRIMSON_FUNGUS.asItem(), Items.CRIMSON_PLANKS,
+    // consumer);
+    // createCrook(EXNItems.CROOK_DEEPSLATE.asItem(), EXNItems.PEBBLE_DEEPSLATE.asItem(),
+    // holderGetter, consumer);
+    // createCrook(EXNItems.CROOK_DIAMOND.asItem(), Tags.Items.GEMS_DIAMOND, holderGetter,
+    // consumer);
+    // createCrook(EXNItems.CROOK_DIORITE.asItem(), EXNItems.PEBBLE_DIORITE.asItem(), holderGetter,
+    // consumer);
+    // createCrook(EXNItems.CROOK_DRIPSTONE.asItem(), EXNItems.PEBBLE_DRIPSTONE.asItem(),
+    // holderGetter, consumer);
     // createCrook(EXNItems.CROOK_GOLD.asItem(), Tags.Items.NUGGETS_GOLD, holderGetter, consumer);
-    // createCrook(EXNItems.CROOK_GRANITE.asItem(), EXNItems.PEBBLE_GRANITE.asItem(), holderGetter, consumer);
+    // createCrook(EXNItems.CROOK_GRANITE.asItem(), EXNItems.PEBBLE_GRANITE.asItem(), holderGetter,
+    // consumer);
     // createCrook(EXNItems.CROOK_IRON.asItem(), Tags.Items.NUGGETS_IRON, holderGetter, consumer);
-    // createCrook(EXNItems.CROOK_NETHER_BRICK.asItem(), Items.NETHER_BRICKS, holderGetter, consumer);
+    // createCrook(EXNItems.CROOK_NETHER_BRICK.asItem(), Items.NETHER_BRICKS, holderGetter,
+    // consumer);
 
     SmithingTransformRecipeBuilder.smithing(
             Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
@@ -757,8 +819,8 @@ public class CraftingRecipes implements ISubRecipeProvider {
             MATERIAL_CONDITION,
             InventoryChangeTrigger.TriggerInstance.hasItems(
                 ItemPredicate.Builder.item().of(Tags.Items.INGOTS_NETHERITE).build()))
-                // This is for 1.21.3+
-                // ItemPredicate.Builder.item().of(holderGetter, Tags.Items.INGOTS_NETHERITE).build()))
+        // This is for 1.21.3+
+        // ItemPredicate.Builder.item().of(holderGetter, Tags.Items.INGOTS_NETHERITE).build()))
         .save(
             consumer,
             RecipeProviderUtilities.createSaveLocation(
@@ -767,7 +829,8 @@ public class CraftingRecipes implements ISubRecipeProvider {
     createCrook(EXNItems.CROOK_RED_NETHER_BRICK.asItem(), Items.RED_NETHER_BRICKS, consumer);
     // This is for 1.21.3+
     // createCrook(
-    //     EXNItems.CROOK_RED_NETHER_BRICK.asItem(), Items.RED_NETHER_BRICKS, holderGetter, consumer);
+    //     EXNItems.CROOK_RED_NETHER_BRICK.asItem(), Items.RED_NETHER_BRICKS, holderGetter,
+    // consumer);
 
     //    createCrook(ExNihiloItems.CROOK_PRISMARINE.asItem(), Tags.Items.GEMS_PRISMARINE,
     // consumer);
@@ -791,10 +854,10 @@ public class CraftingRecipes implements ISubRecipeProvider {
 
   private void createCrook(Item result, Item input, RecipeOutput consumer) {
     ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, result)
-  // This is for 1.21.3+
-  // private void createCrook(
-  //     Item result, Item input, HolderGetter<Item> holderGetter, RecipeOutput consumer) {
-  //   ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.TOOLS, result)
+        // This is for 1.21.3+
+        // private void createCrook(
+        //     Item result, Item input, HolderGetter<Item> holderGetter, RecipeOutput consumer) {
+        //   ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.TOOLS, result)
         .pattern("xx")
         .pattern(" x")
         .pattern(" x")
@@ -809,10 +872,11 @@ public class CraftingRecipes implements ISubRecipeProvider {
 
   private void createCrook(Item result, TagKey<Item> input, RecipeOutput consumer) {
     ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, result)
-  // This is for 1.21.3+
-  // private void createCrook(
-  //     Item result, TagKey<Item> input, HolderGetter<Item> holderGetter, RecipeOutput consumer) {
-  //   ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.TOOLS, result)
+        // This is for 1.21.3+
+        // private void createCrook(
+        //     Item result, TagKey<Item> input, HolderGetter<Item> holderGetter, RecipeOutput
+        // consumer) {
+        //   ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.TOOLS, result)
         .pattern("xx")
         .pattern(" x")
         .pattern(" x")
@@ -822,8 +886,8 @@ public class CraftingRecipes implements ISubRecipeProvider {
             PEBBLE_CONDITION,
             InventoryChangeTrigger.TriggerInstance.hasItems(
                 ItemPredicate.Builder.item().of(input).build()))
-                // This is for 1.21.3+
-                // ItemPredicate.Builder.item().of(holderGetter, input).build()))
+        // This is for 1.21.3+
+        // ItemPredicate.Builder.item().of(holderGetter, input).build()))
         .save(
             consumer,
             RecipeProviderUtilities.createSaveLocation(
@@ -831,13 +895,13 @@ public class CraftingRecipes implements ISubRecipeProvider {
   }
 
   private void createPebbleBlock(Block result, Item input, RecipeOutput consumer) {
-  // This is for 1.21.3+
-  // private void createPebbleBlock(
-  //     Block result, Item input, HolderGetter<Item> holderGetter, RecipeOutput consumer) {
+    // This is for 1.21.3+
+    // private void createPebbleBlock(
+    //     Block result, Item input, HolderGetter<Item> holderGetter, RecipeOutput consumer) {
     ResourceLocation resourceLocation = BuiltInRegistries.BLOCK.getKey(result);
     ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, result)
-    // This is for 1.21.3+
-    // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.BUILDING_BLOCKS, result)
+        // This is for 1.21.3+
+        // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.BUILDING_BLOCKS, result)
         .pattern("xx")
         .pattern("xx")
         .define('x', input)
@@ -849,14 +913,14 @@ public class CraftingRecipes implements ISubRecipeProvider {
   private void createBarrel(
       RecipeOutput consumer, BlockDefinition<BarrelBlock> barrel, TagKey<Item> block, Item slab) {
     ShapedRecipeBuilder.shaped(RecipeCategory.MISC, barrel.block())
-  // This is for 1.21.3+
-  // private void createBarrel(
-  //     HolderGetter<Item> holderGetter,
-  //     RecipeOutput consumer,
-  //     BlockDefinition<BarrelBlock> barrel,
-  //     TagKey<Item> block,
-  //     Item slab) {
-  //   ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, barrel.block())
+        // This is for 1.21.3+
+        // private void createBarrel(
+        //     HolderGetter<Item> holderGetter,
+        //     RecipeOutput consumer,
+        //     BlockDefinition<BarrelBlock> barrel,
+        //     TagKey<Item> block,
+        //     Item slab) {
+        //   ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, barrel.block())
         .pattern("x x")
         .pattern("x x")
         .pattern("x-x")
@@ -867,8 +931,8 @@ public class CraftingRecipes implements ISubRecipeProvider {
             "has_walls",
             InventoryChangeTrigger.TriggerInstance.hasItems(
                 ItemPredicate.Builder.item().of(block).build()))
-                // This is for 1.21.3+
-                // ItemPredicate.Builder.item().of(holderGetter, block).build()))
+        // This is for 1.21.3+
+        // ItemPredicate.Builder.item().of(holderGetter, block).build()))
         .unlockedBy("has_base", InventoryChangeTrigger.TriggerInstance.hasItems(slab))
         .save(consumer, RecipeProviderUtilities.createSaveLocation(barrel.getId()));
   }
@@ -876,14 +940,14 @@ public class CraftingRecipes implements ISubRecipeProvider {
   private void createBarrel(
       RecipeOutput consumer, BlockDefinition<BarrelBlock> barrel, Item block, Item slab) {
     ShapedRecipeBuilder.shaped(RecipeCategory.MISC, barrel.block())
-  // This is for 1.21.3+
-  // private void createBarrel(
-  //     HolderGetter<Item> holderGetter,
-  //     RecipeOutput consumer,
-  //     BlockDefinition<BarrelBlock> barrel,
-  //     Item block,
-  //     Item slab) {
-  //   ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, barrel.block())
+        // This is for 1.21.3+
+        // private void createBarrel(
+        //     HolderGetter<Item> holderGetter,
+        //     RecipeOutput consumer,
+        //     BlockDefinition<BarrelBlock> barrel,
+        //     Item block,
+        //     Item slab) {
+        //   ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, barrel.block())
         .pattern("x x")
         .pattern("x x")
         .pattern("x-x")
@@ -898,10 +962,11 @@ public class CraftingRecipes implements ISubRecipeProvider {
   private void createCrucible(
       RecipeOutput consumer, BlockDefinition<CrucibleBlock> crucible, Item block, Item slab) {
     ShapedRecipeBuilder.shaped(RecipeCategory.MISC, crucible.block())
-  // This is for 1.21.3+
-  // private void createCrucible(
-  //     HolderGetter<Item> holderGetter, RecipeOutput consumer, BlockDefinition<CrucibleBlock> crucible, Item block, Item slab) {
-  //   ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, crucible.block())
+        // This is for 1.21.3+
+        // private void createCrucible(
+        //     HolderGetter<Item> holderGetter, RecipeOutput consumer,
+        // BlockDefinition<CrucibleBlock> crucible, Item block, Item slab) {
+        //   ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, crucible.block())
         .pattern("c c")
         .pattern("clc")
         .pattern("s s")
@@ -921,8 +986,8 @@ public class CraftingRecipes implements ISubRecipeProvider {
       TagKey<Item> block,
       TagKey<Item> slab) {
     ShapedRecipeBuilder.shaped(RecipeCategory.MISC, crucible.block())
-    // This is for 1.21.3+
-    // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, crucible.block())
+        // This is for 1.21.3+
+        // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, crucible.block())
         .pattern("c c")
         .pattern("clc")
         .pattern("s s")
@@ -934,8 +999,8 @@ public class CraftingRecipes implements ISubRecipeProvider {
             "has_logs",
             InventoryChangeTrigger.TriggerInstance.hasItems(
                 ItemPredicate.Builder.item().of(block).build()))
-                // This is for 1.21.3+
-                // ItemPredicate.Builder.item().of(holderGetter, block).build()))
+        // This is for 1.21.3+
+        // ItemPredicate.Builder.item().of(holderGetter, block).build()))
         .save(consumer, RecipeProviderUtilities.createSaveLocation(crucible.getId()));
   }
 
@@ -944,8 +1009,8 @@ public class CraftingRecipes implements ISubRecipeProvider {
       // HolderGetter<Item> holderGetter,
       RecipeOutput consumer, BlockDefinition<SieveBlock> sieve, Item block, Item slab) {
     ShapedRecipeBuilder.shaped(RecipeCategory.MISC, sieve)
-    // This is for 1.21.3+
-    // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, sieve)
+        // This is for 1.21.3+
+        // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, sieve)
         .pattern("p p")
         .pattern("plp")
         .pattern("s s")
@@ -968,8 +1033,9 @@ public class CraftingRecipes implements ISubRecipeProvider {
   // }
 
   private void createRawRecipe(Ore ore, RecipeOutput consumer) {
-  // This is for 1.21.3+
-  // private void createRawRecipe(Ore ore, HolderGetter<Item> holderGetter, RecipeOutput consumer) {
+    // This is for 1.21.3+
+    // private void createRawRecipe(Ore ore, HolderGetter<Item> holderGetter, RecipeOutput consumer)
+    // {
     Item piece = ore.getPieceItem();
     Either<ItemDefinition<OreItem>, Item> rawEither = ore.getRawOreItem();
     Item rawOre;
@@ -983,8 +1049,8 @@ public class CraftingRecipes implements ISubRecipeProvider {
       throw new IllegalStateException("Raw either is completely empty");
     }
     ShapedRecipeBuilder.shaped(RecipeCategory.MISC, rawOre)
-    // This is for 1.21.3+
-    // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, rawOre)
+        // This is for 1.21.3+
+        // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, rawOre)
         .pattern("xx")
         .pattern("xx")
         .define('x', piece)
@@ -993,19 +1059,20 @@ public class CraftingRecipes implements ISubRecipeProvider {
         .save(
             consumer,
             ResourceLocation.fromNamespaceAndPath(
-            // This is for 1.21.3+
-            // ResourceKey.create(Registries.RECIPE,ResourceLocation.fromNamespaceAndPath(
+                // This is for 1.21.3+
+                // ResourceKey.create(Registries.RECIPE,ResourceLocation.fromNamespaceAndPath(
                 ExNihiloSequentia.MOD_ID,
                 RecipeProviderUtilities.prependRecipePrefix(
                     BuiltInRegistries.ITEM.getKey(rawOre).getPath())
-            // This is for 1.21.3+
-            // )
-        ));
+                // This is for 1.21.3+
+                // )
+                ));
   }
 
   private void createNuggetRecipes(Ore ore, RecipeOutput consumer) {
-  // This is for 1.21.3+
-  // private void createNuggetRecipes(Ore ore, HolderGetter<Item> holderGetter, RecipeOutput consumer) {
+    // This is for 1.21.3+
+    // private void createNuggetRecipes(Ore ore, HolderGetter<Item> holderGetter, RecipeOutput
+    // consumer) {
     Optional<ItemDefinition<OreItem>> nuggetItem = ore.getNuggetItem().left();
     if (nuggetItem.isPresent()) {
       Either<ItemDefinition<OreItem>, Item> eitherIngot = ore.getIngotItem();
@@ -1022,8 +1089,8 @@ public class CraftingRecipes implements ISubRecipeProvider {
       Item nugget = nuggetItem.get().asItem();
 
       ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ingot)
-      // This is for 1.21.3+
-      // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, ingot)
+          // This is for 1.21.3+
+          // ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, ingot)
           .pattern("xxx")
           .pattern("xxx")
           .pattern("xxx")
@@ -1040,11 +1107,11 @@ public class CraftingRecipes implements ISubRecipeProvider {
                       BuiltInRegistries.ITEM.getKey(ingot).getPath() + "_from_nugget"))
               // This is for 1.21.3+
               // )
-          );
+              );
 
       ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, nugget, 9)
-      // This is for 1.21.3+
-      // ShapelessRecipeBuilder.shapeless(holderGetter, RecipeCategory.MISC, nugget, 9)
+          // This is for 1.21.3+
+          // ShapelessRecipeBuilder.shapeless(holderGetter, RecipeCategory.MISC, nugget, 9)
           .requires(ingot)
           .unlockedBy("has_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(ingot))
           .save(
@@ -1055,9 +1122,10 @@ public class CraftingRecipes implements ISubRecipeProvider {
 
   private void createOreRecipes(Ore ore, ResourceLocation registryId, RecipeOutput consumer) {
     createOre(ore, consumer);
-  // This is for 1.21.3+
-  // private void createOreRecipes(Ore ore, ResourceLocation registryId, HolderGetter<Item> holderGetter, RecipeOutput consumer) {
-  //   createOre(ore, holderGetter, consumer);
+    // This is for 1.21.3+
+    // private void createOreRecipes(Ore ore, ResourceLocation registryId, HolderGetter<Item>
+    // holderGetter, RecipeOutput consumer) {
+    //   createOre(ore, holderGetter, consumer);
     Optional<ItemDefinition<OreItem>> rawOre = ore.getRawOreItem().left();
     Optional<ItemDefinition<OreItem>> ingot = ore.getIngotItem().left();
     if (rawOre.isPresent() && ingot.isPresent()) {
@@ -1098,9 +1166,10 @@ public class CraftingRecipes implements ISubRecipeProvider {
 
   private void createHammer(Item output, Item input, RecipeOutput consumer) {
     ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output)
-  // This is for 1.21.3+
-  // private void createHammer(Item output, Item input, HolderGetter<Item> holderGetter, RecipeOutput consumer) {
-  //   ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.TOOLS, output)
+        // This is for 1.21.3+
+        // private void createHammer(Item output, Item input, HolderGetter<Item> holderGetter,
+        // RecipeOutput consumer) {
+        //   ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.TOOLS, output)
         .pattern(" x ")
         .pattern(" -x")
         .pattern("-  ")
@@ -1110,8 +1179,8 @@ public class CraftingRecipes implements ISubRecipeProvider {
             "has_stick",
             InventoryChangeTrigger.TriggerInstance.hasItems(
                 ItemPredicate.Builder.item().of(Tags.Items.RODS).build()))
-                // This is for 1.21.3+
-                // ItemPredicate.Builder.item().of(holderGetter, Tags.Items.RODS).build()))
+        // This is for 1.21.3+
+        // ItemPredicate.Builder.item().of(holderGetter, Tags.Items.RODS).build()))
         .unlockedBy(MATERIAL_CONDITION, InventoryChangeTrigger.TriggerInstance.hasItems(input))
         .save(
             consumer,
@@ -1121,9 +1190,10 @@ public class CraftingRecipes implements ISubRecipeProvider {
 
   private void createHammer(Item output, TagKey<Item> input, RecipeOutput consumer) {
     ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output)
-  // This is for 1.21.3+
-  // private void createHammer(Item output, TagKey<Item> input, HolderGetter<Item> holderGetter, RecipeOutput consumer) {
-  //   ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.TOOLS, output)
+        // This is for 1.21.3+
+        // private void createHammer(Item output, TagKey<Item> input, HolderGetter<Item>
+        // holderGetter, RecipeOutput consumer) {
+        //   ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.TOOLS, output)
         .pattern(" x ")
         .pattern(" -x")
         .pattern("-  ")
@@ -1133,14 +1203,14 @@ public class CraftingRecipes implements ISubRecipeProvider {
             "has_stick",
             InventoryChangeTrigger.TriggerInstance.hasItems(
                 ItemPredicate.Builder.item().of(Tags.Items.RODS).build()))
-                // This is for 1.21.3+
-                // ItemPredicate.Builder.item().of(holderGetter, Tags.Items.RODS).build()))
+        // This is for 1.21.3+
+        // ItemPredicate.Builder.item().of(holderGetter, Tags.Items.RODS).build()))
         .unlockedBy(
             MATERIAL_CONDITION,
             InventoryChangeTrigger.TriggerInstance.hasItems(
                 ItemPredicate.Builder.item().of(input).build()))
-                // This is for 1.21.3+
-                // ItemPredicate.Builder.item().of(holderGetter, input).build()))
+        // This is for 1.21.3+
+        // ItemPredicate.Builder.item().of(holderGetter, input).build()))
         .save(
             consumer,
             RecipeProviderUtilities.createSaveLocation(
@@ -1150,10 +1220,11 @@ public class CraftingRecipes implements ISubRecipeProvider {
   private void createMesh(
       Item output, Item inputMesh, TagKey<Item> inputItem, RecipeOutput consumer) {
     ShapedRecipeBuilder.shaped(RecipeCategory.MISC, output)
-  // This is for 1.21.3+
-  // private void createMesh(
-  //     Item output, Item inputMesh, TagKey<Item> inputItem, HolderGetter<Item> holderGetter, RecipeOutput consumer) {
-  //   ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, output)
+        // This is for 1.21.3+
+        // private void createMesh(
+        //     Item output, Item inputMesh, TagKey<Item> inputItem, HolderGetter<Item> holderGetter,
+        // RecipeOutput consumer) {
+        //   ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, output)
         .pattern("i i")
         .pattern("imi")
         .pattern("i i")
@@ -1168,9 +1239,10 @@ public class CraftingRecipes implements ISubRecipeProvider {
 
   private void createMesh(Item output, Item inputMesh, Item inputItem, RecipeOutput consumer) {
     ShapedRecipeBuilder.shaped(RecipeCategory.MISC, output)
-  // This is for 1.21.3+
-  // private void createMesh(Item output, Item inputMesh, Item inputItem, HolderGetter<Item> holderGetter, RecipeOutput consumer) {
-  //   ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, output)
+        // This is for 1.21.3+
+        // private void createMesh(Item output, Item inputMesh, Item inputItem, HolderGetter<Item>
+        // holderGetter, RecipeOutput consumer) {
+        //   ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, output)
         .pattern("i i")
         .pattern("imi")
         .pattern("i i")

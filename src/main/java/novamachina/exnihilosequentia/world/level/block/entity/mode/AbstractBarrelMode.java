@@ -2,12 +2,10 @@ package novamachina.exnihilosequentia.world.level.block.entity.mode;
 
 import java.util.List;
 import javax.annotation.Nonnull;
-
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -33,7 +31,7 @@ public abstract class AbstractBarrelMode {
   @Nonnull
   // This is for 1.21.3+
   public abstract ItemInteractionResult onBlockActivated(
-  // public abstract InteractionResult onBlockActivated(
+      // public abstract InteractionResult onBlockActivated(
       @Nonnull final BarrelBlockEntity barrelTile,
       @Nonnull final Player player,
       @Nonnull final InteractionHand handIn,

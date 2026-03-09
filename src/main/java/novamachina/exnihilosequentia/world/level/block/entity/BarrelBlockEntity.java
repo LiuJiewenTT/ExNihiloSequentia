@@ -14,7 +14,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -156,7 +155,8 @@ public abstract class BarrelBlockEntity extends BlockEntity {
   @Override
   public void loadAdditional(CompoundTag compound, HolderLookup.Provider provider) {
     if (compound.contains(INVENTORY_TAG)) {
-      BarrelInventoryHandler.getHandler(this).deserializeNBT(provider, compound.getCompound(INVENTORY_TAG));
+      BarrelInventoryHandler.getHandler(this)
+          .deserializeNBT(provider, compound.getCompound(INVENTORY_TAG));
     }
     if (compound.contains(TANK_TAG)) {
       BarrelFluidHandler.getHandler(this).readFromNBT(provider, compound.getCompound(TANK_TAG));
@@ -175,8 +175,8 @@ public abstract class BarrelBlockEntity extends BlockEntity {
 
   @Nullable
   public ItemInteractionResult onBlockActivated(
-  // This is for 1.21.3+
-  // public InteractionResult onBlockActivated(
+      // This is for 1.21.3+
+      // public InteractionResult onBlockActivated(
       @Nonnull final Player player,
       @Nonnull final InteractionHand handIn,
       @Nonnull final IFluidHandler fluidHandler,
@@ -189,10 +189,13 @@ public abstract class BarrelBlockEntity extends BlockEntity {
 
   @Override
   public void onDataPacket(
-      @Nonnull final Connection net, ClientboundBlockEntityDataPacket pkt, HolderLookup.Provider lookupProvider) {
+      @Nonnull final Connection net,
+      ClientboundBlockEntityDataPacket pkt,
+      HolderLookup.Provider lookupProvider) {
     @Nonnull final CompoundTag nbt = pkt.getTag();
     if (nbt.contains(INVENTORY_TAG)) {
-      BarrelInventoryHandler.getHandler(this).deserializeNBT(lookupProvider, nbt.getCompound(INVENTORY_TAG));
+      BarrelInventoryHandler.getHandler(this)
+          .deserializeNBT(lookupProvider, nbt.getCompound(INVENTORY_TAG));
     }
     if (nbt.contains(TANK_TAG)) {
       BarrelFluidHandler.getHandler(this).readFromNBT(lookupProvider, nbt.getCompound(TANK_TAG));
@@ -215,7 +218,8 @@ public abstract class BarrelBlockEntity extends BlockEntity {
   public void saveAdditional(CompoundTag compound, HolderLookup.Provider provider) {
     super.saveAdditional(compound, provider);
     compound.put(INVENTORY_TAG, BarrelInventoryHandler.getHandler(this).serializeNBT(provider));
-    compound.put(TANK_TAG, BarrelFluidHandler.getHandler(this).writeToNBT(provider, new CompoundTag()));
+    compound.put(
+        TANK_TAG, BarrelFluidHandler.getHandler(this).writeToNBT(provider, new CompoundTag()));
     if (mode != null) {
       compound.putString(MODE_TAG, mode.getModeName());
       compound.put(MODE_INFO_TAG, mode.write(provider));

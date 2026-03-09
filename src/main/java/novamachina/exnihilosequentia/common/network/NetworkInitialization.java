@@ -23,7 +23,11 @@ public class NetworkInitialization {
   private static void register(RegisterPayloadHandlersEvent event) {
     PayloadRegistrar registrar = event.registrar("1").optional();
     registrar
-        .configurationToClient(OreConfigurationPayload.TYPE, OreConfigurationPayload.STREAM_CODEC, ClientPayloadHandler::handle)
-        .configurationToServer(OreAckPayload.TYPE, OreAckPayload.STREAM_CODEC, ServerPayloadHandler::handle);
+        .configurationToClient(
+            OreConfigurationPayload.TYPE,
+            OreConfigurationPayload.STREAM_CODEC,
+            ClientPayloadHandler::handle)
+        .configurationToServer(
+            OreAckPayload.TYPE, OreAckPayload.STREAM_CODEC, ServerPayloadHandler::handle);
   }
 }

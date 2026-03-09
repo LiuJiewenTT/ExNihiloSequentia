@@ -1,8 +1,6 @@
 package novamachina.exnihilosequentia.data;
 
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import novamachina.exnihilosequentia.ExNihiloSequentia;
 import novamachina.exnihilosequentia.common.utility.ExNihiloConstants.Fluids;
 import novamachina.exnihilosequentia.common.utility.ExNihiloConstants.ModIds;
@@ -10,8 +8,6 @@ import novamachina.exnihilosequentia.common.utility.ExNihiloConstants.Tooltips;
 import novamachina.exnihilosequentia.world.item.EXNItems;
 import novamachina.exnihilosequentia.world.level.block.EXNBlocks;
 import novamachina.novacore.data.AbstractLangGenerator;
-import novamachina.novacore.world.item.ItemDefinition;
-import novamachina.novacore.world.level.block.BlockDefinition;
 
 public class EXNLangProvider extends AbstractLangGenerator {
 
@@ -120,7 +116,7 @@ public class EXNLangProvider extends AbstractLangGenerator {
     addConfigEntry("crookNetheriteValue", "Nether Crook");
     addConfigEntry("crookStoneValue", "Stone Crook");
     addConfigEntry("crookWoodValue", "Wooden Crook");
-    addConfigEntry("crookBambooValue",  "Bamboo Crook");
+    addConfigEntry("crookBambooValue", "Bamboo Crook");
 
     addConfigEntry("mesh", "Mesh Durability");
     addConfigEntry("meshStringValue", "String Mesh");
@@ -185,6 +181,18 @@ public class EXNLangProvider extends AbstractLangGenerator {
     addJEIEntry("wet_sifting", "Waterlogged Sifting");
     addJEIEntry("solidifying", "Solidifying");
     addJEIEntry("transition", "Transition");
+
+    // Additional JEI translations
+    add("jei.exnihilosequentia.compost", "Composting");
+    add("jei.exnihilosequentia.compost.amount", "Amount: %s");
+    add("jei.exnihilosequentia.crushing", "Crushing");
+    add("jei.exnihilosequentia.sifting", "Sifting");
+    add("jei.exnihilosequentia.waterlogged", "Waterlogged");
+    add("jei.exnihilosequentia.crucible_melting", "Crucible Melting");
+    add("jei.exnihilosequentia.crucible_heat", "Heat Sources");
+    add("jei.exnihilosequentia.heat.amount", "Heat: %s");
+    add("jei.exnihilosequentia.fluid_on_top", "Fluid Solidifying");
+    add("jei.exnihilosequentia.fluid_transform", "Fluid Transformation");
 
     add(
         ExNihiloSequentia.MOD_ID + ".open_beta_text",

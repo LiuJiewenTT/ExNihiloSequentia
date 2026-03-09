@@ -1,7 +1,6 @@
 package novamachina.exnihilosequentia.world.item;
 
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 
 public class OreItem extends Item {
 

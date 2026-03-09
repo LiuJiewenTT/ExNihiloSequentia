@@ -5,7 +5,6 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.ArrayList;
 import java.util.List;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
@@ -14,7 +13,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import novamachina.exnihilosequentia.world.item.MeshType;
-import novamachina.exnihilosequentia.world.level.block.EXNBlocks;
 import novamachina.novacore.world.item.crafting.AbstractRecipe;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
@@ -82,9 +80,7 @@ public class SiftingRecipe extends AbstractRecipe {
             instance ->
                 instance
                     .group(
-                        Ingredient.CODEC
-                            .fieldOf("input")
-                            .forGetter(recipe -> recipe.getInput()),
+                        Ingredient.CODEC.fieldOf("input").forGetter(recipe -> recipe.getInput()),
                         ItemStack.CODEC.fieldOf("result").forGetter(recipe -> recipe.getDrop()),
                         Codec.BOOL
                             .fieldOf("waterlogged")

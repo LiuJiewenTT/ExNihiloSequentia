@@ -12,14 +12,12 @@ import novamachina.novacore.world.item.ItemDefinition;
 public class CrookItem extends DiggerItem {
 
   public CrookItem(Tier tier, final int maxDamage) {
-    super(
-        tier,
-        ExNihiloTags.MINEABLE_WITH_CROOK,
-        new Item.Properties().durability(maxDamage));
+    super(tier, ExNihiloTags.MINEABLE_WITH_CROOK, new Item.Properties().durability(maxDamage));
   }
 
   // This is for 1.21.3+
-  // public CrookItem(ToolMaterial tier, final float baseDamage, final float attackSpeed, Item.Properties properties) {
+  // public CrookItem(ToolMaterial tier, final float baseDamage, final float attackSpeed,
+  // Item.Properties properties) {
   //   super(tier, ExNihiloTags.MINEABLE_WITH_CROOK, baseDamage, attackSpeed, properties);
   // }
 
@@ -36,8 +34,7 @@ public class CrookItem extends DiggerItem {
 
   @FunctionalInterface
   public interface CrookFunction {
-    CrookItem apply(
-        Tier tier, final int maxDamage);
+    CrookItem apply(Tier tier, final int maxDamage);
   }
 
   // This is added when upgrading to 1.21.3+

@@ -2,11 +2,8 @@ package novamachina.exnihilosequentia.data.recipes.packs;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.data.recipes.RecipeProvider;
 import novamachina.exnihilosequentia.data.recipes.providers.CompostRecipes;
 import novamachina.exnihilosequentia.data.recipes.providers.CraftingRecipes;
 import novamachina.exnihilosequentia.data.recipes.providers.CrushingRecipes;
@@ -21,7 +18,8 @@ import novamachina.novacore.data.recipes.AbstractRecipeProvider;
 import novamachina.novacore.data.recipes.ISubRecipeProvider;
 
 public class EXNRecipeProvider extends AbstractRecipeProvider {
-  public EXNRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+  public EXNRecipeProvider(
+      PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
     super(output, lookupProvider);
   }
 
@@ -52,7 +50,8 @@ public class EXNRecipeProvider extends AbstractRecipeProvider {
   //   }
   //
   //   @Override
-  //   protected RecipeProvider createRecipeProvider(HolderLookup.Provider lookupProvider, RecipeOutput output) {
+  //   protected RecipeProvider createRecipeProvider(HolderLookup.Provider lookupProvider,
+  // RecipeOutput output) {
   //     return new EXNRecipeProvider(lookupProvider, output);
   //   }
   //

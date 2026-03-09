@@ -37,8 +37,8 @@ public class UseCrookModifier extends LootModifier {
 
   private static Logger log = LoggerFactory.getLogger(UseCrookModifier.class);
 
-  public static final MapCodec<UseCrookModifier> CODEC = RecordCodecBuilder.mapCodec(
-                  inst -> codecStart(inst).apply(inst, UseCrookModifier::new));
+  public static final MapCodec<UseCrookModifier> CODEC =
+      RecordCodecBuilder.mapCodec(inst -> codecStart(inst).apply(inst, UseCrookModifier::new));
 
   @Nonnull private final Random random = new SecureRandom();
 

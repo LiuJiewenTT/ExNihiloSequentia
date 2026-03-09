@@ -13,8 +13,7 @@ public class EXNLootProvider extends LootProvider {
       CompletableFuture<HolderLookup.Provider> lookupProvider, PackOutput output) {
     super(
         output,
-        List.of(
-            new SubProviderEntry(EXNBlockLootTable::new, LootContextParamSets.BLOCK)),
+        List.of(new SubProviderEntry(EXNBlockLootTable::new, LootContextParamSets.BLOCK)),
         lookupProvider);
   }
 }

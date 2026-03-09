@@ -3,9 +3,7 @@ package novamachina.exnihilosequentia.data.recipes;
 import com.google.common.base.Preconditions;
 import java.util.Optional;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.Block;
 import novamachina.exnihilosequentia.world.item.crafting.EXNRecipeSerializers;
 import novamachina.exnihilosequentia.world.item.crafting.HeatRecipe;
@@ -36,15 +34,15 @@ public class HeatRecipeBuilder extends RecipeBuilder<HeatRecipe> {
 
   @Override
   protected HeatRecipe getRecipe(ResourceLocation id) {
-  // This is for 1.21.3+
-  // protected HeatRecipe getRecipe(ResourceKey<Recipe<?>> id) {
+    // This is for 1.21.3+
+    // protected HeatRecipe getRecipe(ResourceKey<Recipe<?>> id) {
     return new HeatRecipe(inputBlock, amount, properties);
   }
 
   @Override
   protected void validate(ResourceLocation id) {
-  // This is for 1.21.3+
-  // protected void validate(ResourceKey<Recipe<?>> id) {
+    // This is for 1.21.3+
+    // protected void validate(ResourceKey<Recipe<?>> id) {
     Preconditions.checkArgument(inputBlock != null, "Input cannot be null.");
     Preconditions.checkArgument(amount > 0, "Heat amount must be greater than 0.");
     Preconditions.checkNotNull(properties, "Properties cannot be null.");

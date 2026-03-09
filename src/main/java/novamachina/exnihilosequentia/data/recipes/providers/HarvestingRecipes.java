@@ -1,16 +1,11 @@
 package novamachina.exnihilosequentia.data.recipes.providers;
 
 import javax.annotation.Nonnull;
-
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Recipe;
 import novamachina.exnihilosequentia.ExNihiloSequentia;
 import novamachina.exnihilosequentia.data.recipes.HarvestRecipeBuilder;
 import novamachina.exnihilosequentia.data.recipes.RecipeProviderUtilities;
@@ -31,6 +26,7 @@ public class HarvestingRecipes implements ISubRecipeProvider {
         .addDrop(new ItemStack(Items.STRING), 0.5F)
         .build(consumer, harvestLoc("string"));
   }
+
   // This is for 1.21.3+
   // public void addRecipes(HolderGetter.Provider holderGetter, RecipeOutput consumer) {
   //   HarvestRecipeBuilder.harvest(holderGetter, ItemTags.LEAVES)

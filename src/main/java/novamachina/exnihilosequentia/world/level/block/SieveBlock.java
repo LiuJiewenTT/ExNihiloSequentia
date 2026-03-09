@@ -8,7 +8,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
@@ -21,7 +20,6 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
 // import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
@@ -248,7 +246,6 @@ public abstract class SieveBlock extends Block implements SimpleWaterloggedBlock
     }
   }
 
-
   @Override
   @Nonnull
   public BlockState updateShape(
@@ -315,8 +312,8 @@ public abstract class SieveBlock extends Block implements SimpleWaterloggedBlock
 
   @Override
   protected ItemInteractionResult useItemOn(
-  // This is for 1.21.3+
-  // protected InteractionResult useItemOn(
+      // This is for 1.21.3+
+      // protected InteractionResult useItemOn(
       ItemStack itemStack,
       BlockState blockState,
       Level level,
