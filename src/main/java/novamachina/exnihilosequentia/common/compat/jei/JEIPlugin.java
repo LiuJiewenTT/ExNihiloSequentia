@@ -18,6 +18,7 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
 import novamachina.exnihilosequentia.common.compat.jei.compost.CompostRecipeCategory;
 import novamachina.exnihilosequentia.common.compat.jei.crushing.CrushingRecipeCategory;
 import novamachina.exnihilosequentia.common.compat.jei.harvest.HarvestRecipeCategory;
@@ -100,6 +101,27 @@ public class JEIPlugin implements IModPlugin {
     registerCrucibles(registration);
     registerBarrels(registration);
     registerSieves(registration);
+    registerHeatCatalysts(registration);
+  }
+
+  // ...existing code...
+
+  private void registerHeatCatalysts(@Nonnull final IRecipeCatalystRegistration registration) {
+    // Register all heat blocks that have recipes
+    List<HeatRecipe> heatRecipes = ExNihiloRegistries.HEAT_REGISTRY.getRecipeList();
+    Set<Block> heatBlocks = new HashSet<>();
+
+    for (HeatRecipe recipe : heatRecipes) {
+      Block block = recipe.getInputBlock();
+      if (block != null && !heatBlocks.contains(block)) {
+        ItemStack catalyst = new ItemStack(block.asItem());
+        // Only register if the item is valid (not Air/empty)
+        if (!catalyst.isEmpty()) {
+          registration.addRecipeCatalyst(catalyst, RecipeTypes.HEAT);
+          heatBlocks.add(block);
+        }
+      }
+    }
   }
 
   private void registerHarvestCatalyst(@Nonnull final IRecipeCatalystRegistration registration) {
