@@ -9,4 +9,5 @@ runserver
 bin
 changelog.html
 changelog.md
+/keep_local/
 /src/generated
