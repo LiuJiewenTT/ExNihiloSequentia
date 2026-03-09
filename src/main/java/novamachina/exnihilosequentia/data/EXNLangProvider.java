@@ -164,12 +164,12 @@ public class EXNLangProvider extends AbstractLangGenerator {
     add(ModIds.EX_NIHILO_SEQUENTIA + ".subtitle.pebbleThrow", "Pebble flies");
     add("throwing.pebble", "Flying Pebble");
     add("stat." + ModIds.EX_NIHILO_SEQUENTIA + ".sieved", "Times Sieved");
-
+    // Jade
     addJadeEntry("barrel");
     addJadeEntry("crucible");
     addJadeEntry("sieve");
     addJadeEntry("infesting_leaves");
-
+    // JEI
     addJEIEntry("compost", "Composting");
     addJEIEntry("crushing", "Crushing");
     addJEIEntry("harvest", "Harvesting");
@@ -181,18 +181,6 @@ public class EXNLangProvider extends AbstractLangGenerator {
     addJEIEntry("wet_sifting", "Waterlogged Sifting");
     addJEIEntry("solidifying", "Solidifying");
     addJEIEntry("transition", "Transition");
-
-    // Additional JEI translations
-    add("jei.exnihilosequentia.compost", "Composting");
-    add("jei.exnihilosequentia.compost.amount", "Amount: %s");
-    add("jei.exnihilosequentia.crushing", "Crushing");
-    add("jei.exnihilosequentia.sifting", "Sifting");
-    add("jei.exnihilosequentia.waterlogged", "Waterlogged");
-    add("jei.exnihilosequentia.crucible_melting", "Crucible Melting");
-    add("jei.exnihilosequentia.crucible_heat", "Heat Sources");
-    add("jei.exnihilosequentia.heat.amount", "Heat: %s");
-    add("jei.exnihilosequentia.fluid_on_top", "Fluid Solidifying");
-    add("jei.exnihilosequentia.fluid_transform", "Fluid Transformation");
 
     add(
         ExNihiloSequentia.MOD_ID + ".open_beta_text",
