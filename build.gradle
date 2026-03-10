@@ -41,7 +41,11 @@ dependencies {
 
     // REI integration
     compileOnly "me.shedaniel:RoughlyEnoughItems-api-neoforge:${rei_version}"
-    runtimeOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
+    // runtimeOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
+
+    // The One Probe integration (Curse Maven)
+    compileOnly "curse.maven:the-one-probe-245211:${top_version}"
+    // runtimeOnly "curse.maven:the-one-probe-245211:${top_version}"
 }
 
 ext.publish()

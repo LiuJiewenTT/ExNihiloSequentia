@@ -6,8 +6,10 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.InterModEnqueueEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
@@ -15,6 +17,7 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import novamachina.exnihilosequentia.client.setup.ClientSetup;
 import novamachina.exnihilosequentia.common.Config;
+import novamachina.exnihilosequentia.common.compat.top.CompatTOP;
 import novamachina.exnihilosequentia.core.registries.InitBlockEntityTypes;
 import novamachina.exnihilosequentia.core.registries.InitBlocks;
 import novamachina.exnihilosequentia.core.registries.InitCreativeTabs;
@@ -57,6 +60,7 @@ public class ExNihiloSequentia {
     log.debug("Starting Ex Nihilo: Sequentia");
 
     modEventBus.addListener(ClientSetup::init);
+    modEventBus.addListener(ExNihiloSequentia::registerTOP);
 
     modEventBus.addListener(
         (RegisterEvent event) -> {
@@ -94,6 +98,13 @@ public class ExNihiloSequentia {
             InitLootModifiers.init(new NeoforgeLootModifierRegistry());
           }
         });
+  }
+
+  public static void registerTOP(InterModEnqueueEvent event) {
+    log.debug("The One Probe detected: {}", ModList.get().isLoaded("theoneprobe"));
+    if (ModList.get().isLoaded("theoneprobe")) {
+      CompatTOP.register();
+    }
   }
 
   public static ResourceLocation makeId(String id) {
