@@ -46,6 +46,10 @@ dependencies {
     // The One Probe integration (Curse Maven)
     compileOnly "curse.maven:the-one-probe-245211:${top_version}"
     // runtimeOnly "curse.maven:the-one-probe-245211:${top_version}"
+
+    // Jade integration (Curse Maven)
+    compileOnly "curse.maven:jade-324717:${jade_version}"
+    // runtimeOnly "curse.maven:jade-324717:${jade_version}"
 }
 
 ext.publish()
