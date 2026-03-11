@@ -10,6 +10,7 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotRichTooltipCallback;
 import mezz.jei.api.gui.ingredient.IRecipeSlotView;
 import mezz.jei.api.ingredients.ITypedIngredient;
 import mezz.jei.api.recipe.RecipeIngredientRole;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import novamachina.exnihilosequentia.common.registries.ExNihiloRegistries;
@@ -49,9 +50,11 @@ public class SieveTooltipCallback implements IRecipeSlotRichTooltipCallback {
           condensedTooltips.add(StringUtils.formatPercent(meshWithChance.getChance()));
         }
       }
-      tooltip.add(Component.translatable("jei.sieve.dropChance"));
+      tooltip.add(Component.translatable("jei.sieve.dropChance").withStyle(ChatFormatting.GRAY));
       for (@Nonnull final String line : condensedTooltips.elementSet()) {
-        tooltip.add(Component.literal(" * " + condensedTooltips.count(line) + "x " + line));
+        tooltip.add(
+            Component.literal(" * " + condensedTooltips.count(line) + "x " + line)
+                .withStyle(ChatFormatting.GRAY));
       }
     }
   }

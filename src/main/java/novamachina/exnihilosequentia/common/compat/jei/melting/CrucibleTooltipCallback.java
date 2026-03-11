@@ -6,6 +6,7 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotRichTooltipCallback;
 import mezz.jei.api.gui.ingredient.IRecipeSlotView;
 import mezz.jei.api.ingredients.ITypedIngredient;
 import mezz.jei.api.recipe.RecipeIngredientRole;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import novamachina.exnihilosequentia.common.registries.ExNihiloRegistries;
 
@@ -24,8 +25,9 @@ public class CrucibleTooltipCallback implements IRecipeSlotRichTooltipCallback {
               recipe ->
                   tooltip.add(
                       Component.literal(
-                          String.format(
-                              "Fluid Amount: %d mb", recipe.getResultFluid().getAmount()))));
+                              String.format(
+                                  "Fluid Amount: %d mb", recipe.getResultFluid().getAmount()))
+                          .withStyle(ChatFormatting.GRAY)));
     }
   }
 }

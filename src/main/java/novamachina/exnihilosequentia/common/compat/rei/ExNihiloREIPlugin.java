@@ -1,9 +1,10 @@
 package novamachina.exnihilosequentia.common.compat.rei;
 
+import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Multiset;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -37,8 +38,8 @@ import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.fluids.FluidStack;
 import novamachina.exnihilosequentia.ExNihiloSequentia;
+import novamachina.exnihilosequentia.common.Config;
 import novamachina.exnihilosequentia.common.compat.jei.melting.JEICrucibleRecipe;
-import novamachina.exnihilosequentia.common.compat.jei.sifting.JEISieveRecipe;
 import novamachina.exnihilosequentia.common.registries.ExNihiloRegistries;
 import novamachina.exnihilosequentia.world.item.CrookItem;
 import novamachina.exnihilosequentia.world.item.EXNItems;
@@ -58,6 +59,7 @@ import novamachina.exnihilosequentia.world.level.block.CrucibleBlock;
 import novamachina.exnihilosequentia.world.level.block.EXNBlocks;
 import novamachina.exnihilosequentia.world.level.block.SieveBlock;
 import novamachina.novacore.util.IngredientUtils;
+import novamachina.novacore.util.StringUtils;
 import novamachina.novacore.world.item.ItemDefinition;
 import novamachina.novacore.world.level.block.BlockDefinition;
 
@@ -128,10 +130,14 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
       ItemStack[] inputArray = recipe.getInput().getItems();
       List<EntryIngredient> inputs = new ArrayList<>();
       if (inputArray.length > 21) {
-        inputs.add(EntryIngredients.ofItemStacks(Arrays.asList(inputArray)));
+        EntryIngredient ingredient = EntryIngredients.ofItemStacks(Arrays.asList(inputArray));
+        ingredient.forEach(this::applyCompostTooltip);
+        inputs.add(ingredient);
       } else {
         for (ItemStack stack : inputArray) {
-          inputs.add(EntryIngredients.of(stack));
+          EntryIngredient ingredient = EntryIngredients.of(stack);
+          ingredient.forEach(this::applyCompostTooltip);
+          inputs.add(ingredient);
         }
       }
       registry.add(
@@ -143,7 +149,25 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
   private void registerCrushing(DisplayRegistry registry) {
     for (CrushingRecipe recipe : ExNihiloRegistries.HAMMER_REGISTRY.getRecipeList()) {
       List<EntryIngredient> outputs =
-          recipe.getOutputsWithoutChance().stream().map(EntryIngredients::of).toList();
+          recipe.getDrops().stream()
+              .map(
+                  drop -> {
+                    EntryIngredient output = EntryIngredients.of(drop.getStack());
+                    List<Component> tooltipLines =
+                        recipe.getDrops().stream()
+                            .filter(
+                                candidate ->
+                                    ItemStack.isSameItem(candidate.getStack(), drop.getStack()))
+                            .map(
+                                candidate ->
+                                    (Component)
+                                        Component.literal(
+                                            StringUtils.formatPercent(candidate.getChance())))
+                            .toList();
+                    output.forEach(stack -> applyTooltip(stack, tooltipLines));
+                    return output;
+                  })
+              .toList();
       registry.add(
           new ExNihiloDisplay(CRUSHING, List.of(entryFromIngredient(recipe.getInput())), outputs));
     }
@@ -152,7 +176,25 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
   private void registerHarvest(DisplayRegistry registry) {
     for (HarvestRecipe recipe : ExNihiloRegistries.CROOK_REGISTRY.getRecipeList()) {
       List<EntryIngredient> outputs =
-          recipe.getOutputsWithoutChance().stream().map(EntryIngredients::of).toList();
+          recipe.getDrops().stream()
+              .map(
+                  drop -> {
+                    EntryIngredient output = EntryIngredients.of(drop.getStack());
+                    List<Component> tooltipLines =
+                        recipe.getDrops().stream()
+                            .filter(
+                                candidate ->
+                                    ItemStack.isSameItem(candidate.getStack(), drop.getStack()))
+                            .map(
+                                candidate ->
+                                    (Component)
+                                        Component.literal(
+                                            StringUtils.formatPercent(candidate.getChance())))
+                            .toList();
+                    output.forEach(stack -> applyTooltip(stack, tooltipLines));
+                    return output;
+                  })
+              .toList();
       registry.add(
           new ExNihiloDisplay(HARVEST, List.of(entryFromIngredient(recipe.getInput())), outputs));
     }
@@ -193,11 +235,11 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
   }
 
   private void registerDrySifting(DisplayRegistry registry) {
-    getSiftingRecipes(false).forEach(recipe -> registry.add(toSiftingDisplay(DRY_SIFTING, recipe)));
+    buildSiftingDisplays(false).forEach(registry::add);
   }
 
   private void registerWetSifting(DisplayRegistry registry) {
-    getSiftingRecipes(true).forEach(recipe -> registry.add(toSiftingDisplay(WET_SIFTING, recipe)));
+    buildSiftingDisplays(true).forEach(registry::add);
   }
 
   private void registerTransition(DisplayRegistry registry) {
@@ -235,7 +277,6 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
   private void registerHeatCatalysts(CategoryRegistry registry) {
     List<HeatRecipe> heatRecipes = ExNihiloRegistries.HEAT_REGISTRY.getRecipeList();
     Set<Block> heatBlocks = new HashSet<>();
-
     for (HeatRecipe recipe : heatRecipes) {
       Block block = recipe.getInputBlock();
       if (block != null && !heatBlocks.contains(block)) {
@@ -303,7 +344,6 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
             EXNItems.HAMMER_TERRACOTTA,
             EXNItems.HAMMER_TUFF,
             EXNItems.HAMMER_WOOD);
-
     for (ItemDefinition<HammerItem> hammer : hammers) {
       registry.addWorkstations(CRUSHING, EntryStacks.of(hammer.itemStack()));
     }
@@ -382,7 +422,8 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
     }
   }
 
-  private List<JEISieveRecipe> getSiftingRecipes(final boolean isWaterLogged) {
+  private List<ExNihiloDisplay> buildSiftingDisplays(final boolean isWaterLogged) {
+    CategoryIdentifier<ExNihiloDisplay> category = isWaterLogged ? WET_SIFTING : DRY_SIFTING;
     final Set<Ingredient> ingredients = new HashSet<>();
     ExNihiloRegistries.SIEVE_REGISTRY
         .getRecipeList()
@@ -411,13 +452,55 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
                         if (drops.isEmpty()) {
                           return Stream.empty();
                         }
-                        final List<List<ItemStack>> input =
-                            new ArrayList<>(
-                                Arrays.asList(
-                                    Collections.singletonList(mesh),
-                                    Arrays.asList(ingredient.getItems())));
                         return Lists.partition(drops, 21).stream()
-                            .map(results -> new JEISieveRecipe(input, results));
+                            .map(
+                                partition -> {
+                                  List<EntryIngredient> outputs =
+                                      partition.stream()
+                                          .map(
+                                              siftingRecipe -> {
+                                                EntryIngredient output =
+                                                    EntryIngredients.of(siftingRecipe.getDrop());
+                                                Multiset<String> condensedTooltips =
+                                                    HashMultiset.create();
+                                                for (SiftingRecipe dropEntry : drops) {
+                                                  if (!ItemStack.isSameItem(
+                                                      dropEntry.getDrop(),
+                                                      siftingRecipe.getDrop())) {
+                                                    continue;
+                                                  }
+                                                  dropEntry
+                                                      .getRolls()
+                                                      .forEach(
+                                                          meshWithChance ->
+                                                              condensedTooltips.add(
+                                                                  StringUtils.formatPercent(
+                                                                      meshWithChance.getChance())));
+                                                }
+                                                List<Component> tooltipLines = new ArrayList<>();
+                                                tooltipLines.add(
+                                                    Component.translatable("jei.sieve.dropChance"));
+                                                for (String line : condensedTooltips.elementSet()) {
+                                                  tooltipLines.add(
+                                                      Component.literal(
+                                                          " * "
+                                                              + condensedTooltips.count(line)
+                                                              + "x "
+                                                              + line));
+                                                }
+                                                output.forEach(
+                                                    stack -> applyTooltip(stack, tooltipLines));
+                                                return output;
+                                              })
+                                          .toList();
+                                  return new ExNihiloDisplay(
+                                      category,
+                                      List.of(
+                                          EntryIngredients.of(mesh),
+                                          EntryIngredients.ofItemStacks(
+                                              Arrays.asList(ingredient.getItems()))),
+                                      outputs);
+                                });
                       });
             })
         .toList();
@@ -455,20 +538,37 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
     if (fluid.getAmount() != 1000) {
       fluid.setAmount(1000);
     }
-
-    List<EntryIngredient> inputs = recipe.getInputs().stream().map(EntryIngredients::of).toList();
-    return new ExNihiloDisplay(category, inputs, List.of(entryFromFluid(fluid)));
+    List<Component> inputTooltip =
+        List.of(
+            Component.literal(
+                String.format("Fluid Amount: %d mb", recipe.getResultFluid().getAmount())));
+    List<EntryIngredient> inputs =
+        recipe.getInputs().stream()
+            .map(EntryIngredients::of)
+            .peek(ingredient -> ingredient.forEach(stack -> applyTooltip(stack, inputTooltip)))
+            .toList();
+    EntryIngredient output = EntryIngredients.of(fluid.getFluid());
+    return new ExNihiloDisplay(category, inputs, List.of(output));
   }
 
-  private static ExNihiloDisplay toSiftingDisplay(
-      CategoryIdentifier<ExNihiloDisplay> category, JEISieveRecipe recipe) {
-    List<EntryIngredient> outputs = recipe.getResults().stream().map(EntryIngredients::of).toList();
-    return new ExNihiloDisplay(
-        category,
+  private void applyCompostTooltip(EntryStack<?> stack) {
+    if (!(stack.getValue() instanceof ItemStack itemStack)) {
+      return;
+    }
+    int solidAmount = ExNihiloRegistries.COMPOST_REGISTRY.getSolidAmount(itemStack.getItem());
+    applyTooltip(
+        stack,
         List.of(
-            EntryIngredients.of(recipe.getMesh()),
-            EntryIngredients.ofItemStacks(recipe.getSieveables())),
-        outputs);
+            Component.literal(
+                String.format("Amount: %d / %d", solidAmount, Config.getBarrelMaxSolidAmount()))));
+  }
+
+  private static <T> void applyTooltip(EntryStack<T> stack, List<Component> extraLines) {
+    stack.tooltip(
+        entryStack ->
+            extraLines.stream()
+                .map(line -> (Component) line.copy().withStyle(ChatFormatting.GRAY))
+                .toList());
   }
 
   private static EntryIngredient entryFromIngredient(Ingredient ingredient) {
@@ -489,16 +589,13 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
     if (input == null) {
       return ItemStack.EMPTY;
     }
-
     if (input == Blocks.FIRE || input == Blocks.SOUL_FIRE) {
       return new ItemStack(Items.FLINT_AND_STEEL);
     }
-
     if (input instanceof LiquidBlock liquidBlock) {
       Fluid fluid = liquidBlock.defaultBlockState().getFluidState().getType();
       return new ItemStack(fluid.getBucket());
     }
-
     return new ItemStack(input.asItem());
   }
 
@@ -543,11 +640,9 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
   }
 
   private abstract static class BaseCategory implements DisplayCategory<ExNihiloDisplay> {
-
     private final CategoryIdentifier<ExNihiloDisplay> id;
     private final String titleKey;
     private final EntryStack<?> icon;
-    private final int width;
     private final int height;
 
     protected BaseCategory(
@@ -559,7 +654,6 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
       this.id = id;
       this.titleKey = titleKey;
       this.icon = icon;
-      this.width = width;
       this.height = height;
     }
 
@@ -604,7 +698,6 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
   }
 
   private static final class CompostCategory extends BaseCategory {
-
     private CompostCategory() {
       super(COMPOST, "jei.category.compost", EntryStacks.of(Items.DIRT), 166, 58);
     }
@@ -613,12 +706,10 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
     public List<Widget> setupDisplay(ExNihiloDisplay display, Rectangle bounds) {
       List<Widget> widgets = new ArrayList<>();
       addBackground(widgets, bounds, JEI_MID, 0, 168, 166, 58, 256, 256);
-
       widgets.add(
           Widgets.createSlot(at(bounds, 3, 21))
               .entries(display.getOutputEntries().getFirst())
               .markOutput());
-
       List<EntryIngredient> inputs = display.getInputEntries();
       if (inputs.size() == 1) {
         widgets.add(Widgets.createSlot(at(bounds, 39, 3)).entries(inputs.getFirst()).markInput());
@@ -635,7 +726,6 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
   }
 
   private static final class CrushingCategory extends BaseCategory {
-
     private CrushingCategory() {
       super(
           CRUSHING,
@@ -653,7 +743,6 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
           Widgets.createSlot(at(bounds, 11, 39))
               .entries(display.getInputEntries().getFirst())
               .markInput());
-
       for (int i = 0; i < display.getOutputEntries().size(); i++) {
         int slotX = 39 + (i % 7 * 18);
         int slotY = 3 + i / 7 * 18;
@@ -667,7 +756,6 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
   }
 
   private static final class HarvestCategory extends BaseCategory {
-
     private HarvestCategory() {
       super(
           HARVEST,
@@ -685,7 +773,6 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
           Widgets.createSlot(at(bounds, 11, 39))
               .entries(display.getInputEntries().getFirst())
               .markInput());
-
       for (int i = 0; i < display.getOutputEntries().size(); i++) {
         int slotX = 39 + (i % 7 * 18);
         int slotY = 3 + i / 7 * 18;
@@ -699,7 +786,6 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
   }
 
   private static final class HeatCategory extends BaseCategory {
-
     private HeatCategory() {
       super(HEAT, "jei.category.heat", EntryStacks.of(Items.BLAZE_POWDER), 166, 58);
     }
@@ -707,28 +793,23 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
     @Override
     public List<Widget> setupDisplay(ExNihiloDisplay display, Rectangle bounds) {
       List<Widget> widgets = new ArrayList<>();
-
       int contentHeight = (9 * 2) + 2 + 3 + 18;
       int contentTop = bounds.y + ((bounds.height - contentHeight) / 2);
-      int lineOneY = contentTop;
-      int lineTwoY = lineOneY + 11;
+      int lineTwoY = contentTop + 11;
       int slotX = bounds.x + ((bounds.width - 18) / 2);
       int slotY = contentTop + 23;
       int centerX = bounds.x + (bounds.width / 2);
-
       widgets.add(
           Widgets.createTexturedWidget(JEI_SINGLE_SLOT, slotX, slotY, 0, 0, 18, 18, 18, 18));
-
       if (display.heatName != null) {
         Component name = Component.literal(display.heatName).withStyle(ChatFormatting.DARK_GRAY);
-        widgets.add(Widgets.createLabel(new Point(centerX, lineOneY), name).centered());
+        widgets.add(Widgets.createLabel(new Point(centerX, contentTop), name).centered());
       }
       if (display.heatMultiplier != null) {
         Component multiplier =
             Component.literal(display.heatMultiplier).withStyle(ChatFormatting.WHITE);
         widgets.add(Widgets.createLabel(new Point(centerX, lineTwoY), multiplier).centered());
       }
-
       widgets.add(
           Widgets.createSlot(new Point(slotX + 1, slotY + 1))
               .entries(display.getInputEntries().getFirst())
@@ -738,7 +819,6 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
   }
 
   private static final class MeltingCategory extends BaseCategory {
-
     private MeltingCategory(CategoryIdentifier<ExNihiloDisplay> id, String titleKey) {
       super(id, titleKey, EntryStacks.of(EXNBlocks.OAK_CRUCIBLE.asItem()), 166, 58);
     }
@@ -747,12 +827,10 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
     public List<Widget> setupDisplay(ExNihiloDisplay display, Rectangle bounds) {
       List<Widget> widgets = new ArrayList<>();
       addBackground(widgets, bounds, JEI_MID, 0, 168, 166, 58, 256, 256);
-
       widgets.add(
           Widgets.createSlot(at(bounds, 3, 21))
               .entries(display.getOutputEntries().getFirst())
               .markOutput());
-
       for (int i = 0; i < display.getInputEntries().size(); i++) {
         int slotX = 39 + (i % 7 * 18);
         int slotY = 3 + i / 7 * 18;
@@ -761,13 +839,11 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
                 .entries(display.getInputEntries().get(i))
                 .markInput());
       }
-
       return widgets;
     }
   }
 
   private static final class SiftingCategory extends BaseCategory {
-
     private SiftingCategory(CategoryIdentifier<ExNihiloDisplay> id, boolean wet) {
       super(
           id,
@@ -781,7 +857,6 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
     public List<Widget> setupDisplay(ExNihiloDisplay display, Rectangle bounds) {
       List<Widget> widgets = new ArrayList<>();
       addBackground(widgets, bounds, JEI_MID, 0, 0, 166, 58, 256, 256);
-
       widgets.add(
           Widgets.createSlot(at(bounds, 11, 39))
               .entries(display.getInputEntries().get(0))
@@ -790,7 +865,6 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
           Widgets.createSlot(at(bounds, 11, 3))
               .entries(display.getInputEntries().get(1))
               .markInput());
-
       for (int i = 0; i < display.getOutputEntries().size(); i++) {
         int slotX = 39 + (i % 7 * 18);
         int slotY = 3 + i / 7 * 18;
@@ -799,13 +873,11 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
                 .entries(display.getOutputEntries().get(i))
                 .markOutput());
       }
-
       return widgets;
     }
   }
 
   private static final class PrecipitateCategory extends BaseCategory {
-
     private PrecipitateCategory() {
       super(
           PRECIPITATE,
@@ -819,7 +891,6 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
     public List<Widget> setupDisplay(ExNihiloDisplay display, Rectangle bounds) {
       List<Widget> widgets = new ArrayList<>();
       addBackground(widgets, bounds, JEI_FLUID_BLOCK_TRANSFORM, 0, 0, 166, 63, 256, 256);
-
       widgets.add(
           Widgets.createSlot(at(bounds, 48, 37))
               .entries(display.getInputEntries().get(0))
@@ -837,7 +908,6 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
   }
 
   private static final class SolidifyingCategory extends BaseCategory {
-
     private SolidifyingCategory() {
       super(
           SOLIDIFYING,
@@ -851,7 +921,6 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
     public List<Widget> setupDisplay(ExNihiloDisplay display, Rectangle bounds) {
       List<Widget> widgets = new ArrayList<>();
       addBackground(widgets, bounds, JEI_FLUID_ON_TOP, 0, 0, 166, 63, 256, 256);
-
       widgets.add(
           Widgets.createSlot(at(bounds, 48, 37))
               .entries(display.getInputEntries().get(0))
@@ -869,7 +938,6 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
   }
 
   private static final class TransitionCategory extends BaseCategory {
-
     private TransitionCategory() {
       super(
           TRANSITION,

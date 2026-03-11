@@ -37,7 +37,7 @@ dependencies {
 
     // JEI integration
     compileOnly "mezz.jei:jei-1.21.1-neoforge-api:${jei_version}"
-    // runtimeOnly "mezz.jei:jei-1.21.1-neoforge:${jei_version}"
+    runtimeOnly "mezz.jei:jei-1.21.1-neoforge:${jei_version}"
 
     // REI integration
     compileOnly "me.shedaniel:RoughlyEnoughItems-api-neoforge:${rei_version}"

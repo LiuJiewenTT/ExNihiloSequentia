@@ -6,6 +6,7 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotRichTooltipCallback;
 import mezz.jei.api.gui.ingredient.IRecipeSlotView;
 import mezz.jei.api.ingredients.ITypedIngredient;
 import mezz.jei.api.recipe.RecipeIngredientRole;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import novamachina.exnihilosequentia.common.Config;
@@ -22,7 +23,8 @@ public class CompostTooltipCallback implements IRecipeSlotRichTooltipCallback {
 
       tooltip.add(
           Component.literal(
-              String.format("Amount: %d / %d", solidAmount, Config.getBarrelMaxSolidAmount())));
+                  String.format("Amount: %d / %d", solidAmount, Config.getBarrelMaxSolidAmount()))
+              .withStyle(ChatFormatting.GRAY));
     }
   }
 }

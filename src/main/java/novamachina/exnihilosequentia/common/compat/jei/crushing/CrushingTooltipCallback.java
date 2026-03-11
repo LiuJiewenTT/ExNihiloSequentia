@@ -7,6 +7,7 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotRichTooltipCallback;
 import mezz.jei.api.gui.ingredient.IRecipeSlotView;
 import mezz.jei.api.ingredients.ITypedIngredient;
 import mezz.jei.api.recipe.RecipeIngredientRole;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import novamachina.exnihilosequentia.world.item.crafting.CrushingRecipe;
@@ -34,9 +35,8 @@ public class CrushingTooltipCallback implements IRecipeSlotRichTooltipCallback {
                   .forEach(
                       stack ->
                           tooltip.add(
-                              Component.literal(
-                                  String.format(
-                                      "%s", StringUtils.formatPercent(stack.getChance()))))));
+                              Component.literal(StringUtils.formatPercent(stack.getChance()))
+                                  .withStyle(ChatFormatting.GRAY))));
     }
   }
 }

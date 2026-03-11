@@ -8,6 +8,7 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotRichTooltipCallback;
 import mezz.jei.api.gui.ingredient.IRecipeSlotView;
 import mezz.jei.api.ingredients.ITypedIngredient;
 import mezz.jei.api.recipe.RecipeIngredientRole;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import novamachina.exnihilosequentia.world.item.crafting.HarvestRecipe;
@@ -40,7 +41,8 @@ public class HarvestTooltipCallback implements IRecipeSlotRichTooltipCallback {
               stack ->
                   tooltip.add(
                       Component.literal(
-                          String.format("%s", StringUtils.formatPercent(stack.getChance())))));
+                              String.format("%s", StringUtils.formatPercent(stack.getChance())))
+                          .withStyle(ChatFormatting.GRAY)));
     }
   }
 }
