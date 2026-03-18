@@ -27,8 +27,11 @@ import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import me.shedaniel.rei.forge.REIPluginClient;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -41,9 +44,7 @@ import novamachina.exnihilosequentia.ExNihiloSequentia;
 import novamachina.exnihilosequentia.common.Config;
 import novamachina.exnihilosequentia.common.compat.jei.melting.JEICrucibleRecipe;
 import novamachina.exnihilosequentia.common.registries.ExNihiloRegistries;
-import novamachina.exnihilosequentia.world.item.CrookItem;
 import novamachina.exnihilosequentia.world.item.EXNItems;
-import novamachina.exnihilosequentia.world.item.HammerItem;
 import novamachina.exnihilosequentia.world.item.MeshItem;
 import novamachina.exnihilosequentia.world.item.MeshType;
 import novamachina.exnihilosequentia.world.item.crafting.CompostRecipe;
@@ -54,14 +55,9 @@ import novamachina.exnihilosequentia.world.item.crafting.PrecipitateRecipe;
 import novamachina.exnihilosequentia.world.item.crafting.SiftingRecipe;
 import novamachina.exnihilosequentia.world.item.crafting.SolidifyingRecipe;
 import novamachina.exnihilosequentia.world.item.crafting.TransitionRecipe;
-import novamachina.exnihilosequentia.world.level.block.BarrelBlock;
-import novamachina.exnihilosequentia.world.level.block.CrucibleBlock;
 import novamachina.exnihilosequentia.world.level.block.EXNBlocks;
-import novamachina.exnihilosequentia.world.level.block.SieveBlock;
 import novamachina.novacore.util.IngredientUtils;
 import novamachina.novacore.util.StringUtils;
-import novamachina.novacore.world.item.ItemDefinition;
-import novamachina.novacore.world.level.block.BlockDefinition;
 
 @REIPluginClient
 public class ExNihiloREIPlugin implements REIClientPlugin {
@@ -290,136 +286,128 @@ public class ExNihiloREIPlugin implements REIClientPlugin {
   }
 
   private void registerHarvestCatalyst(CategoryRegistry registry) {
-    Set<ItemDefinition<CrookItem>> crooks =
-        Set.of(
-            EXNItems.CROOK_ANDESITE,
-            EXNItems.CROOK_BAMBOO,
-            EXNItems.CROOK_BASALT,
-            EXNItems.CROOK_BLACKSTONE,
-            EXNItems.CROOK_BONE,
-            EXNItems.CROOK_CALCITE,
-            EXNItems.CROOK_CHERRY,
-            EXNItems.CROOK_COPPER,
-            EXNItems.CROOK_DEEPSLATE,
-            EXNItems.CROOK_DIAMOND,
-            EXNItems.CROOK_DIORITE,
-            EXNItems.CROOK_DRIPSTONE,
-            EXNItems.CROOK_GOLD,
-            EXNItems.CROOK_GRANITE,
-            EXNItems.CROOK_IRON,
-            EXNItems.CROOK_NETHER_BRICK,
-            EXNItems.CROOK_NETHERITE,
-            EXNItems.CROOK_RED_NETHER_BRICK,
-            EXNItems.CROOK_STONE,
-            EXNItems.CROOK_TERRACOTTA,
-            EXNItems.CROOK_TUFF,
-            EXNItems.CROOK_WOOD);
-    for (ItemDefinition<CrookItem> crook : crooks) {
-      registry.addWorkstations(HARVEST, EntryStacks.of(crook.itemStack()));
-    }
+    TagKey<Item> crookTag =
+        TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(ExNihiloSequentia.MOD_ID, "crook"));
+
+    // Get all items in the crook tag
+    BuiltInRegistries.ITEM
+        .getTag(crookTag)
+        .ifPresent(
+            tag ->
+                tag.stream()
+                    .forEach(
+                        holder -> {
+                          ItemStack catalyst = new ItemStack(holder.value());
+                          if (!catalyst.isEmpty()) {
+                            registry.addWorkstations(HARVEST, EntryStacks.of(catalyst));
+                          }
+                        }));
   }
 
   private void registerCrushingCatalyst(CategoryRegistry registry) {
-    Set<ItemDefinition<HammerItem>> hammers =
-        Set.of(
-            EXNItems.HAMMER_ANDESITE,
-            EXNItems.HAMMER_BAMBOO,
-            EXNItems.HAMMER_BASALT,
-            EXNItems.HAMMER_BLACKSTONE,
-            EXNItems.HAMMER_BONE,
-            EXNItems.HAMMER_CALCITE,
-            EXNItems.HAMMER_CHERRY,
-            EXNItems.HAMMER_COPPER,
-            EXNItems.HAMMER_DEEPSLATE,
-            EXNItems.HAMMER_DIAMOND,
-            EXNItems.HAMMER_DIORITE,
-            EXNItems.HAMMER_DRIPSTONE,
-            EXNItems.HAMMER_GOLD,
-            EXNItems.HAMMER_GRANITE,
-            EXNItems.HAMMER_IRON,
-            EXNItems.HAMMER_NETHER_BRICK,
-            EXNItems.HAMMER_NETHERITE,
-            EXNItems.HAMMER_RED_NETHER_BRICK,
-            EXNItems.HAMMER_STONE,
-            EXNItems.HAMMER_TERRACOTTA,
-            EXNItems.HAMMER_TUFF,
-            EXNItems.HAMMER_WOOD);
-    for (ItemDefinition<HammerItem> hammer : hammers) {
-      registry.addWorkstations(CRUSHING, EntryStacks.of(hammer.itemStack()));
-    }
+    TagKey<Item> hammerTag =
+        TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(ExNihiloSequentia.MOD_ID, "hammer"));
+
+    // Get all items in the hammer tag
+    BuiltInRegistries.ITEM
+        .getTag(hammerTag)
+        .ifPresent(
+            tag ->
+                tag.stream()
+                    .forEach(
+                        holder -> {
+                          ItemStack catalyst = new ItemStack(holder.value());
+                          if (!catalyst.isEmpty()) {
+                            registry.addWorkstations(CRUSHING, EntryStacks.of(catalyst));
+                          }
+                        }));
   }
 
   private void registerCrucibles(CategoryRegistry registry) {
-    List<BlockDefinition<CrucibleBlock>> nonFiredCrucibles =
-        List.of(
-            EXNBlocks.ACACIA_CRUCIBLE,
-            EXNBlocks.BAMBOO_CRUCIBLE,
-            EXNBlocks.BIRCH_CRUCIBLE,
-            EXNBlocks.CHERRY_CRUCIBLE,
-            EXNBlocks.DARK_OAK_CRUCIBLE,
-            EXNBlocks.JUNGLE_CRUCIBLE,
-            EXNBlocks.MANGROVE_CRUCIBLE,
-            EXNBlocks.OAK_CRUCIBLE,
-            EXNBlocks.SPRUCE_CRUCIBLE);
-    for (BlockDefinition<CrucibleBlock> blockDefinition : nonFiredCrucibles) {
-      EntryStack<?> stack = EntryStacks.of(blockDefinition.itemStack());
-      registry.addWorkstations(MELTING, stack);
-      registry.addWorkstations(HEAT, stack);
-    }
+    TagKey<Item> cruciblesTag =
+        TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(ExNihiloSequentia.MOD_ID, "crucibles"));
 
-    List<BlockDefinition<CrucibleBlock>> firedCrucibles =
-        List.of(EXNBlocks.FIRED_CRUCIBLE, EXNBlocks.CRIMSON_CRUCIBLE, EXNBlocks.WARPED_CRUCIBLE);
-    for (BlockDefinition<CrucibleBlock> blockDefinition : firedCrucibles) {
-      EntryStack<?> stack = EntryStacks.of(blockDefinition.itemStack());
-      registry.addWorkstations(FIRED_MELTING, stack);
-      registry.addWorkstations(MELTING, stack);
-      registry.addWorkstations(HEAT, stack);
-    }
+    // Get all items in crucibles tag
+    BuiltInRegistries.ITEM
+        .getTag(cruciblesTag)
+        .ifPresent(
+            tag ->
+                tag.stream()
+                    .forEach(
+                        holder -> {
+                          ItemStack catalyst = new ItemStack(holder.value());
+                          if (!catalyst.isEmpty()) {
+                            EntryStack<?> stack = EntryStacks.of(catalyst);
+                            // Check if it's a fired crucible (stone/crimson/warped)
+                            String itemName =
+                                BuiltInRegistries.ITEM.getKey(holder.value()).toString();
+                            if (itemName.contains("fired")
+                                || itemName.contains("crimson")
+                                || itemName.contains("warped")) {
+                              registry.addWorkstations(FIRED_MELTING, stack);
+                              registry.addWorkstations(MELTING, stack);
+                              registry.addWorkstations(HEAT, stack);
+                            } else {
+                              // Wood crucibles
+                              registry.addWorkstations(MELTING, stack);
+                              registry.addWorkstations(HEAT, stack);
+                            }
+                          }
+                        }));
   }
 
   private void registerBarrels(CategoryRegistry registry) {
-    List<BlockDefinition<BarrelBlock>> barrels =
-        List.of(
-            EXNBlocks.ACACIA_BARREL,
-            EXNBlocks.BAMBOO_BARREL,
-            EXNBlocks.BIRCH_BARREL,
-            EXNBlocks.CHERRY_BARREL,
-            EXNBlocks.DARK_OAK_BARREL,
-            EXNBlocks.JUNGLE_BARREL,
-            EXNBlocks.MANGROVE_BARREL,
-            EXNBlocks.OAK_BARREL,
-            EXNBlocks.SPRUCE_BARREL,
-            EXNBlocks.STONE_BARREL,
-            EXNBlocks.CRIMSON_BARREL,
-            EXNBlocks.WARPED_BARREL);
-    for (BlockDefinition<BarrelBlock> blockDefinition : barrels) {
-      EntryStack<?> stack = EntryStacks.of(blockDefinition.itemStack());
-      registry.addWorkstations(SOLIDIFYING, stack);
-      registry.addWorkstations(TRANSITION, stack);
-      registry.addWorkstations(PRECIPITATE, stack);
-      registry.addWorkstations(COMPOST, stack);
-    }
+    TagKey<Item> barrelsTag =
+        TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(ExNihiloSequentia.MOD_ID, "barrels"));
+
+    // Get all items in the barrels tag
+    BuiltInRegistries.ITEM
+        .getTag(barrelsTag)
+        .ifPresent(
+            tag ->
+                tag.stream()
+                    .forEach(
+                        holder -> {
+                          ItemStack catalyst = new ItemStack(holder.value());
+                          if (!catalyst.isEmpty()) {
+                            EntryStack<?> stack = EntryStacks.of(catalyst);
+                            registry.addWorkstations(SOLIDIFYING, stack);
+                            registry.addWorkstations(TRANSITION, stack);
+                            registry.addWorkstations(PRECIPITATE, stack);
+                            registry.addWorkstations(COMPOST, stack);
+                          }
+                        }));
   }
 
   private void registerSieves(CategoryRegistry registry) {
-    List<BlockDefinition<SieveBlock>> sieves =
-        List.of(
-            EXNBlocks.ACACIA_SIEVE,
-            EXNBlocks.BAMBOO_SIEVE,
-            EXNBlocks.BIRCH_SIEVE,
-            EXNBlocks.CHERRY_SIEVE,
-            EXNBlocks.DARK_OAK_SIEVE,
-            EXNBlocks.JUNGLE_SIEVE,
-            EXNBlocks.MANGROVE_SIEVE,
-            EXNBlocks.OAK_SIEVE,
-            EXNBlocks.SPRUCE_SIEVE,
-            EXNBlocks.CRIMSON_SIEVE,
-            EXNBlocks.WARPED_SIEVE);
-    for (BlockDefinition<SieveBlock> blockDefinition : sieves) {
-      EntryStack<?> stack = EntryStacks.of(blockDefinition.itemStack());
-      registry.addWorkstations(DRY_SIFTING, stack);
-      registry.addWorkstations(WET_SIFTING, stack);
-    }
+    TagKey<Item> sievesTag =
+        TagKey.create(
+            BuiltInRegistries.ITEM.key(),
+            ResourceLocation.fromNamespaceAndPath(ExNihiloSequentia.MOD_ID, "sieves"));
+
+    // Get all items in the sieves tag
+    BuiltInRegistries.ITEM
+        .getTag(sievesTag)
+        .ifPresent(
+            tag ->
+                tag.stream()
+                    .forEach(
+                        holder -> {
+                          ItemStack catalyst = new ItemStack(holder.value());
+                          if (!catalyst.isEmpty()) {
+                            EntryStack<?> stack = EntryStacks.of(catalyst);
+                            registry.addWorkstations(DRY_SIFTING, stack);
+                            registry.addWorkstations(WET_SIFTING, stack);
+                          }
+                        }));
   }
 
   private List<ExNihiloDisplay> buildSiftingDisplays(final boolean isWaterLogged) {
